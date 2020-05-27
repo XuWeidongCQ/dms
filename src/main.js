@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 import utils from '@/utils/util'
+import http from '@/api/data-http'
 
 import './css/remove-default.css'
 import './css/box.css'
@@ -16,6 +17,7 @@ import 'font-awesome/css/font-awesome.css'
 
 Vue.config.productionTip = false
 Vue.prototype.$utils = utils
+Vue.prototype.$http = http
 
 new Vue({
   router,

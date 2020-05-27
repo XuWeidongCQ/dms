@@ -12,10 +12,9 @@
     /* border-bottom: 1px solid #303030; */
 }
 .xu-box-content {
-    padding: 20px;
     position: relative;
 }
 .xu-box-foot {
-    padding: 0 15px;
+    padding-top: 5px;
     border-top: 1px solid #303030;
 }

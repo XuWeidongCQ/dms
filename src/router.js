@@ -7,7 +7,6 @@ const routes = [
     {
         path:'',//一级router-view组件默认显示的组件
         redirect:'/login',
-        component:() => import('./views/LoginLayout')
     },
     {
         path:'/login',//一级router-view组件默认显示的组件
@@ -15,7 +14,13 @@ const routes = [
     },
     {
         path: '/home',
-        component:() => import('./views/MainLayout')
+        component:() => import('./views/MainLayout'),
+        children:[
+            {
+                path:'',
+                component:() => import('./views/HomePageLayout.vue')
+            }
+        ]
     }
 ]
 export default new Router({
