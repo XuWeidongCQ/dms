@@ -1,11 +1,11 @@
 <template>
   <x-box>
     <div class="xu-box-title">
-      <span>所有设备采集总时长</span>
-      <div class="select-wrapper">
-        <x-button :value="'一个月内'" :size="'sm'" :type="'cancel'" @click="getHistoryOf(30)" :class="{'active':days===30}"></x-button>
-        <x-button :value="'半个月内'" :size="'sm'" :type="'cancel'" @click="getHistoryOf(15)" :class="{'active':days===15}"></x-button>
-        <x-button :value="'一周以内'" :size="'sm'" :type="'cancel'" @click="getHistoryOf(7)" :class="{'active':days===7}"></x-button>
+      <span>采集总时长</span>
+      <div class="panel-select-wrapper">
+        <x-button :value="'一个月内'" :size="'sm'" :type="'cancel'" @click="getHistoryOf(30)" :class="{'panel-select-active':days===30}"></x-button>
+        <x-button :value="'半个月内'" :size="'sm'" :type="'cancel'" @click="getHistoryOf(15)" :class="{'panel-select-active':days===15}"></x-button>
+        <x-button :value="'一周以内'" :size="'sm'" :type="'cancel'" @click="getHistoryOf(7)" :class="{'panel-select-active':days===7}"></x-button>
       </div>
     </div>
     <div class="xu-box-content chart-wrapper">
@@ -56,15 +56,5 @@ export default {
 <style scoped>
 .chart-wrapper {
   height: 250px;
-}
-.select-wrapper {
-  position: absolute;
-  top:20px;
-  right: 20px;
-  font-size: 16px;
-}
-.active {
-  background-color: #24c79f;
-  color: #ffffff;
 }
 </style>

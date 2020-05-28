@@ -1,0 +1,18 @@
+
+.panel-select-wrapper {
+    position: absolute;
+    top:20px;
+    right: 20px;
+    font-size: 16px;
+}
+.panel-select-active {
+    background-color: #24c79f !important;
+    color: #ffffff !important;
+}
+.panel-gray {
+    background-color: #cccccc !important;
+}
+.interval {
+    margin: 8px 0;
+    height: 0;
+}

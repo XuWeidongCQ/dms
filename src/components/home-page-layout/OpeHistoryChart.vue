@@ -1,7 +1,7 @@
 <template>
   <x-box>
     <div class="xu-box-title">
-      <span>医疗设备开机量</span>
+      <span>手术采集量</span>
       <div class="panel-select-wrapper">
         <x-button :value="'一个月内'" :size="'sm'" :type="'cancel'" @click="getHistoryOf(30)" :class="{'panel-select-active':days===30}"></x-button>
         <x-button :value="'半个月内'" :size="'sm'" :type="'cancel'" @click="getHistoryOf(15)" :class="{'panel-select-active':days===15}"></x-button>
@@ -12,7 +12,7 @@
       <x-basic-chart 
       :source="historyData"
       :type="'bar'"
-      :yName="'数量/台'"
+      :yName="'手术/场'"
       :xName="'时间'">
       </x-basic-chart>
     </div>
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getData(days=this.days){
-      this.$http['getDevHistoryTurnOnNums']({params:{days:days}})
+      this.$http['getOpeHistoryCases']({params:{days:days}})
       .then(res => {
         const {data} = res
         this.historyData = {}

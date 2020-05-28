@@ -49,6 +49,10 @@
     padding: 0 20px;
     text-align: left;
 }
+.form-item:hover {
+    border-color: #4e5fdf;
+    transition: border-color 0.4s;
+}
 .form-item > input {
     border: 0;
     height: 40px;

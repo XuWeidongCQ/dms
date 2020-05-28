@@ -6,7 +6,7 @@
         <div class="banner">
             <banner></banner>
         </div>
-        <div class="main-container">
+        <div class="main-container xu-add-scrollBar">
             <router-view></router-view>
         </div>
     </div>
@@ -52,9 +52,10 @@ export default {
    background-color: #ffffff;
 }
 .main-container{
-    margin-top: 32px;
+    margin-top: 34px;
     margin-left: 224px;
     padding: 15px;
     box-sizing: border-box;
+    height: 900px;
 }
 </style>
