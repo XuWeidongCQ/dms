@@ -11,7 +11,6 @@
     <div class="xu-box-content chart-wrapper">
       <x-basic-chart 
       :source="historyData"
-      :color="['#22c3aa']"
       :smooth="true"
       :yName="'时间/分'"
       :xName="'时间'">

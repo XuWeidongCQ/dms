@@ -13,6 +13,7 @@ import './css/button.css'
 import './css/flex.css'
 import './css/badge.css'
 import './css/table.css'
+import './css/animation.css'
 
 import 'font-awesome/css/font-awesome.css'
 

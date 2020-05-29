@@ -9,7 +9,7 @@
   ]">
     <thead>
       <tr>
-        <th v-for="(th,index) in title" :key="index">{{ th }}</th>
+        <th v-for="(th,index) in title" :key="index" :style="{'width':colWidth[index]}">{{ th }}</th>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +40,11 @@ export default {
     strip:{
       type:Boolean,
       default:false
+    },
+    //表格中每列的宽度
+    colWidth:{
+      type:Array,
+      default:() => {return []}
     }
   }
 }
