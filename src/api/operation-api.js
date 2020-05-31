@@ -13,6 +13,11 @@ const OPERATION_API = {
   getOpeInfos:{
     method:'get',
     url:'platform/operation/main/list'
+  },
+  //4.获取一场手术的详细信息
+  getOpeDetailInfos:{
+    method:'get',
+    url:'platform/operation/detail/all_info'
   }
 }
 

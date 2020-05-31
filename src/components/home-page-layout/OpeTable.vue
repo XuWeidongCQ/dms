@@ -14,7 +14,7 @@
       <tr v-for="ope in opeInfos" :key="ope.patientId">
         <td>
           <span>{{ ope.operationNumber }}</span>
-          <x-button :value="'详情'" :size="'sm'" :type="'success'" @click="modalShow = true"></x-button>
+          <x-button :value="'详情'" :size="'sm'" :type="'success'" @click="showModal(ope)"></x-button>
         </td>
         <td>{{ ope.operationName }}</td>
         <td>{{ ope.operationStartTime | formatterDate }}</td>
@@ -26,7 +26,12 @@
       <x-pager :pageNum="totalPages" @hasSelectedPage="selPage($event)"></x-pager>
     </div>
     <!-- 弹窗 -->
-    <x-modal v-if="modalShow" @close="modalShow = false"></x-modal>
+    <x-ope-detail-info 
+     v-if="modalShow" 
+     @close="modalShow = false"
+     :operationNumber = "selOpe.operationNumber"
+    >
+    </x-ope-detail-info>
   </x-box>
 </template>
 
@@ -36,15 +41,16 @@ import xBox from "@/x-views/xBox";
 import xPager from "@/x-views/xPager";
 import xBadge from "@/x-views/xBadge";
 import xButton from "@/x-views/xButton";
-import xModal from '@/x-views/xModal';
+import xOpeDetailInfo from "@/components/share-components/xOpeDetailInfo";
 export default {
-  components: { xTable, xBox, xPager, xBadge, xButton,xModal},
+  components: { xTable, xBox, xPager, xBadge, xButton, xOpeDetailInfo },
   data() {
     return {
       opeInfos: [],
       totalPages: 1,
       totalElements: 0,
-      modalShow:false
+      modalShow: false,
+      selOpe: {}
     };
   },
   methods: {
@@ -62,6 +68,10 @@ export default {
     },
     selPage(page) {
       this.getData(page - 1);
+    },
+    showModal(ope){
+      this.selOpe = ope;
+      this.modalShow = true
     }
   },
   filters: {
