@@ -7,6 +7,7 @@
         <dev-category-pie></dev-category-pie>
         <div class="interval"></div>
         <total-ope-panel></total-ope-panel>
+        <div class="interval"></div>
         <ope-history-chart></ope-history-chart>
       </div>
       <div class="xu-col-9">

@@ -3,7 +3,7 @@
     <div class="xu-box-title">
       <span>医疗设备分布</span>
     </div>
-    <div class="panel-gray chart-wrapper">
+    <div class="chart-wrapper">
       这是饼图
     </div>
   </x-box>
@@ -18,6 +18,6 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 200px;
+  height: 180px;
 }
 </style>
