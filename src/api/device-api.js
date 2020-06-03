@@ -14,6 +14,11 @@ const DEVICE_API = {
   getDevHistoryTurnOnNums:{
     method:'get',
     url:'/platform/device/history_device_open_number'
+  },
+  //4.获取仪器的历史采集数据
+  getDevHistoryData:{
+    method:'get',
+    url:'/platform/operation/detail/device_history_data'
   }
 }
 

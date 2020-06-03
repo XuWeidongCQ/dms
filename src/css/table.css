@@ -8,7 +8,9 @@
 .xu-table th {
     border-top: 1px solid #e9ecef;
     border-bottom: 1px solid #e9ecef;
-    color: #d4d2d5;
+    color: #323333;
+    background-color: #e8ebf0;
+    font-weight: normal;
 }
 .xu-table td {
     border-bottom: 1px solid #e9ecef;

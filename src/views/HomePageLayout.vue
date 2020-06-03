@@ -1,6 +1,6 @@
 <template>
   <div class="home-page-wrapper">
-    <div class="xu-row">
+    <div class="xu-row mb15">
       <div class="xu-col-3">
         <total-dev-panel></total-dev-panel>
         <div class="interval"></div>

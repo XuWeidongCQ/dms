@@ -25,6 +25,7 @@ dataPool.interceptors.response.use(res => {
   return Promise.reject(error)
 })
 
+
 const http = {}
 const api = Object.assign({},deviceApi,operationApi)
 for(let key in api){

@@ -45,6 +45,11 @@ export default {
     smooth:{
       type:Boolean,
       default:false
+    },
+    //是否填充颜色
+    areaStyle:{
+      type:Object,
+      default:() => {return {}}
     }
   },
   methods: {
@@ -63,9 +68,9 @@ export default {
         if(key !== 'x'){
           option.series.push({
             type:this.type,
-            areaStyle:{},
+            areaStyle:this.areaStyle,
             smooth:this.smooth,
-            encode:{x:'x',y:key}
+            encode:{x:'x',y:key,seriesName:key}
           })
         }
       };
@@ -81,9 +86,13 @@ export default {
   watch:{
     'source':{
       deep:true,
-      handler(newVal,oldVal){
-        this.draw()
+      handler(newVal,oldVal){ 
+        //如果不用nextTick，那么在这个组件初始化的时候由于不能操作DOM而报错
+        this.$nextTick(() => {
+          this.draw()
+        })
       },
+      immediate:true
     }
   }
 }

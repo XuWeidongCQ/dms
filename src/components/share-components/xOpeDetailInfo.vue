@@ -63,6 +63,33 @@
            </div>
         </div>
       </div>
+      <!-- 第四行 这场手术的统计数据（掉线率等） -->
+      <div class="detail-wrapper">
+        <div class="dev-detail-wrapper" v-for="(info,index) in devDataDetails" :key="index">
+          <div class="chart-wrapper">
+            <x-inner-pie-chart 
+            :titleText="'掉线率'"
+            :color="['#019b4c','#e62229','#e0a800']"
+            :source="{'y':[1-info.dropRate,info.dropRate]}"
+            :isModalChart="true"
+            ></x-inner-pie-chart>
+          </div>
+          <span>{{ info.deviceName }}</span>
+          <x-button
+          :disable="info.dataNumber === 0" 
+          :value="info.dataNumber + '条数据'"
+          @click="showModal(info.serialNumber)"
+          :type="'success'"
+          ></x-button>
+        </div>
+      </div>
+      <!-- 仪器历史数据弹框 -->
+      <x-ope-history-data-modal 
+      v-if="isModalShow"
+      :operationNumber="operationNumber"
+      :serialNumber="serialNumber"
+      @close="isModalShow = false"
+      ></x-ope-history-data-modal>
     </div>
   </x-modal>
 </template>
@@ -70,8 +97,17 @@
 <script>
 import xModal from "@/x-views/xModal";
 import xTable from "@/x-views/xTable"
+import xInnerPieChart from '@/components/share-components/xInnerPieChart'
+import xButton from '@/x-views/xButton'
+import xOpeHistoryDataModal from '@/components/share-components/xOpeHistoryDataModal'
 export default {
-  components: { xModal,xTable},
+  components: { 
+    xModal,
+    xTable,
+    xInnerPieChart,
+    xButton,
+    xOpeHistoryDataModal
+  },
   props: {
     //1.手术顺序号
     operationNumber: {
@@ -83,7 +119,10 @@ export default {
       patient: {},
       operation: {},
       evaluationInfos: [],
-      markInfos: []
+      markInfos: [],
+      devDataDetails:[],
+      isModalShow:false,
+      serialNumber:0
     };
   },
   methods: {
@@ -94,7 +133,7 @@ export default {
       this.$http["getOpeDetailInfos"]({
         params: { operationNumber: operationNumber }
       }).then(res => {
-        const { operationInfo, evaluationInfo, operationMarks } = res.data;
+        const { operationInfo, evaluationInfo, operationMarks, deviceDataDetails } = res.data;
         this.patient = {
           '身份证号': operationInfo["patientId"],
           '入院ID': operationInfo["admissionId"],
@@ -113,7 +152,12 @@ export default {
         };
         this.evaluationInfos = evaluationInfo;
         this.markInfos = operationMarks;
+        this.devDataDetails = deviceDataDetails
       });
+    },
+    showModal(serialNumber){
+      this.serialNumber = serialNumber
+      this.isModalShow = true
     }
   },
   watch: {
@@ -131,6 +175,9 @@ export default {
 <style scoped>
 .ope-detail-wrapper {
   min-width: 1000px;
+}
+.info-box {
+  position: relative;
 }
 .info-box > span:first-child {
   display: inline-block;
@@ -163,5 +210,28 @@ export default {
 .evaluation-items-wrapper {
   padding: 5px 0 0 0;
   max-height: 200px;
+}
+.detail-wrapper {
+  display: flex;
+}
+.dev-detail-wrapper {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #24c79f;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 10px;
+  font-size: 12px;
+  position: relative;
+  text-align: center;
+}
+.chart-wrapper {
+  height: 100px;
+}
+.dev-detail-wrapper > span {
+  display: block;
+  margin: 5px auto;
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>

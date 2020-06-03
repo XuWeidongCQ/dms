@@ -1,5 +1,5 @@
 <template>
-  <div class="panel-wrapper">
+  <div class="real-time-panel-wrapper">
     <div class="chart-wrapper">
       这是曲线区
     </div>
@@ -40,17 +40,14 @@ export default {
 </script>
 
 <style scoped>
-.panel-wrapper {
-  padding: 10px;
-}
 .chart-wrapper {
-  height: 422px;
+  height: 400px;
   background-color: #cccccc;
   margin-bottom: 10px;
 }
 .indicator-wrapper {
   display: flex;
-  height: 240px;
+  height: 268px;
 }
 .indicator-wrapper > div {
   flex: 1;
@@ -58,6 +55,7 @@ export default {
   border-radius: 10px;
   height: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 .indicator-wrapper > div:nth-child(2){
   margin: 0 10px;

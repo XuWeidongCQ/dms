@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <ul>
-      <li class="show-border mr5" @click="previousPage">上一页</li>
+      <li class="show-border mr5" @click="previousPage"> 上一页 </li>
       <li v-for="(page,index) in pageNumberList"
           :class="{'show-border':page !== '...','active':page===pageNow}"
           @click="choosePage(page)" 

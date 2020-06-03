@@ -1,12 +1,12 @@
 <template>
-  <x-box class="dev-panel-wrapper xu-row">
-    <div class="xu-col-9">
-      <div class="real-panel">
-        <pu-ke-yy106></pu-ke-yy106>
+  <x-box>
+    <div class="xu-row dev-panel-wrapper">
+      <div class="xu-col-9">
+          <pu-ke-yy106></pu-ke-yy106>
       </div>
-    </div>
-    <div class="xu-col-3">
-      <div class="real-ope-info"></div>
+      <div class="xu-col-3">
+        <div class="real-ope-info"></div>
+      </div>
     </div>
   </x-box>
 </template>
@@ -23,14 +23,6 @@ export default {
 </script>
 
 <style>
-.dev-panel-wrapper {
-  height: 700px;
-}
-.real-panel {
-  height: 100%;
-  background-color: #e2e2e2;
-  border-radius: 10px;
-}
 .real-ope-info {
   height: 100%;
   background-color: #e2e2e2;
