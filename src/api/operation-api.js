@@ -18,6 +18,16 @@ const OPERATION_API = {
   getOpeDetailInfos:{
     method:'get',
     url:'platform/operation/detail/all_info'
+  },
+  //5.获取目前正在进行的手术
+  getOpeInProcess:{
+    method:'get',
+    url:'/platform/operation/main/processing'
+  },
+  //6.获取手术使用的仪器
+  getOpeUseDev:{
+    method:'get',
+    url:'platform/operation/main/used_device_info_list'
   }
 }
 

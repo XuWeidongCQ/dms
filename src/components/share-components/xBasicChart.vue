@@ -78,7 +78,9 @@ export default {
     },
     draw(){
       const option = this.initOption()
-      echarts.init(this.$refs['chart']).setOption(option)
+      if(this.$refs['chart']){
+        echarts.init(this.$refs['chart']).setOption(option)
+      }
     }
   },
   mounted(){
@@ -88,9 +90,9 @@ export default {
       deep:true,
       handler(newVal,oldVal){ 
         //如果不用nextTick，那么在这个组件初始化的时候由于不能操作DOM而报错
-        this.$nextTick(() => {
+        // this.$nextTick(() => {
           this.draw()
-        })
+        // })
       },
       immediate:true
     }

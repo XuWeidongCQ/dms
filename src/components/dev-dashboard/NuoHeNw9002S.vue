@@ -1,19 +1,19 @@
 <template>
   <div class="real-time-panel-wrapper">
     <div class="chart-wrapper">
-      这是曲线区EEG
+      这是曲线区 EMG
     </div>
     <div class="indicator-wrapper">
       <div>
-        <span class="indicator-label">Ai</span>
+        <span class="indicator-label">CSI,麻醉深度指数</span>
         <span class="indicator-num">2</span>
       </div>
       <div>
-        <span class="indicator-label">BSR</span>
+        <span class="indicator-label">BS,爆发抑制比</span>
         <span class="indicator-num">123</span>
       </div>
       <div>
-        <span class="indicator-label">EMG</span>
+        <span class="indicator-label">SQI,信号质量指数</span>
         <span class="indicator-num">23</span>
       </div>
     </div>
@@ -21,16 +21,17 @@
 </template>
 
 <script>
-import xBasicChart from '@/components/share-components/xBasicChart'
+import { createWs } from '@/api/websocket.js'
 export default {
-  components:{xBasicChart},
+  //deviceCodeList表示该手术场次中所有使用的仪器列表，用来确定该仪器面板是否显示
   props:['operationNumber','deviceCode','deviceCodeList'],
   data(){
     return {
-      EEG:[],
-      Ai:[],
-      BSR:[],
-      EMG:[]
+      EMG:[],
+      CSI:[],
+      BS:[],
+      SQI:[],
+
     }
   },
   computed: {
@@ -50,7 +51,7 @@ export default {
     }
   },
   created(){
-    console.log('普可开启ws',this.operationNumber,this.deviceCode)
+    console.log('诺和开启ws',this.operationNumber,this.deviceCode)
   }
 }
 </script>
@@ -67,21 +68,26 @@ export default {
 }
 .indicator-wrapper > div {
   flex: 1;
-  border: 3px solid #ffffff;
-  color: #ffffff;
   border-radius: 10px;
   height: 100%;
   position: relative;
   box-sizing: border-box;
 }
+.indicator-wrapper > div:first-child {
+  color: #fffd36;
+}
 .indicator-wrapper > div:nth-child(2){
   margin: 0 10px;
+  color: #fdae96;
+}
+.indicator-wrapper > div:last-child {
+  color: #5bf751;
 }
 .indicator-label {
   position: absolute;
   top:15px;
   left: 15px;
-  font-size: 40px;
+  font-size: 30px;
 
 }
 .indicator-num {

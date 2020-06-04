@@ -220,7 +220,7 @@ export default {
   border: 1px solid #24c79f;
   padding: 10px;
   border-radius: 10px;
-  margin: 0 10px;
+  margin: 10px 10px 0 10px;
   font-size: 12px;
   position: relative;
   text-align: center;
