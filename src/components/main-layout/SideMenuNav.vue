@@ -6,11 +6,31 @@
     <ul class="nav-links-wrapper">
       <router-link tag="li" to='/home' active-class="active" exact>
         <i class="fa fa-home"></i>
-        <span>首页</span>
+        <span> 首页</span>
       </router-link>
       <router-link tag="li" to='/device'>
-        <i class="fa fa-home"></i>
-        <span>首页</span>
+        <i class="fa fa-desktop"></i>
+        <span>监护仪</span>
+      </router-link>
+      <router-link tag="li" to='/device'>
+        <i class="fa fa-desktop"></i>
+        <span>呼吸机</span>
+      </router-link>
+      <router-link tag="li" to='/device'>
+        <i class="fa fa-desktop"></i>
+        <span>麻醉机</span>
+      </router-link>
+      <router-link tag="li" to='/device'>
+        <i class="fa fa-desktop"></i>
+        <span>麻醉深度监测仪</span>
+      </router-link>
+      <router-link tag="li" to='/device'>
+        <i class="fa fa-desktop"></i>
+        <span>无创血红蛋白监测仪</span>
+      </router-link>
+      <router-link tag="li" to='/device'>
+        <i class="fa fa-desktop"></i>
+        <span>无创脑氧饱和度监测仪</span>
       </router-link>
     </ul>
   </div>
@@ -45,5 +65,6 @@ export default {
 }
 .active {
   color: #ffffff;
+  background-color: #269af1;
 }
 </style>

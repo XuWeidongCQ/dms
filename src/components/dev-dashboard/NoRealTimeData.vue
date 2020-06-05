@@ -1,6 +1,6 @@
 <template>
   <div class="real-time-panel-wrapper">
-    没有正在进行的手术
+    <span class="no-ope-info">目前没有正在进行的手术</span>
   </div>
 </template>
 
@@ -14,5 +14,14 @@ export default {
 </script>
 
 <style scoped>
-
+.no-ope-info {
+  display: block;
+  font-size: 60px;
+  color: rgba(50, 50, 50);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
+}
 </style>

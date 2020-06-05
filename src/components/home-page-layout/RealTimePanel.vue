@@ -2,12 +2,12 @@
   <x-box>
     <div class="xu-row">
       <div class="xu-col-9">
-        <!-- <keep-alive > -->
+        <keep-alive>
           <component :is="currentPanel" 
           :operationNumber='selOperationNumber'
           :deviceCode="selDeviceCode"
           ></component>
-        <!-- </keep-alive>  -->
+        </keep-alive>
       </div>
       <div class="xu-col-3">
         <div class="real-ope-info">
@@ -18,7 +18,7 @@
             :class="{'active':selOperationNumber === ope.operationNumber}"
             @click="changeOpe(ope.operationNumber)"
             >
-              {{ ope.operationNumber + '#' + ope.operationName }}
+              {{ ope.operationNumber + '#' + ope.operationName + '#' + ope.hospitalOperationNumber}}
             </li>
           </ul>
           <span class=" fa fa-desktop"> 使用仪器</span>
@@ -74,7 +74,11 @@ export default {
       .then(res => {
         const { data } = res
         this.opeInProcess = data.map(ele => {
-          return {operationNumber:ele.operationNumber,operationName:ele.operationName}
+          return {
+            operationNumber:ele.operationNumber,
+            operationName:ele.operationName,
+            hospitalOperationNumber:ele.hospitalOperationNumber
+          }
         });
         //初始化选中的手术
         if(this.opeInProcess.length > 0){
@@ -84,28 +88,19 @@ export default {
         } else {
           this.selOperationNumber = 0
         };
-        //初始化仪器面板组件
-        // this.initOpePanelPattern()
-        // console.log(this.opePanelPattern)
       })
     },
-    //2.初始化所有手术的仪器面板
-    initOpePanelPattern(){
-      for(let ele of this.opeInProcess){
-        this.opePanelPattern[ele.operationNumber] = {}
-      }
-    },
-    //3.初始化某一场手术的仪器组件
+    //2.初始化某一场手术的仪器组件
     initOneOpePanel(opeUseDev){
       for(let ele of opeUseDev){
         this.opePanelPattern[ele.deviceCode] = pattern[ele.deviceCode]
       }
     },
     getOpeUseDevData(operationNumber){
+      this.selDeviceCode = 0 //这里的初始化很很重要
       this.$http['getOpeUseDev']({
         params:{operationNumber:operationNumber}
       }).then(res => {
-        this.deviceCodeListNow = []
         const {data} = res
         this.opeUseDev = data.map(ele => {
           return {deviceCode:ele.deviceCode,deviceName:ele.deviceName}
@@ -118,7 +113,6 @@ export default {
         };
         //初始化某一场手术的仪器组件
         this.initOneOpePanel(this.opeUseDev)
-        // console.log(this.opePanelPattern)
       })
     },
     changeOpe(operationNumber){
@@ -147,7 +141,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .real-ope-info {
   height: 100%;
   background-color: rgba(250, 250, 250);
@@ -159,7 +153,6 @@ export default {
   display: inline-block;
   font-size: 20px;
   padding: 15px 5px;
-  /* border-bottom: 1px solid #24c79f; */
   width: 100%;
   box-sizing: border-box;
   color: #24c79f

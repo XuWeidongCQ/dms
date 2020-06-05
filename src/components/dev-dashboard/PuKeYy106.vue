@@ -1,20 +1,27 @@
 <template>
   <div class="real-time-panel-wrapper">
     <div class="chart-wrapper">
-      这是曲线区EEG
+      <x-basic-chart 
+      :xName="'时间'" 
+      :yName="'Ai'"
+      :type="'line'"
+      :source="{x:x,Ai:Ai}"
+      :areaStyle="null"
+      >
+      </x-basic-chart>
     </div>
     <div class="indicator-wrapper">
       <div>
-        <span class="indicator-label">Ai</span>
-        <span class="indicator-num">2</span>
+        <span class="indicator-label">EMG</span>
+        <span class="indicator-num">{{ EMG }}</span>
       </div>
       <div>
         <span class="indicator-label">BSR</span>
-        <span class="indicator-num">123</span>
+        <span class="indicator-num">{{ BSR }}</span>
       </div>
       <div>
-        <span class="indicator-label">EMG</span>
-        <span class="indicator-num">23</span>
+        <span class="indicator-label">SQI</span>
+        <span class="indicator-num">{{ SQI }}</span>
       </div>
     </div>
   </div>
@@ -22,35 +29,84 @@
 
 <script>
 import xBasicChart from '@/components/share-components/xBasicChart'
+import { createWs } from '@/api/websocket.js'
 export default {
   components:{xBasicChart},
   props:['operationNumber','deviceCode','deviceCodeList'],
   data(){
     return {
-      EEG:[],
+      MAX_LENGTH:100,
+      x:[], //时间
+      EMG:'--',
       Ai:[],
-      BSR:[],
-      EMG:[]
-    }
-  },
-  computed: {
-    trigger:function(){
-      return '' + this.operationNumber + this.deviceCode
+      BSR:'--',
+      SQI:'--',
+      ws:null,
+      DEV_CODE:'31'
     }
   },
   methods:{
-
+    openWs(operationNumber,deviceCode){
+      this.closeWs()
+      this.ws = createWs(operationNumber,deviceCode,this.$utils.getFormatterDate().now)
+      this.ws.onopen = function(){
+        console.log(`手术${operationNumber}的普可${deviceCode}开启ws`)
+      }
+      this.ws.onmessage = this.onmessage
+    
+    },
+    closeWs(){
+      if(this.ws){
+        console.log(`普可关闭之前ws`)
+        this.ws.close()
+      }
+    },
+    //初始化数据
+    initData(){
+      console.log(`手术${this.operationNumber}的普可初始化数据`)
+      this.EMG = '--'
+      this.Ai = []
+      this.BSR = '--'
+      this.SQI = '--'
+      this.x = []
+    },
+    //从ws中解析数据 data为ws收到的数据
+    parseData(data){
+      const {ai:Ai,bsr:BSR,emg:EMG,sqi:SQI,gmtCreate} = JSON.parse(data)
+      if(this.Ai.length > this.MAX_LENGTH){
+        this.Ai.shift()
+        this.x.shift()
+      }
+      // console.log(this.Ai)
+      this.Ai.push(Ai)
+      this.x.push(gmtCreate.split(' ')[1])
+      this.EMG = EMG
+      this.BSR = BSR
+      this.SQI = SQI
+    },
+    //ws收到数据的回调
+    onmessage(e){
+      this.parseData(e.data)
+    }
   },
   watch:{
     'operationNumber':{
       handler(newVal,oldVal){
-        // this.$destroy()
+        if(this.deviceCode === this.DEV_CODE){
+          this.initData()
+          this.openWs(newVal,this.deviceCode)
+        } else {
+          this.closeWs()
+        }
       },
-      // immediate:true
+      immediate:true
     }
   },
   created(){
-    console.log('普可开启ws',this.operationNumber,this.deviceCode)
+    // console.log(`手术${this.operationNumber}的普可开启ws`)
+  },
+  beforeDestroy(){
+    this.closeWs()
   }
 }
 </script>
@@ -58,7 +114,7 @@ export default {
 <style scoped>
 .chart-wrapper {
   height: 400px;
-  background-color: rgba(80,80,80);
+  background-color: rgba(120,120,120);
   margin-bottom: 10px;
 }
 .indicator-wrapper {

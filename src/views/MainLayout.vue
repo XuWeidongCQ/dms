@@ -7,7 +7,9 @@
             <banner></banner>
         </div>
         <div class="main-container xu-add-scrollBar">
-            <router-view></router-view>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </div>
     </div>
 </template>
