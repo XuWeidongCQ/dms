@@ -8,27 +8,27 @@
         <i class="fa fa-home"></i>
         <span> 首页</span>
       </router-link>
-      <router-link tag="li" to='/device'>
+      <router-link tag="li" to='/device' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>监护仪</span>
       </router-link>
-      <router-link tag="li" to='/device'>
+      <router-link tag="li" to='/device' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>呼吸机</span>
       </router-link>
-      <router-link tag="li" to='/device'>
+      <router-link tag="li" to='/device' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>麻醉机</span>
       </router-link>
-      <router-link tag="li" to='/device'>
+      <router-link tag="li" to='/dev-depth-of-anesthesia' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>麻醉深度监测仪</span>
       </router-link>
-      <router-link tag="li" to='/device'>
+      <router-link tag="li" to='/device' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>无创血红蛋白监测仪</span>
       </router-link>
-      <router-link tag="li" to='/device'>
+      <router-link tag="li" to='/device' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>无创脑氧饱和度监测仪</span>
       </router-link>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import deviceApi from './device-api'
 import operationApi from './operation-api'
+import deviceCardApi from './device-card-api'
 
 const dataPool = axios.create({
   baseURL:'http://172.20.29.112:8080/eval'
@@ -27,7 +28,14 @@ dataPool.interceptors.response.use(res => {
 
 
 const http = {}
-const api = Object.assign({},deviceApi,operationApi)
+const api = Object.assign(
+  {},
+  deviceApi,
+  operationApi,
+  deviceCardApi
+  )
+
+
 for(let key in api){
   const {method,url} = api[key]
   switch(method){

@@ -1,5 +1,5 @@
 
 module.exports = {
   publicPath:'./',
-  lintOnSave:false
+  lintOnSave:false,
 }

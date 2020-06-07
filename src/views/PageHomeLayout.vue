@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import DevHistoryTurnOnNumChart from "@/components/home-page-layout/DevHistoryTurnOnNumChart";
-import DevHistoryCollectTimeChart from "@/components/home-page-layout/DevHistoryCollectTimeChart";
-import RealTimePanel from "@/components/home-page-layout/RealTimePanel";
-import TotalDevPanel from "@/components/home-page-layout/TotalDevPanel";
-import TotalOpePanel from "@/components/home-page-layout/TotalOpePanel";
-import DevCategoryPie from "@/components/home-page-layout/DevCategoryPie";
-import OpeHistoryChart from "@/components/home-page-layout/OpeHistoryChart";
-import OpeTable from "@/components/home-page-layout/OpeTable";
+import DevHistoryTurnOnNumChart from "@/components/page-home-layout/DevHistoryTurnOnNumChart";
+import DevHistoryCollectTimeChart from "@/components/page-home-layout/DevHistoryCollectTimeChart";
+import RealTimePanel from "@/components/page-home-layout/RealTimePanel";
+import TotalDevPanel from "@/components/page-home-layout/TotalDevPanel";
+import TotalOpePanel from "@/components/page-home-layout/TotalOpePanel";
+import DevCategoryPie from "@/components/page-home-layout/DevCategoryPie";
+import OpeHistoryChart from "@/components/page-home-layout/OpeHistoryChart";
+import OpeTable from "@/components/page-home-layout/OpeTable";
 export default {
   components: {
     DevHistoryTurnOnNumChart,

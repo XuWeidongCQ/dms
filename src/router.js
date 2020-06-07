@@ -21,10 +21,14 @@ const routes = [
         children: [
             {
                 path: '',
-                component: () => import('./views/HomePageLayout.vue'),
+                component: () => import('./views/PageHomeLayout.vue'),
                 meta: {
                     title: '大数据分析平台-首页'
                 }
+            },
+            {
+                path:'/dev-depth-of-anesthesia',
+                component:() => import('./views/PageDevDepthOfAnesthesiaLayout.vue')
             }
         ]
     }
