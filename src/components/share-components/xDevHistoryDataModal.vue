@@ -1,4 +1,5 @@
 <template>
+  <!-- 一台仪器在某一场手术中的监测数据弹窗  -->
   <x-modal @close="close">
     <div class="chart-wrapper">
       <x-basic-chart 
@@ -40,15 +41,16 @@ export default {
         params:{operationNumber:this.operationNumber,serialNumber:this.serialNumber}
       }).then(res => {
         const {data} = res
-        this.source = {}
-        for(const key in data){
-          if(key === 'time'){
-            this.source['x'] = data[key].map(ele => ele.split('T')[1])
-          } else {
-            this.source[key] = data[key].map(ele => ele===-1000?-5:ele)
+        if(data){
+          this.source = {}
+          for(const key in data){
+            if(key === 'time'){
+              this.source['x'] = data[key].map(ele => ele.split('T')[1])
+            } else {
+              this.source[key] = data[key].map(ele => ele===-1000?-5:ele)
+            }
           }
         }
-        
       })
     },
     close(){

@@ -74,17 +74,6 @@ export default {
       this.modalShow = true
     }
   },
-  filters: {
-    formatterDevName(val) {
-      const reg = /(?<=\().+?(?=\))/g;
-      const res = val.match(reg);
-      if (res) {
-        return res.join(" ");
-      } else {
-        return "";
-      }
-    }
-  },
   created() {
     this.getData();
   }
@@ -99,6 +88,7 @@ export default {
 }
 .table-wrapper {
   height: 610px;
+  font-size: 14px;
 }
 .total-badge {
   font-size: 12px;

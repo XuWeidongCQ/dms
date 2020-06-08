@@ -1,18 +1,18 @@
 <template>
   <div class="depth-of-anesthesia-page-wrapper">
     <div class="xu-row">
-      <div class="xu-col-5">
-        <dev-card-collections></dev-card-collections>
+      <div class="xu-col-12">
+        <dev-card-infos></dev-card-infos>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import DevCardCollections from '@/components/page-dev-depth-of-anesthesia-layout/DevCardCollections'
+import DevCardInfos from '@/components/page-dev-depth-of-anesthesia-layout/DevCardInfos'
 export default {
  components:{
-   DevCardCollections
+   DevCardInfos
  }
 }
 </script>

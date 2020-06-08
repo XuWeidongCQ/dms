@@ -84,12 +84,12 @@
         </div>
       </div>
       <!-- 仪器历史数据弹框 -->
-      <x-ope-history-data-modal 
+      <x-dev-history-data-modal 
       v-if="isModalShow"
       :operationNumber="operationNumber"
       :serialNumber="serialNumber"
       @close="isModalShow = false"
-      ></x-ope-history-data-modal>
+      ></x-dev-history-data-modal>
     </div>
   </x-modal>
 </template>
@@ -99,14 +99,14 @@ import xModal from "@/x-views/xModal";
 import xTable from "@/x-views/xTable"
 import xInnerPieChart from '@/components/share-components/xInnerPieChart'
 import xButton from '@/x-views/xButton'
-import xOpeHistoryDataModal from '@/components/share-components/xOpeHistoryDataModal'
+import xDevHistoryDataModal from '@/components/share-components/xDevHistoryDataModal'
 export default {
   components: { 
     xModal,
     xTable,
     xInnerPieChart,
     xButton,
-    xOpeHistoryDataModal
+    xDevHistoryDataModal
   },
   props: {
     //1.手术顺序号
@@ -210,6 +210,7 @@ export default {
 .evaluation-items-wrapper {
   padding: 5px 0 0 0;
   max-height: 200px;
+  font-size: 12px;
 }
 .detail-wrapper {
   display: flex;

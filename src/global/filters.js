@@ -8,5 +8,14 @@ export default {
   },
   formatterSex(val){
     return val===1?'男':'女'
+  },
+  formatterDevName(val) {
+    const reg = /(?<=\().+?(?=\))/g;
+    const res = val.match(reg);
+    if (res) {
+      return res.join(" ");
+    } else {
+      return "";
+    }
   }
 }

@@ -9,6 +9,11 @@ const DEVICE_CARD_API = {
   getDevCardStatisticInfo:{
     method:'get',
     url:'/platform/device_card/device_statistic_info'
+  },
+  //3.获取某一台仪器参与的手术信息
+  getOpeInfosOfDev:{
+    method:'get',
+    url:'/platform/device_card/device_finished_operation_list'
   }
 }
 

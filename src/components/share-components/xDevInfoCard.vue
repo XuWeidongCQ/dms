@@ -1,13 +1,13 @@
 
 <template>
-  <x-box class="mb15">
+  <x-box class="dev-card-wrapper">
     <div class="dev-img-wrapper">
       <img :src="imgUrl">
     </div>
     <div class="dev-describe-wrapper">
       <p>厂商：{{ devCompany }}</p>
       <p>产品：{{ devName }}</p>
-      <p>型号：{{ devType }}</p>
+      <p>型号：{{ devType }}</p>  
     </div>
     <div class="dev-statistic-wrapper">
       <div class="left">
@@ -35,10 +35,11 @@
         <p>已使用：{{ statisticInfo.deviceServiceLife }}年</p>
         <p>总采集时长：{{ statisticInfo.operationDurationTimeAll }}秒</p>
         <x-button
-          :disable="statisticInfo.dataNumber === 0" 
-          :value="'已完成' + statisticInfo.totalFinishOperationNumber + '场手术'"
-          :type="'success'"
-          ></x-button>
+        :disable="statisticInfo.dataNumber === 0" 
+        :value="'已完成' + statisticInfo.totalFinishOperationNumber + '场手术'"
+        :type="'success'"
+        @click="emitSelSerialNumber()"
+        ></x-button>
       </div>
     </div>
   </x-box>
@@ -120,11 +121,23 @@ export default {
     //3.改变仪器序列号
     changeSerialNumber(deviceSerialNumber){
       this.selSerialNumber = deviceSerialNumber
+    },
+    //4.点击按钮
+    emitSelSerialNumber(){
+      this.$emit(
+        'getOpeInfoOfThisDev',
+        {
+          deviceCode:this.deviceCode,
+          serialNumber:this.selSerialNumber,
+          deviceType:this.devType
+        }
+      )
     }
   },
   watch:{
     'selSerialNumber':function(newVal){
       this.getStatisticInfo(this.deviceCode,newVal)
+      // this.emitSelSerialNumber()
     }
   },
   created(){
@@ -134,26 +147,33 @@ export default {
 </script>
 
 <style scoped>
+.dev-card-wrapper {
+  width: 500px;
+  display: inline-block;
+  margin:0 15px;
+}
+
+
 .dev-img-wrapper {
   margin-bottom: 10px;
 }
 .dev-img-wrapper > img {
-  height: 240px;
+  height: 200px;
 }
 .dev-describe-wrapper > p{
-  font-size: 14px;
+  font-size: 12px;
 }
 .dev-statistic-wrapper {
   position: absolute;
   background-color: rgba(245, 245, 245);
-  width: 350px;
+  width: 260px;
   top: 20px;
   right: 20px;
   bottom: 20px;
   display: flex;
   padding: 5px 0;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .dev-statistic-wrapper > div:first-child {
   flex: 2;
