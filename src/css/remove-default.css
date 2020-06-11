@@ -7,7 +7,9 @@ body {
     color: #5a5c69;
     position: relative;
 }
-
+/* p {
+    cursor: pointer;
+} */
 
 a,
 li {

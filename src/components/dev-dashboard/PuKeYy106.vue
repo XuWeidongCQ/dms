@@ -32,7 +32,7 @@ import xBasicChart from '@/components/share-components/xBasicChart'
 import { createWs } from '@/api/websocket.js'
 export default {
   components:{xBasicChart},
-  props:['operationNumber','deviceCode','deviceCodeList'],
+  props:['operationNumber','deviceCode'],
   data(){
     return {
       MAX_LENGTH:100,
@@ -48,7 +48,7 @@ export default {
   methods:{
     openWs(operationNumber,deviceCode){
       this.closeWs()
-      this.ws = createWs(operationNumber,deviceCode,this.$utils.getFormatterDate().now)
+      this.ws = createWs(operationNumber,deviceCode,this.$utils.getFormatterDate().timestamp)
       this.ws.onopen = function(){
         console.log(`手术${operationNumber}的普可${deviceCode}开启ws`)
       }
@@ -86,6 +86,7 @@ export default {
     },
     //ws收到数据的回调
     onmessage(e){
+      console.log(`手术${this.operationNumber}的普可收到一条数据`)
       this.parseData(e.data)
     }
   },

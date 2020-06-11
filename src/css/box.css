@@ -40,3 +40,15 @@
 .xu-add-scrollBar::-webkit-scrollbar-thumb:hover {
     background-color: #999999;
 }
+
+.xu-float-left {
+    float: left;
+}
+.xu-float-right {
+    float: right;
+}
+.xu-clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}

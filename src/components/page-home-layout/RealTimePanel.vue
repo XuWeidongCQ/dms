@@ -42,12 +42,13 @@ import xBox from '@/x-views/xBox'
 import NoRealTimeData from '@/components/dev-dashboard/NoRealTimeData'
 import PuKeYy106 from '@/components/dev-dashboard/PuKeYy106'
 import NuoHeNw9002S from '@/components/dev-dashboard/NuoHeNw9002S'
-
+import YiAn8700A from '@/components/dev-dashboard/YiAn8700A'
 
 const pattern = {
   0:'NoRealTimeData',
   30:'NuoHeNw9002S',
-  31:'PuKeYy106'
+  31:'PuKeYy106',
+  33:'YiAn8700A'
 }
 
 export default {
@@ -55,7 +56,8 @@ export default {
     xBox,
     PuKeYy106,
     NoRealTimeData,
-    NuoHeNw9002S
+    NuoHeNw9002S,
+    YiAn8700A
   },
   data(){
     return {

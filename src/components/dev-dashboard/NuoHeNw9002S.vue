@@ -5,6 +5,7 @@
       :xName="'时间'" 
       :yName="'EMG'"
       :type="'line'"
+      :color="['#fffd36']"
       :source="{x:x,EMG:EMG}"
       :areaStyle="null"
       >
@@ -51,7 +52,7 @@ export default {
   methods:{
     openWs(operationNumber,deviceCode){
       this.closeWs()
-      this.ws = createWs(operationNumber,deviceCode,this.$utils.getFormatterDate().now)
+      this.ws = createWs(operationNumber,deviceCode,this.$utils.getFormatterDate().timestamp)
       this.ws.onopen = function(){
         console.log(`手术${operationNumber}的诺和${deviceCode}开启ws`)
       }
@@ -85,6 +86,7 @@ export default {
       this.SQI = SQI
     },
     onmessage(e){
+      console.log(`手术${this.operationNumber}的诺和收到一条数据`)
       this.parseData(e.data)
     }
   },
