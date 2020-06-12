@@ -43,11 +43,13 @@ import NoRealTimeData from '@/components/dev-dashboard/NoRealTimeData'
 import PuKeYy106 from '@/components/dev-dashboard/PuKeYy106'
 import NuoHeNw9002S from '@/components/dev-dashboard/NuoHeNw9002S'
 import YiAn8700A from '@/components/dev-dashboard/YiAn8700A'
+import BLTA8 from '@/components/dev-dashboard/BLTA8'
 
 const pattern = {
   0:'NoRealTimeData',
   30:'NuoHeNw9002S',
   31:'PuKeYy106',
+  32:'BLTA8',
   33:'YiAn8700A'
 }
 
@@ -57,7 +59,8 @@ export default {
     PuKeYy106,
     NoRealTimeData,
     NuoHeNw9002S,
-    YiAn8700A
+    YiAn8700A,
+    BLTA8
   },
   data(){
     return {

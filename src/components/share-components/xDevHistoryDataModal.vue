@@ -1,25 +1,16 @@
 <template>
   <!-- 一台仪器在某一场手术中的监测数据弹窗  -->
   <x-modal @close="close">
-    <div class="chart-wrapper">
-      <x-basic-chart 
-      :type="'line'"
-      :xName="'时间'"
-      :source="source"
-      :areaStyle="null"
-      :legend="{
-        orient: 'vertical',
-        top:15,
-        right:15,
-        selectedMode: true,
-        show:true,
-        textStyle:{
-          fontSize:13,
-          color:'#111'
-        },
-        backgroundColor:'rgba(0,0,0,0.1)'
-      }"
-      ></x-basic-chart>
+    <div class="wrapper xu-add-scrollBar">
+      <div class="chart-wrapper" v-for="(param,index) in params" :key="index">
+        <x-basic-chart 
+        :type="'line'"
+        :yName="paramName[index]"
+        :color="[color[index % (color.length)]]"
+        :source="{x:x,[paramName[index]]:param}"
+        :areaStyle="null"
+        ></x-basic-chart>
+      </div>
     </div>
   </x-modal>
 </template>
@@ -29,25 +20,33 @@ import xModal from '@/x-views/xModal'
 import xBasicChart from "@/components/share-components/xBasicChart"
 export default {
   components:{xModal,xBasicChart},
-  props:['operationNumber','serialNumber'],
+  props:['operationNumber','serialNumber','deviceCode'],
   data(){
     return {
-      source:{}
+      color:['#4ea397','#22c3aa','#7bd9a5','#d0648a','#f58db2','#f2b3c9'],
+      x:[],
+      params:[],
+      paramName:[],
     }
   },
   methods:{
     getData(operationNumber,serialNumber){
       this.$http['getDevHistoryData']({
-        params:{operationNumber:this.operationNumber,serialNumber:this.serialNumber}
+        params:{
+          operationNumber:this.operationNumber,
+          serialNumber:this.serialNumber,
+          deviceCode:this.deviceCode
+        }
       }).then(res => {
         const {data} = res
         if(data){
           this.source = {}
           for(const key in data){
             if(key === 'time'){
-              this.source['x'] = data[key].map(ele => ele.split('T')[1])
+              this.x = data[key].map(ele => ele.split('T')[1])
             } else {
-              this.source[key] = data[key].map(ele => ele===-1000?-5:ele)
+              this.paramName.push(key)
+              this.params.push(data[key].map(ele => ele===-1000?-5:ele))
             }
           }
         }
@@ -65,7 +64,10 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 400px;
+  height: 150px;
   width: 1200px;
+}
+.wrapper {
+  max-height: 750px;
 }
 </style>

@@ -78,7 +78,7 @@
           <x-button
           :disable="info.dataNumber === 0" 
           :value="info.dataNumber + '条数据'"
-          @click="showModal(info.serialNumber)"
+          @click="showModal(info)"
           :type="'success'"
           ></x-button>
         </div>
@@ -88,6 +88,7 @@
       v-if="isModalShow"
       :operationNumber="operationNumber"
       :serialNumber="serialNumber"
+      :deviceCode="selDeviceCode"
       @close="isModalShow = false"
       ></x-dev-history-data-modal>
     </div>
@@ -122,7 +123,8 @@ export default {
       markInfos: [],
       devDataDetails:[],
       isModalShow:false,
-      serialNumber:0
+      serialNumber:0,
+      selDeviceCode:'0'
     };
   },
   methods: {
@@ -155,8 +157,9 @@ export default {
         this.devDataDetails = deviceDataDetails
       });
     },
-    showModal(serialNumber){
-      this.serialNumber = serialNumber
+    showModal(info){
+      this.serialNumber = info.serialNumber
+      this.selDeviceCode = info.deviceCode
       this.isModalShow = true
     }
   },

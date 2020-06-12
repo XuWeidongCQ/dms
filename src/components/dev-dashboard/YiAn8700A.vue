@@ -239,6 +239,7 @@ export default {
 .params-value {
   font-size: 40px;
   font-weight: bold;
+  margin-right: 20px;
 }
 .params-wrapper {
   position: relative;

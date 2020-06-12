@@ -14,7 +14,7 @@ export default {
     //数据项颜色
     color:{
       type:Array,
-      default:() => ['#4ea397','#22c3aa','#7bd9a5','#d0648a','#f58db2','#f2b3c9'],
+      default:() => { return ['#4ea397','#22c3aa','#7bd9a5','#d0648a','#f58db2','#f2b3c9'] },
     },
     //图类型 line bar
     type:{
@@ -30,6 +30,16 @@ export default {
     xName:{
       type:String,
       default:''
+    },
+    //配置x轴是否显示
+    showXLabel:{
+      type:Boolean,
+      default:true
+    },
+    //配置y轴是否显示
+    showYLabel:{
+      type:Boolean,
+      default:true
     },
     //配置y轴
     yName:{
@@ -58,8 +68,8 @@ export default {
       option.dataset = {}
       option.dataset.source = this.source
       option.color = this.color
-      option.yAxis = {type:'value',nameLocation:'center',nameGap:25,name:this.yName}
-      option.xAxis = {type:'category',nameLocation:'center',nameGap:20,name:this.xName}
+      option.yAxis = {show:this.showYLabel,type:'value',nameLocation:'center',nameGap:25,name:this.yName}
+      option.xAxis = {show:this.showXLabel,type:'category',nameLocation:'center',nameGap:20,name:this.xName}
       option.legend = this.legend
       option.tooltip = {trigger:'item'}
       option.grid = {containLabel: true, left:'25px', right:'5px', top:'15px', bottom:'25px'}
