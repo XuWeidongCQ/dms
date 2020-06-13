@@ -169,12 +169,14 @@ export default {
        if(this.x.length > this.MAX_LENGTH){
         this.x.shift()
       }
-      temp['hr'] && this.hr.push(temp['hr'])
-      temp['spo2'] && this.spo2.push(temp['spo2'])
-      temp['ibpMap'] && this.ibpMap.push(temp['ibpMap'])
+      temp['hr'] != -1000 && this.hr.push(temp['hr'])
+      temp['spo2'] != -1000 && this.spo2.push(temp['spo2'])
+      temp['ibpMap'] != -1000 && this.ibpMap.push(temp['ibpMap'])
       this.x.push(temp['gmtCreate'])
       for(const key in temp){
-        this.params[key] = temp[key]
+        if(temp[key] != -1000){
+          this.params[key] = temp[key]
+        }
       }
     },
     onmessage(e){

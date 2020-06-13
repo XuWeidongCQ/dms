@@ -44,13 +44,15 @@ import PuKeYy106 from '@/components/dev-dashboard/PuKeYy106'
 import NuoHeNw9002S from '@/components/dev-dashboard/NuoHeNw9002S'
 import YiAn8700A from '@/components/dev-dashboard/YiAn8700A'
 import BLTA8 from '@/components/dev-dashboard/BLTA8'
+import AiQinEGOS600A from '@/components/dev-dashboard/AiQinEGOS600A'
 
 const pattern = {
   0:'NoRealTimeData',
   30:'NuoHeNw9002S',
   31:'PuKeYy106',
   32:'BLTA8',
-  33:'YiAn8700A'
+  33:'YiAn8700A',
+  50:'AiQinEGOS600A'
 }
 
 export default {
@@ -60,7 +62,8 @@ export default {
     NoRealTimeData,
     NuoHeNw9002S,
     YiAn8700A,
-    BLTA8
+    BLTA8,
+    AiQinEGOS600A
   },
   data(){
     return {
@@ -68,7 +71,7 @@ export default {
       opeUseDev:[],
       selOperationNumber:0,
       selDeviceCode:0,
-      currentPanel:'NoRealTimeData',
+      currentPanel:'AiQinEGOS600A',
       opePanelPattern:{},//用来存放所有手术的面板组件
     }
   },
@@ -141,7 +144,7 @@ export default {
     }
   },
   created(){
-    this.getOpeInProcessData()
+    // this.getOpeInProcessData()
   }
 }
 </script>
