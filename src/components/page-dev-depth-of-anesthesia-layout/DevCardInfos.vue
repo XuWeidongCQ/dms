@@ -127,7 +127,7 @@ export default {
   
 }
 .dev-info-table {
-  height: 480px;
+  height: 430px;
   font-size: 14px;
 }
 .on-ope-hint {

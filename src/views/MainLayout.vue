@@ -11,6 +11,13 @@
                 <router-view></router-view>
             </keep-alive>
         </div>
+        <div class="footer-wrapper">
+            <span class="copyright">
+               Copyright©2020 重庆大学微系统研究中心余华课题组 版权所有 
+               <a href="http://www.beian.miit.gov.cn/">渝ICP备19011317号</a> 
+               最佳分辨率1920*1080 
+            </span>
+        </div>
     </div>
 </template>
 
@@ -54,10 +61,23 @@ export default {
    background-color: #ffffff;
 }
 .main-container{
-    margin-top: 34px;
+    margin-top: 45px;
     margin-left: 224px;
     padding: 15px;
     box-sizing: border-box;
-    height: 900px;
+    height: 850px;
+}
+.footer-wrapper {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   left: 224px;
+   box-sizing: border-box;
+   background-color: #ffffff;
+   text-align: center;
+}
+.copyright {
+    line-height: 42px;
+    font-size: 12px;
 }
 </style>

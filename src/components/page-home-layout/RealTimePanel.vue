@@ -71,7 +71,7 @@ export default {
       opeUseDev:[],
       selOperationNumber:0,
       selDeviceCode:0,
-      currentPanel:'AiQinEGOS600A',
+      currentPanel:'NoRealTimeData',
       opePanelPattern:{},//用来存放所有手术的面板组件
     }
   },
@@ -135,6 +135,7 @@ export default {
       this.getOpeUseDevData(this.selOperationNumber)
     },
     'selDeviceCode':function(){
+      console.log(`选择的deviceCode${this.selDeviceCode}`)
       if(this.opePanelPattern[this.selDeviceCode]){
         this.currentPanel = this.opePanelPattern[this.selDeviceCode]
       } else {
@@ -144,7 +145,7 @@ export default {
     }
   },
   created(){
-    // this.getOpeInProcessData()
+    this.getOpeInProcessData()
   }
 }
 </script>

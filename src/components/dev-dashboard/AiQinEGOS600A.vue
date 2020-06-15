@@ -120,7 +120,7 @@
           </div>
           <div class="xu-float-right ch-inner-panel">
             <p>TOI %</p>
-            <p class="large-value">{{ params.toi3 }}</p>
+            <p class="large-value">{{ params.toi3 | fixNum}}</p>
             <p>
               <span class="params-name">THI</span>
               <span>{{ params.thi3 }}</span>
@@ -199,7 +199,7 @@ export default {
   props:['operationNumber','deviceCode'],
   data(){
     return {
-      MAX_LENGTH:100,
+      MAX_LENGTH:5,
       ws:null,
       DEV_CODE:'50',
       x:[],
@@ -255,26 +255,35 @@ export default {
     },
     parseData(data){
       const temp = JSON.parse(data)
+      // console.log(temp['gmtCreate'].split(' ')[1])
+      // console.log(this.toi3.length)
       if(this.toi1.length > this.MAX_LENGTH){
         this.toi1.shift()
+        temp['toi1'] != -1000 && this.toi3.push(temp['toi1'])
+      } else {
+        temp['toi1'] != -1000 && this.toi3.push(temp['toi1'])
       }
       if(this.toi2.length > this.MAX_LENGTH){
         this.toi2.shift()
       }
       if(this.toi3.length > this.MAX_LENGTH){
         this.toi3.shift()
+        temp['toi3'] != -1000 && this.toi3.push(temp['toi3'])
+      } else {
+        temp['toi3'] != -1000 && this.toi3.push(temp['toi3'])
       }
+      
       if(this.toi4.length > this.MAX_LENGTH){
         this.toi4.shift()
       }
-       if(this.x.length > this.MAX_LENGTH){
+      if(this.x.length > this.MAX_LENGTH){
         this.x.shift()
       }
       temp['toi1'] != -1000 && this.toi1.push(temp['toi1'])
       temp['toi2'] != -1000 && this.toi2.push(temp['toi2'])
-      temp['toi3'] != -1000 && this.toi3.push(temp['toi3'])
+      
       temp['toi4'] != -1000 && this.toi4.push(temp['toi4'])
-      this.x.push(temp['gmtCreate'])
+      this.x.push(temp['gmtCreate'].split(' ')[1])
       for(const key in temp){
         if(temp[key] != -1000){
           this.params[key] = temp[key]
@@ -289,6 +298,7 @@ export default {
   watch:{
     'operationNumber':{
       handler(newVal,oldVal){
+        // console.log(1)
         if(this.deviceCode === this.DEV_CODE){
           this.initData()
           this.openWs(newVal,this.deviceCode)
@@ -299,9 +309,18 @@ export default {
       immediate:true
     }
   },
-   beforeDestroy(){
+  filters:{
+    fixNum(value){
+      if(value !== '--'){
+        return Number(value).toFixed(1)
+      } else {
+        return '--'
+      }
+    }
+  },
+  beforeDestroy(){
     this.closeWs()
-  }
+  },
 }
 </script>
 
