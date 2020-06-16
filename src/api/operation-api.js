@@ -12,7 +12,7 @@ const OPERATION_API = {
   //3.获取已完成手术信息分页查询 page size
   getOpeInfos:{
     method:'get',
-    url:'platform/operation/main/list'
+    url:'platform/operation/main/list_finish'
   },
   //4.获取一场手术的详细信息
   getOpeDetailInfos:{

@@ -279,7 +279,6 @@ export default {
       if(this.x.length > this.MAX_LENGTH){
         this.x.shift()
       }
-      temp['toi1'] != -1000 && this.toi1.push(temp['toi1'])
       temp['toi2'] != -1000 && this.toi2.push(temp['toi2'])
       
       temp['toi4'] != -1000 && this.toi4.push(temp['toi4'])

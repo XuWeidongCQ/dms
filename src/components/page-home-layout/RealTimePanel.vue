@@ -45,13 +45,15 @@ import NuoHeNw9002S from '@/components/dev-dashboard/NuoHeNw9002S'
 import YiAn8700A from '@/components/dev-dashboard/YiAn8700A'
 import BLTA8 from '@/components/dev-dashboard/BLTA8'
 import AiQinEGOS600A from '@/components/dev-dashboard/AiQinEGOS600A'
+import MindaryT8 from '@/components/dev-dashboard/MindaryT8'
 
 const pattern = {
   0:'NoRealTimeData',
   30:'NuoHeNw9002S',
-  31:'PuKeYy106',
+  31:'PuKeYy106', 
   32:'BLTA8',
   33:'YiAn8700A',
+  42:'MindaryT8',
   50:'AiQinEGOS600A'
 }
 
@@ -63,7 +65,8 @@ export default {
     NuoHeNw9002S,
     YiAn8700A,
     BLTA8,
-    AiQinEGOS600A
+    AiQinEGOS600A,
+    MindaryT8
   },
   data(){
     return {

@@ -36,6 +36,10 @@ export default {
       type:Boolean,
       default:true
     },
+    boundaryGap:{
+      type:Boolean,
+      default:true
+    },
     //配置y轴是否显示
     showYLabel:{
       type:Boolean,
@@ -69,7 +73,7 @@ export default {
       option.dataset.source = this.source
       option.color = this.color
       option.yAxis = {show:this.showYLabel,type:'value',nameLocation:'center',nameGap:25,name:this.yName}
-      option.xAxis = {show:this.showXLabel,type:'category',nameLocation:'center',nameGap:20,name:this.xName}
+      option.xAxis = {show:this.showXLabel,type:'category',nameLocation:'center',nameGap:20,name:this.xName,boundaryGap:this.boundaryGap}
       option.legend = this.legend
       option.tooltip = {trigger:'item'}
       option.grid = {containLabel: true, left:'25px', right:'5px', top:'15px', bottom:'25px'}

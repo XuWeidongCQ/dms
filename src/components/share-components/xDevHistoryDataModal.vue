@@ -9,6 +9,7 @@
         :color="[color[index % (color.length)]]"
         :source="{x:x,[paramName[index]]:param}"
         :areaStyle="null"
+        :boundaryGap="false"
         ></x-basic-chart>
       </div>
     </div>
@@ -52,7 +53,7 @@ export default {
         }
         // console.log(this.params)
         // console.log(this.paramName)
-        // console.log(this.x)
+        console.log(this.x)
       })
     },
     close(){
