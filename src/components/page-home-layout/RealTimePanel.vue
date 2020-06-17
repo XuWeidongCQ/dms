@@ -46,6 +46,7 @@ import YiAn8700A from '@/components/dev-dashboard/YiAn8700A'
 import BLTA8 from '@/components/dev-dashboard/BLTA8'
 import AiQinEGOS600A from '@/components/dev-dashboard/AiQinEGOS600A'
 import MindaryT8 from '@/components/dev-dashboard/MindaryT8'
+import MindaryWATOEX65 from '@/components/dev-dashboard/MindaryWATOEX65'
 
 const pattern = {
   0:'NoRealTimeData',
@@ -54,6 +55,7 @@ const pattern = {
   32:'BLTA8',
   33:'YiAn8700A',
   42:'MindaryT8',
+  43:'MindaryWATOEX65',
   50:'AiQinEGOS600A'
 }
 
@@ -66,7 +68,8 @@ export default {
     YiAn8700A,
     BLTA8,
     AiQinEGOS600A,
-    MindaryT8
+    MindaryT8,
+    MindaryWATOEX65
   },
   data(){
     return {
@@ -138,7 +141,7 @@ export default {
       this.getOpeUseDevData(this.selOperationNumber)
     },
     'selDeviceCode':function(){
-      console.log(`选择的deviceCode${this.selDeviceCode}`)
+      // console.log(`选择的deviceCode${this.selDeviceCode}`)
       if(this.opePanelPattern[this.selDeviceCode]){
         this.currentPanel = this.opePanelPattern[this.selDeviceCode]
       } else {

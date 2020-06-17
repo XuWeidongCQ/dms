@@ -166,7 +166,7 @@ export default {
       if(this.ibpMap.length > this.MAX_LENGTH){
         this.ibpMap.shift()
       }
-       if(this.x.length > this.MAX_LENGTH){
+      if(this.x.length > this.MAX_LENGTH){
         this.x.shift()
       }
       temp['hr'] != -1000 && this.hr.push(temp['hr'])

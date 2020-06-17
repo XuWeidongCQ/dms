@@ -1,5 +1,5 @@
 <template>
-  <div class="real-time-panel-wrapper t8-wrapper">
+  <div class="real-time-panel-wrapper bg-black">
     <!-- ECG部分 -->
     <div class="xu-row">
       <div class="xu-col-7">
@@ -247,6 +247,9 @@ export default {
       if(this.resp.length > this.MAX_LENGTH){
         this.resp.shift()
       }
+      if(this.x.length > this.MAX_LENGTH){
+        this.x.shift()
+      }
       temp['ecgHeartRate'] != -1000 && this.ecg.push( temp['ecgHeartRate'])
       temp['spo2PercentOxygenSaturation'] != -1000 && this.spo2.push( temp['spo2PercentOxygenSaturation'])
       temp['artInvasiveBloodPressureMean'] != -1000 && this.artMean.push( temp['artInvasiveBloodPressureMean'])
@@ -281,9 +284,6 @@ export default {
 </script>
 
 <style scoped>
-.t8-wrapper {
-  background-color: #171918 !important;
-}
 .center-box {
   position: absolute;
   top: 50%;

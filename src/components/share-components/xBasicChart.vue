@@ -50,6 +50,12 @@ export default {
       type:String,
       default:''
     },
+    yMax:{
+      type:Number
+    },
+    yMin:{
+      type:Number
+    },
     //数据 {x:[],y1:[],y2:[],...}
     source:{
       type:Object,
@@ -72,7 +78,7 @@ export default {
       option.dataset = {}
       option.dataset.source = this.source
       option.color = this.color
-      option.yAxis = {show:this.showYLabel,type:'value',nameLocation:'center',nameGap:25,name:this.yName}
+      option.yAxis = {show:this.showYLabel,type:'value',nameLocation:'center',nameGap:25,name:this.yName,max:this.yMax,min:this.yMin}
       option.xAxis = {show:this.showXLabel,type:'category',nameLocation:'center',nameGap:20,name:this.xName,boundaryGap:this.boundaryGap}
       option.legend = this.legend
       option.tooltip = {trigger:'item'}
