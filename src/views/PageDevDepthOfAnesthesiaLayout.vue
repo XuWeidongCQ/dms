@@ -1,22 +1,16 @@
 <template>
   <div class="depth-of-anesthesia-page-wrapper">
     <div class="xu-row">
-      <div class="xu-col-12">
-        <dev-card-infos></dev-card-infos>
-      </div>
+      <ope-infos-of-specific-doa-dev></ope-infos-of-specific-doa-dev>
     </div>
   </div>
 </template>
 
 <script>
-import DevCardInfos from '@/components/page-dev-depth-of-anesthesia-layout/DevCardInfos'
+import OpeInfosOfSpecificDoaDev from '@/components/page-dev-depth-of-anesthesia-layout/OpeInfosOfSpecificDoaDev'
 export default {
  components:{
-   DevCardInfos
+   OpeInfosOfSpecificDoaDev
  }
 }
 </script>
-
-<style scoped>
-
-</style>

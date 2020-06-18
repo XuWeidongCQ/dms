@@ -28,8 +28,46 @@ const routes = [
             },
             {
                 path:'/dev-depth-of-anesthesia',
-                component:() => import('./views/PageDevDepthOfAnesthesiaLayout.vue')
-            }
+                component:() => import('./views/PageDevDepthOfAnesthesiaLayout.vue'),
+                meta: {
+                    title: '大数据分析平台-麻醉深度仪器'
+                }
+            },
+            {
+                path:'/dev-monitor',
+                component:() => import('./views/PageDevMonitorLayout.vue'),
+                meta: {
+                    title: '大数据分析平台-麻醉深度仪器'
+                }
+            },
+            {
+                path:'/dev-anesthesia',
+                component:() => import('./views/PageDevAnesthesiaLayout.vue'),
+                meta: {
+                    title: '大数据分析平台-麻醉机'
+                }
+            },
+            {
+                path:'/dev-noninvasive-hemoglobin',
+                component:() => import('./views/PageDevNoninvasiveHemoglobinLayout.vue'),
+                meta: {
+                    title: '大数据分析平台-无创血红蛋白仪器'
+                }
+            },
+            {
+                path:'/dev-noninvasive-brain-oxygen',
+                component:() => import('./views/PageDevNoninvasiveBrainOxygenLayout.vue'),
+                meta: {
+                    title: '大数据分析平台-无创脑氧仪器'
+                }
+            },
+            {
+                path:'/dev-noninvasive-blood-pressure',
+                component:() => import('./views/PageDevNibpLayout.vue'),
+                meta: {
+                    title: '大数据分析平台-无创血压仪器'
+                }
+            },
         ]
     }
 ]

@@ -36,7 +36,7 @@
         <p>总采集时长：{{ statisticInfo.operationDurationTimeAll }}秒</p>
         <x-button
         :disable="statisticInfo.dataNumber === 0" 
-        :value="'已完成' + statisticInfo.totalFinishOperationNumber + '场手术'"
+        :value="'已完成' + opeNum + '场手术'"
         :type="'success'"
         @click="emitSelSerialNumber()"
         ></x-button>
@@ -92,6 +92,15 @@ export default {
       serialNumberList:[],
       statisticInfo:{},
       selSerialNumber:'0'
+    }
+  },
+  computed:{
+    opeNum:function(){
+      if(this.statisticInfo.totalFinishOperationNumber){
+        return this.statisticInfo.totalFinishOperationNumber
+      } else {
+        return '--'
+      }
     }
   },
   methods:{

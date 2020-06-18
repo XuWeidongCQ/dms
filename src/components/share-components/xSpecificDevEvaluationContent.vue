@@ -1,8 +1,8 @@
 <template>
-  <div class="dev-card-infos-wrapper">
+    <div class="dev-card-infos-wrapper">
     <div class="dev-cards-wrapper">
       <x-dev-info-card 
-      v-for="(item,index) in devInfo"
+      v-for="(item,index) in devInfoList"
       :imgUrl='item.imgUrl'
       :deviceCode="item.deviceCode"
       :devName="item.devName"
@@ -58,6 +58,12 @@ import xTable from "@/x-views/xTable"
 import xButton from "@/x-views/xButton"
 import xOpeDetailInfo from "@/components/share-components/xOpeDetailInfo";
 export default {
+  props:{
+    devInfoList:{
+      type:Array,
+      default:() => []
+    }
+  },
   components: {
     xDevInfoCard,
     xBox,
@@ -67,23 +73,6 @@ export default {
   },
   data(){
     return {
-      devInfo:[
-        {
-          imgUrl:require('../../assets/dev-image/NW9002S.jpg') ,
-          deviceCode:'30',
-          devName:'麻醉深度多参数监护仪',
-          devType:'NW-9002S',
-          devCompany:'合肥诺和电子科技有限公司'
-        },
-        {
-          imgUrl:require('../../assets/dev-image/ConView YY-106.png') ,
-          deviceCode:'31',
-          devName:'ConView 麻醉深度监测仪',
-          devType:'YY-106',
-          devCompany:'浙江杭州普可医疗科技有限公司'
-        }
-      ],
-      isFirstRenderTable:true,
       opeInfos:[],
       selDeviceType:'',
       selDeviceSerialNumber:'',
