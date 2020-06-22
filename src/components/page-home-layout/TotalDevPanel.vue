@@ -1,5 +1,5 @@
 <template>
-  <x-box class="panel-wrapper">
+  <x-box class="panel-wrapper bg-white">
     <span>{{ total }}</span>
     <p>平台已接入的医疗设备总数</p>
     <span class="fa fa-desktop"></span>
@@ -32,8 +32,7 @@ export default {
 
 <style scoped>
 .panel-wrapper {
-  background-color: #3cb695;
-  color: #ffffff;
+  color: #35ae47;
 }
 .panel-wrapper > span:last-child {
   position: absolute;

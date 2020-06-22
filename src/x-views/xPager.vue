@@ -9,7 +9,7 @@
           {{ page }}
       </li>
       <li class="show-border ml5"  @click="nextPage">下一页</li>
-      <li>共{{ pageNum }}页</li>
+      <li>共{{ totalElements }}项</li>
       <li>
           <span>跳到第</span>
           <input type="number" min="1" :max="pageNum" v-model.number="pageGo">
@@ -30,7 +30,10 @@ export default {
       type:Number,
       default:1,
     },
-    //
+    //总项数
+    totalElements:{
+      default:0,
+    }
   },
   data(){
     return {

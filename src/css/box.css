@@ -7,9 +7,10 @@
     box-shadow: 0 0 10px 5px rgba(44, 41, 41, 0.1);
 }
 .xu-box-title {
-    font-size: 20px;
-    color: #24c79f;
+    font-size: 18px;
+    color: #111;
     padding-bottom: 5px;
+    margin-top: -5px;
     /* border-bottom: 1px solid #303030; */
 }
 .xu-box-content {

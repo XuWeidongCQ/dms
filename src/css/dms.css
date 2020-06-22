@@ -1,7 +1,7 @@
 
 .panel-select-wrapper {
     position: absolute;
-    top:20px;
+    top:15px;
     right: 20px;
     font-size: 16px;
 }
@@ -18,9 +18,7 @@
     position: relative;
     height: 698px;
 }
-.bg-black {
-    background-color: #171918 !important;
-}
+
 .panel-gray {
     background-color: #cccccc !important;
 }

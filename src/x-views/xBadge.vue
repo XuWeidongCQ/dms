@@ -5,7 +5,7 @@
 <script>
 export default {
   props:{
-    //类型 primary success warning danger info 
+    //类型 primary success warning danger  
     type:{
       type:String,
       default:'primary'

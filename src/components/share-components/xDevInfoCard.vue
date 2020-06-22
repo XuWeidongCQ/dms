@@ -1,9 +1,11 @@
 
 <template>
   <x-box class="dev-card-wrapper">
+    <!-- 仪器图片 -->
     <div class="dev-img-wrapper">
       <img :src="imgUrl">
     </div>
+    <!-- 仪器说明 -->
     <div class="dev-describe-wrapper">
       <p>厂商：{{ devCompany }}</p>
       <p>产品：{{ devName }}</p>
@@ -38,7 +40,7 @@
         :disable="statisticInfo.dataNumber === 0" 
         :value="'已完成' + opeNum + '场手术'"
         :type="'success'"
-        @click="emitSelSerialNumber()"
+        @click="emitSelSerialNumber(true)"
         ></x-button>
       </div>
     </div>
@@ -125,6 +127,7 @@ export default {
         const {data} = res
         // console.log(data)
         this.statisticInfo = data
+        this.emitSelSerialNumber(false)
       })
     },
     //3.改变仪器序列号
@@ -132,13 +135,14 @@ export default {
       this.selSerialNumber = deviceSerialNumber
     },
     //4.点击按钮
-    emitSelSerialNumber(){
+    emitSelSerialNumber(isClick){
       this.$emit(
         'getOpeInfoOfThisDev',
         {
           deviceCode:this.deviceCode,
           serialNumber:this.selSerialNumber,
-          deviceType:this.devType
+          deviceType:this.devType,
+          isClick:isClick
         }
       )
     }
@@ -157,11 +161,10 @@ export default {
 
 <style scoped>
 .dev-card-wrapper {
-  width: 500px;
-  display: inline-block;
-  margin:0 15px;
+  width: 775px;
+  /* display: inline-block; */
+  margin:0 15px 15px 15px;
 }
-
 
 .dev-img-wrapper {
   margin-bottom: 10px;
@@ -197,7 +200,7 @@ export default {
   font-size: 14px;
   padding-bottom: 5px;
   box-sizing: border-box;
-  color: #24c79f;
+  color: #111;
 }
 .dev-serial-number-wrapper > li{
   white-space: nowrap;

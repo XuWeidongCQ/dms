@@ -10,8 +10,10 @@
     </div>
     <div class="xu-box-content chart-wrapper">
       <x-basic-chart 
+      :color="['#35ae47']"
       :source="historyData"
       :smooth="true"
+      :boundaryGap="false"
       :yName="'时间/分'"
       :xName="'时间'">
       </x-basic-chart>
@@ -54,6 +56,6 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 250px;
+  height: 255px;
 }
 </style>

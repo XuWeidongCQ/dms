@@ -1,5 +1,5 @@
 <template>
-    <div class="dev-card-infos-wrapper">
+  <div class="dev-card-infos-wrapper">
     <div class="dev-cards-wrapper">
       <x-dev-info-card 
       v-for="(item,index) in devInfoList"
@@ -77,7 +77,8 @@ export default {
       selDeviceType:'',
       selDeviceSerialNumber:'',
       selOpe:{},
-      modalShow:false
+      modalShow:false,
+      isTableFirstRender:true
     }
   },
   methods:{
@@ -95,9 +96,20 @@ export default {
         })
     },
     getOpeInfos(e){
-      this.selDeviceType = e.deviceType
-      this.selDeviceSerialNumber = e.serialNumber
-      this.getData(e)
+      if(e.isClick){
+        this.selDeviceType = e.deviceType
+        this.selDeviceSerialNumber = e.serialNumber
+        this.getData(e)
+      } else {  
+        if(this.isTableFirstRender){
+          // console.log(1)
+          this.selDeviceType = e.deviceType
+          this.selDeviceSerialNumber = e.serialNumber
+          this.getData(e)
+          this.isTableFirstRender = false
+        }
+      }
+      
     },
     showModal(ope){
       this.selOpe = ope
@@ -105,15 +117,13 @@ export default {
     }
   }
 }
-</script>
+</script>  
 
 <style scoped>
 .dev-cards-wrapper {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -15px;
-  margin-bottom: 15px;
-  
+  margin: 0 -15px; 
 }
 .dev-info-table {
   height: 430px;

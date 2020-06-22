@@ -2,11 +2,10 @@
   <x-box class="table-wrapper">
     <div class="xu-box-title">
       <span>已完成手术概况</span>
-      <x-badge :value="totalElements + '台'" :type="'info'" class="total-badge"></x-badge>
     </div>
     <x-table
       :title="['手术顺序号','手术名称','开始时间','结束时间','设备']"
-      :size="'normal'"
+      :size="'sm'"
       :align="'center'"
       :strip="true"
       :colWidth="['100px','250px','150px','150px']"
@@ -23,7 +22,11 @@
       </tr>
     </x-table>
     <div class="pager-wrapper">
-      <x-pager :pageNum="totalPages" @hasSelectedPage="selPage($event)"></x-pager>
+      <x-pager 
+      :pageNum="totalPages"
+      :totalElements="totalElements"
+      @hasSelectedPage="selPage($event)">
+      </x-pager>
     </div>
     <!-- 弹窗 -->
     <x-ope-detail-info 
@@ -54,7 +57,7 @@ export default {
     };
   },
   methods: {
-    getData(page = 0, size = 8) {
+    getData(page = 0, size = 14) {
       this.$http["getOpeInfos"]({ params: { page: page, size: size } }).then(
         res => {
           const { data } = res;
@@ -84,7 +87,7 @@ export default {
 .pager-wrapper {
   position: absolute;
   right: 20px;
-  bottom: 20px;
+  bottom: 5px;
 }
 .table-wrapper {
   height: 610px;

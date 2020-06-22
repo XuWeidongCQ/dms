@@ -9,7 +9,8 @@
       </div>
     </div>
     <div class="xu-box-content chart-wrapper">
-      <x-basic-chart 
+      <x-basic-chart
+      :color="['#35ae47']" 
       :source="historyData"
       :type="'bar'"
       :yName="'数量/台'"
@@ -54,6 +55,6 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 250px;
+  height: 260px;
 }
 </style>

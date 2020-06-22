@@ -159,25 +159,25 @@ export default {
 <style scoped>
 .real-ope-info {
   height: 100%;
-  background-color: rgba(250, 250, 250);
+  background-color: #f8f8f8;
   box-sizing: border-box;
-  border: 1px solid #24c79f;
+  /* border: 1px solid #24c79f; */
   border-radius: 5px;
+    color: #111
 }
 .real-ope-info > span {
   display: inline-block;
-  font-size: 20px;
-  padding: 15px 5px;
+  font-size: 18px;
+  padding: 10px 5px;
   width: 100%;
   box-sizing: border-box;
-  color: #24c79f
 }
 .process-ope-wrapper{
   margin-bottom: 20px;
-  height: 250px;
+  height: 270px;
 }
 .process-ope-wrapper > li {
-  padding: 10px 5px;
+  padding: 8px 5px;
   cursor: pointer;
   border-bottom: 1px solid #e9ecef;
   font-size: 14px;

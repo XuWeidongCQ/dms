@@ -63,12 +63,12 @@ export default {
   font-size: 18px;
 }
 .nav-links-wrapper > li:hover {
-  background-color: #269af1;
+  /* background-color: #269af1; */
   color: #ffffff;
   cursor: pointer;
 }
 .active {
   color: #ffffff;
-  background-color: #269af1;
+  background-color: #24c79f;
 }
 </style>

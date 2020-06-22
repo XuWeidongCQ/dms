@@ -26,7 +26,7 @@ export default {
           devName:'ConView 麻醉深度监测仪',
           devType:'YY-106',
           devCompany:'浙江杭州普可医疗科技有限公司'
-        }
+        },
       ],
     }
   }

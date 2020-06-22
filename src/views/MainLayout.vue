@@ -49,7 +49,7 @@ export default {
     bottom: 0;
     width: 224px;
     box-sizing: border-box;
-    background-color: #455161;
+    background-color: #393d49;
     color: #939daa
 }
 .banner {

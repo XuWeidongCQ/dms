@@ -31,7 +31,7 @@ export default {
       type:String,
       default:'center'
     },
-    //尺寸
+    //尺寸 normal sm lg
     size:{
       type:String,
       default:'normal'
