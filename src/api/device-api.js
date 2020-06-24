@@ -19,6 +19,11 @@ const DEVICE_API = {
   getDevHistoryData:{
     method:'get',
     url:'/platform/operation/detail/device_history_data'
+  },
+  //5.获取医疗设备分布饼图的数据
+  getDevNum:{
+    method: 'get',
+    url:'/platform/device/access_device_type_and_number'
   }
 }
 
