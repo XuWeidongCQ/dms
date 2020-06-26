@@ -295,7 +295,8 @@ export default {
   margin-bottom: 10px;
 }
 .dev-info-wrapper{
-  flex:1.2
+  flex:1.2;
+  max-width: 200px;
 }
 .experience-pie-wrapper,
 .reliable-pie-wrapper,
@@ -307,7 +308,9 @@ export default {
 .dev-info-wrapper .dev-describe-wrapper>p {
   font-size: 12px;
   white-space: nowrap;
+  word-break: keep-all;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dev-img-wrapper {

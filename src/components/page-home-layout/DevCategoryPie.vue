@@ -6,6 +6,7 @@
     <div class="chart-wrapper">
       <x-pie-chart
       v-if="devNum"
+      :showPercent="false"
       :center="['30%','50%']"
       :radius="['0%','80%']"
       :legend="initLegend()" 

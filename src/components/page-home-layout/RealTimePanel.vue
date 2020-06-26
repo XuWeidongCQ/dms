@@ -28,7 +28,7 @@
             :class="{'active':selDeviceCode === dev.deviceCode}"
             @click="changeDev(dev.deviceCode)"
             >
-              {{ dev.deviceName }}
+              {{ index + 1 + '.' + dev.deviceName }}
             </li>
           </ul>
         </div>
@@ -182,6 +182,7 @@ export default {
   border-bottom: 1px solid #e9ecef;
   font-size: 14px;
   white-space: nowrap;
+  word-break: keep-all;
   overflow: hidden;
 }
 .active {

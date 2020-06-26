@@ -44,9 +44,13 @@ li {
 .list-wrapper > .list-item-wrapper {
   cursor: pointer;
   padding: 5px 2px;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .active {
-  background-color: #24c79f !important;
-  color: #ffffff !important;
+  /* background-color: #24c79f !important; */
+  color: #24c79f !important;
 }
 </style>

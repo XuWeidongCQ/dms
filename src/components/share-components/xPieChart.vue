@@ -48,6 +48,11 @@ export default {
     isModalChart:{
       type:Boolean,
       default:false
+    },
+    //10.label是否显示百分比 true-是，false-显示数字
+    showPercent:{
+      type:Boolean,
+      default:true
     }
   },
   methods:{
@@ -75,8 +80,12 @@ export default {
             show:this.isLabelShow,
             position:'outside',
             formatter:param => {
-              return Math.floor(param.percent) + '%'
               // console.log(param)
+              if(this.showPercent){
+                return Math.floor(param.percent) + '%'
+              } else {
+                return param.data[1] + '台'
+              }  
             }
         },
         labelLine:{
