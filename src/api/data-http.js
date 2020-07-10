@@ -4,7 +4,7 @@ import operationApi from './operation-api'
 import deviceCardApi from './device-card-api'
 
 const dataPool = axios.create({
-  baseURL:'http://172.20.29.106:8080/eval'
+  baseURL:'http://www.dms.yuhualab.com:10086/eval'
 })
 
 //请求拦截器

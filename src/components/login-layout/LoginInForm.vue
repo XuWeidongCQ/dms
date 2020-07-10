@@ -15,20 +15,25 @@
 </template>
 
 <script>
-    export default {
-        name: "LoginInForm",
-        data:function(){
-            return {
-                username:'',
-                password:''
-            }
-        },
-        methods:{
-            login:function(){
+import showAlert from '@/x-views/xAlert/xAlert'
+export default {
+    name: "LoginInForm",
+    data:function(){
+        return {
+            username:'',
+            password:''
+        }
+    },
+    methods:{
+        login:function(){
+            if(this.username === 'admin' && this.password === 'admin'){
                 this.$router.push('/home')
-            }
+            } else {
+                showAlert('账号或者密码错误','failure')
+            }            
         }
     }
+}
 </script>
 
 <style scoped>

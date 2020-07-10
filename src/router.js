@@ -12,7 +12,8 @@ const routes = [
         path: '/login',//一级router-view组件默认显示的组件
         component: () => import('./views/LoginLayout'),
         meta: {
-            title: '大数据分析平台-登录'
+            title: '大数据分析平台-登录',
+            show:true
         }
     },
     {

@@ -53,7 +53,7 @@ export default {
         }
         // console.log(this.params)
         // console.log(this.paramName)
-        console.log(this.x)
+        // console.log(this.x)
       })
     },
     close(){

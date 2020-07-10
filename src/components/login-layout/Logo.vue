@@ -1,7 +1,7 @@
 <template>
     <div class="logo-wrapper">
         <p>医疗仪器大数据分析平台</p>
-        <p>项目编号:2018xxxx</p>
+        <p>项目编号: SQ2018YFC010220</p>
         <div class="logo-items">
             <img src="../../assets/cqu-logo_nobg.jpg" alt="" title="重庆大学" width="250px">
             <img src="../../assets/xq_nobg.jpg" alt="" title="新桥医院" width="250px">
