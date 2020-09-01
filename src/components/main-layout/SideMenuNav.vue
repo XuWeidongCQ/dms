@@ -8,14 +8,14 @@
         <i class="fa fa-home"></i>
         <span> 首页</span>
       </router-link>
-      <!-- <router-link tag="li" to='/dev-monitor' active-class="active" exact>
+      <router-link tag="li" to='/dev-monitor' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>监护仪</span>
       </router-link>
-      <router-link tag="li" to='/device' active-class="active" exact>
+      <!-- <router-link tag="li" to='/device' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>呼吸机</span>
-      </router-link>
+      </router-link> -->
       <router-link tag="li" to='/dev-anesthesia' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>麻醉机</span>
@@ -35,7 +35,7 @@
       <router-link tag="li" to='/dev-noninvasive-blood-pressure' active-class="active" exact>
         <i class="fa fa-desktop"></i>
         <span>无创血压监测仪</span>
-      </router-link> -->
+      </router-link>
     </ul>
   </div>
 </template>
