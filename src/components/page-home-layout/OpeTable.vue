@@ -4,21 +4,24 @@
       <span>已完成手术概况</span>
     </div>
     <x-table
-      :title="['手术顺序号','手术名称','开始时间','结束时间','设备']"
+      :title="['手术顺序号','手术名称','开始时间','结束时间','设备','操作']"
       :size="'sm'"
       :align="'center'"
       :strip="true"
-      :colWidth="['100px','250px','150px','150px']"
+      :colWidth="['80px','250px','150px','150px']"
     >
       <tr v-for="ope in opeInfos" :key="ope.patientId">
         <td>
           <span>{{ ope.operationNumber }}</span>
-          <x-button :value="'详情'" :size="'sm'" :type="'success'" @click="showModal(ope)"></x-button>
         </td>
         <td>{{ ope.operationName }}</td>
         <td>{{ ope.operationStartTime | formatterDate }}</td>
         <td>{{ ope.operationEndTime | formatterDate }}</td>
         <td>{{ ope.usedDeviceInfoForPlatform | formatterDevName}}</td>
+        <td>
+          <x-button :value="'详情'" :size="'sm'" :type="'success'" @click="showModal(ope,1)"></x-button>
+          <x-button :value="'+标记'" :size="'sm'" :type="'success'" @click="showModal(ope,2)"></x-button>
+        </td>
       </tr>
     </x-table>
     <div class="pager-wrapper">
@@ -28,13 +31,17 @@
       @hasSelectedPage="selPage($event)">
       </x-pager>
     </div>
-    <!-- 弹窗 -->
+    <!-- 弹窗 手术详情-->
     <x-ope-detail-info 
      v-if="modalShow" 
      @close="modalShow = false"
      :operationNumber = "selOpe.operationNumber"
-    >
-    </x-ope-detail-info>
+    ></x-ope-detail-info>
+    <!-- 弹窗 添加标记 -->
+    <x-add-ope-mark-modal 
+     v-if="opeMarkModalShow" 
+     @close="opeMarkModalShow = false"
+    ></x-add-ope-mark-modal>
   </x-box>
 </template>
 
@@ -45,14 +52,16 @@ import xPager from "@/x-views/xPager";
 import xBadge from "@/x-views/xBadge";
 import xButton from "@/x-views/xButton";
 import xOpeDetailInfo from "@/components/share-components/xOpeDetailInfo";
+import xAddOpeMarkModal from "@/components/share-components/xAddOpeMarkModal"
 export default {
-  components: { xTable, xBox, xPager, xBadge, xButton, xOpeDetailInfo },
+  components: { xTable, xBox, xPager, xBadge, xButton, xOpeDetailInfo, xAddOpeMarkModal},
   data() {
     return {
       opeInfos: [],
       totalPages: 1,
       totalElements: 0,
       modalShow: false,
+      opeMarkModalShow: false,
       selOpe: {}
     };
   },
@@ -72,9 +81,14 @@ export default {
     selPage(page) {
       this.getData(page - 1);
     },
-    showModal(ope){
+    showModal(ope,whichModal){
       this.selOpe = ope;
-      this.modalShow = true
+      if(whichModal === 1){
+        this.modalShow = true
+      } else if(whichModal === 2){
+        this.opeMarkModalShow = true
+      }
+      
     }
   },
   created() {

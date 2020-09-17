@@ -1,0 +1,115 @@
+Date : 2020-09-04 11:07:18
+Directory : f:\VSCodeWorkspace\dms\src
+Total : 70 files,  5344 codes, 140 comments, 209 blanks, all 5693 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Vue.js     |         51 |      4,649 |        100 |        117 |      4,866 |
+| CSS        |          9 |        372 |         18 |         50 |        440 |
+| JavaScript |         10 |        323 |         22 |         42 |        387 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                           |         70 |      5,344 |        140 |        209 |      5,693 |
+| api                                                                                                                         |          5 |        121 |         18 |         18 |        157 |
+| components                                                                                                                  |         33 |      3,942 |         81 |         76 |      4,099 |
+| components\dev-dashboard                                                                                                    |          8 |      1,840 |         18 |         22 |      1,880 |
+| components\login-layout                                                                                                     |          2 |        113 |          0 |          4 |        117 |
+| components\main-layout                                                                                                      |          2 |        106 |          1 |          6 |        113 |
+| components\page-dev-anesthesia-layout                                                                                       |          1 |         33 |          0 |          1 |         34 |
+| components\page-dev-depth-of-anesthesia-layout                                                                              |          1 |         33 |          0 |          1 |         34 |
+| components\page-dev-monitor-layout                                                                                          |          1 |         33 |          0 |          1 |         34 |
+| components\page-dev-nibp-layout                                                                                             |          1 |         26 |          0 |          1 |         27 |
+| components\page-dev-noninvasive-brain-oxygen-layout                                                                         |          1 |         26 |          0 |          1 |         27 |
+| components\page-dev-noninvasive-hemoglobin-layout                                                                           |          1 |         26 |          0 |          1 |         27 |
+| components\page-home-layout                                                                                                 |          8 |        604 |         11 |         19 |        634 |
+| components\share-components                                                                                                 |          7 |      1,102 |         51 |         19 |      1,172 |
+| css                                                                                                                         |          9 |        372 |         18 |         50 |        440 |
+| global                                                                                                                      |          1 |         18 |          0 |          3 |         21 |
+| utils                                                                                                                       |          1 |         44 |          4 |          9 |         57 |
+| views                                                                                                                       |          9 |        283 |          0 |         14 |        297 |
+| x-views                                                                                                                     |          9 |        441 |         19 |         25 |        485 |
+| x-views\xAlert                                                                                                              |          2 |         80 |          0 |          4 |         84 |
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                    | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| f:\VSCodeWorkspace\dms\src\App.vue                                                                                          | Vue.js     |         15 |          0 |          3 |         18 |
+| f:\VSCodeWorkspace\dms\src\api\data-http.js                                                                                 | JavaScript |         43 |          2 |          8 |         53 |
+| f:\VSCodeWorkspace\dms\src\api\device-api.js                                                                                | JavaScript |         23 |          5 |          2 |         30 |
+| f:\VSCodeWorkspace\dms\src\api\device-card-api.js                                                                           | JavaScript |         23 |          5 |          3 |         31 |
+| f:\VSCodeWorkspace\dms\src\api\operation-api.js                                                                             | JavaScript |         27 |          6 |          1 |         34 |
+| f:\VSCodeWorkspace\dms\src\api\websocket.js                                                                                 | JavaScript |          5 |          0 |          4 |          9 |
+| f:\VSCodeWorkspace\dms\src\components\dev-dashboard\AiQinEGOS600A.vue                                                       | Vue.js     |        368 |          4 |          4 |        376 |
+| f:\VSCodeWorkspace\dms\src\components\dev-dashboard\BLTA8.vue                                                               | Vue.js     |        253 |          1 |          2 |        256 |
+| f:\VSCodeWorkspace\dms\src\components\dev-dashboard\MindaryT8.vue                                                           | Vue.js     |        377 |          2 |          2 |        381 |
+| f:\VSCodeWorkspace\dms\src\components\dev-dashboard\MindaryWATOEX65.vue                                                     | Vue.js     |        260 |          1 |          2 |        263 |
+| f:\VSCodeWorkspace\dms\src\components\dev-dashboard\NoRealTimeData.vue                                                      | Vue.js     |         24 |          1 |          2 |         27 |
+| f:\VSCodeWorkspace\dms\src\components\dev-dashboard\NuoHeNw9002S.vue                                                        | Vue.js     |        150 |          2 |          3 |        155 |
+| f:\VSCodeWorkspace\dms\src\components\dev-dashboard\PuKeYy106.vue                                                           | Vue.js     |        142 |          5 |          4 |        151 |
+| f:\VSCodeWorkspace\dms\src\components\dev-dashboard\YiAn8700A.vue                                                           | Vue.js     |        266 |          2 |          3 |        271 |
+| f:\VSCodeWorkspace\dms\src\components\login-layout\LoginInForm.vue                                                          | Vue.js     |         83 |          0 |          2 |         85 |
+| f:\VSCodeWorkspace\dms\src\components\login-layout\Logo.vue                                                                 | Vue.js     |         30 |          0 |          2 |         32 |
+| f:\VSCodeWorkspace\dms\src\components\main-layout\Banner.vue                                                                | Vue.js     |         36 |          0 |          3 |         39 |
+| f:\VSCodeWorkspace\dms\src\components\main-layout\SideMenuNav.vue                                                           | Vue.js     |         70 |          1 |          3 |         74 |
+| f:\VSCodeWorkspace\dms\src\components\page-dev-anesthesia-layout\OpeInfosOfSpecificAnesthesia.vue                           | Vue.js     |         33 |          0 |          1 |         34 |
+| f:\VSCodeWorkspace\dms\src\components\page-dev-depth-of-anesthesia-layout\OpeInfosOfSpecificDoaDev.vue                      | Vue.js     |         33 |          0 |          1 |         34 |
+| f:\VSCodeWorkspace\dms\src\components\page-dev-monitor-layout\OpeInfosOfSpecificMonitor.vue                                 | Vue.js     |         33 |          0 |          1 |         34 |
+| f:\VSCodeWorkspace\dms\src\components\page-dev-nibp-layout\OpeInfosOfSpecificNibp.vue                                       | Vue.js     |         26 |          0 |          1 |         27 |
+| f:\VSCodeWorkspace\dms\src\components\page-dev-noninvasive-brain-oxygen-layout\OpeInfosOfSpecificNoninvasiveBrainOxygen.vue | Vue.js     |         26 |          0 |          1 |         27 |
+| f:\VSCodeWorkspace\dms\src\components\page-dev-noninvasive-hemoglobin-layout\OpeInfosOfSpecificNoninvasiveHemoglobin.vue    | Vue.js     |         26 |          0 |          1 |         27 |
+| f:\VSCodeWorkspace\dms\src\components\page-home-layout\DevCategoryPie.vue                                                   | Vue.js     |         58 |          2 |          2 |         62 |
+| f:\VSCodeWorkspace\dms\src\components\page-home-layout\DevHistoryCollectTimeChart.vue                                       | Vue.js     |         59 |          0 |          2 |         61 |
+| f:\VSCodeWorkspace\dms\src\components\page-home-layout\DevHistoryTurnOnNumChart.vue                                         | Vue.js     |         58 |          0 |          2 |         60 |
+| f:\VSCodeWorkspace\dms\src\components\page-home-layout\OpeHistoryChart.vue                                                  | Vue.js     |         58 |          0 |          2 |         60 |
+| f:\VSCodeWorkspace\dms\src\components\page-home-layout\OpeTable.vue                                                         | Vue.js     |         96 |          2 |          2 |        100 |
+| f:\VSCodeWorkspace\dms\src\components\page-home-layout\RealTimePanel.vue                                                    | Vue.js     |        181 |          7 |          5 |        193 |
+| f:\VSCodeWorkspace\dms\src\components\page-home-layout\TotalDevPanel.vue                                                    | Vue.js     |         47 |          0 |          2 |         49 |
+| f:\VSCodeWorkspace\dms\src\components\page-home-layout\TotalOpePanel.vue                                                    | Vue.js     |         47 |          0 |          2 |         49 |
+| f:\VSCodeWorkspace\dms\src\components\share-components\xBasicChart.vue                                                      | Vue.js     |        114 |         11 |          2 |        127 |
+| f:\VSCodeWorkspace\dms\src\components\share-components\xDevHistoryDataModal.vue                                             | Vue.js     |         72 |          3 |          2 |         77 |
+| f:\VSCodeWorkspace\dms\src\components\share-components\xDevInfoCard.vue                                                     | Vue.js     |        338 |         17 |          6 |        361 |
+| f:\VSCodeWorkspace\dms\src\components\share-components\xInnerPieChart.vue                                                   | Vue.js     |         93 |          6 |          2 |        101 |
+| f:\VSCodeWorkspace\dms\src\components\share-components\xOpeDetailInfo.vue                                                   | Vue.js     |        237 |          2 |          2 |        241 |
+| f:\VSCodeWorkspace\dms\src\components\share-components\xPieChart.vue                                                        | Vue.js     |        113 |         10 |          2 |        125 |
+| f:\VSCodeWorkspace\dms\src\components\share-components\xSpecificDevEvaluationContent.vue                                    | Vue.js     |        135 |          2 |          3 |        140 |
+| f:\VSCodeWorkspace\dms\src\css\animation.css                                                                                | CSS        |         17 |          0 |          1 |         18 |
+| f:\VSCodeWorkspace\dms\src\css\badge.css                                                                                    | CSS        |         25 |          4 |          1 |         30 |
+| f:\VSCodeWorkspace\dms\src\css\bg-color.css                                                                                 | CSS        |         17 |          1 |          4 |         22 |
+| f:\VSCodeWorkspace\dms\src\css\box.css                                                                                      | CSS        |         46 |          4 |          5 |         55 |
+| f:\VSCodeWorkspace\dms\src\css\button.css                                                                                   | CSS        |         68 |          3 |          6 |         77 |
+| f:\VSCodeWorkspace\dms\src\css\dms.css                                                                                      | CSS        |         32 |          0 |          2 |         34 |
+| f:\VSCodeWorkspace\dms\src\css\flex.css                                                                                     | CSS        |         79 |          0 |         12 |         91 |
+| f:\VSCodeWorkspace\dms\src\css\remove-default.css                                                                           | CSS        |         32 |          3 |          6 |         41 |
+| f:\VSCodeWorkspace\dms\src\css\table.css                                                                                    | CSS        |         56 |          3 |         13 |         72 |
+| f:\VSCodeWorkspace\dms\src\global\filters.js                                                                                | JavaScript |         18 |          0 |          3 |         21 |
+| f:\VSCodeWorkspace\dms\src\main.js                                                                                          | JavaScript |         26 |          0 |          6 |         32 |
+| f:\VSCodeWorkspace\dms\src\router.js                                                                                        | JavaScript |         82 |          0 |          5 |         87 |
+| f:\VSCodeWorkspace\dms\src\utils\util.js                                                                                    | JavaScript |         44 |          4 |          9 |         57 |
+| f:\VSCodeWorkspace\dms\src\views\LoginLayout.vue                                                                            | Vue.js     |         57 |          0 |          3 |         60 |
+| f:\VSCodeWorkspace\dms\src\views\MainLayout.vue                                                                             | Vue.js     |         81 |          0 |          2 |         83 |
+| f:\VSCodeWorkspace\dms\src\views\PageDevAnesthesiaLayout.vue                                                                | Vue.js     |         15 |          0 |          1 |         16 |
+| f:\VSCodeWorkspace\dms\src\views\PageDevDepthOfAnesthesiaLayout.vue                                                         | Vue.js     |         15 |          0 |          1 |         16 |
+| f:\VSCodeWorkspace\dms\src\views\PageDevMonitorLayout.vue                                                                   | Vue.js     |         15 |          0 |          1 |         16 |
+| f:\VSCodeWorkspace\dms\src\views\PageDevNibpLayout.vue                                                                      | Vue.js     |         15 |          0 |          1 |         16 |
+| f:\VSCodeWorkspace\dms\src\views\PageDevNoninvasiveBrainOxygenLayout.vue                                                    | Vue.js     |         15 |          0 |          1 |         16 |
+| f:\VSCodeWorkspace\dms\src\views\PageDevNoninvasiveHemoglobinLayout.vue                                                     | Vue.js     |         15 |          0 |          1 |         16 |
+| f:\VSCodeWorkspace\dms\src\views\PageHomeLayout.vue                                                                         | Vue.js     |         55 |          0 |          3 |         58 |
+| f:\VSCodeWorkspace\dms\src\x-views\xAlert\xAlert.js                                                                         | JavaScript |         32 |          0 |          1 |         33 |
+| f:\VSCodeWorkspace\dms\src\x-views\xAlert\xAlert.vue                                                                        | Vue.js     |         48 |          0 |          3 |         51 |
+| f:\VSCodeWorkspace\dms\src\x-views\xBadge.vue                                                                               | Vue.js     |         22 |          3 |          3 |         28 |
+| f:\VSCodeWorkspace\dms\src\x-views\xBox.vue                                                                                 | Vue.js     |         13 |          0 |          4 |         17 |
+| f:\VSCodeWorkspace\dms\src\x-views\xButton.vue                                                                              | Vue.js     |         35 |          4 |          3 |         42 |
+| f:\VSCodeWorkspace\dms\src\x-views\xList.vue                                                                                | Vue.js     |         53 |          1 |          2 |         56 |
+| f:\VSCodeWorkspace\dms\src\x-views\xModal.vue                                                                               | Vue.js     |         37 |          0 |          3 |         40 |
+| f:\VSCodeWorkspace\dms\src\x-views\xPager.vue                                                                               | Vue.js     |        154 |          6 |          3 |        163 |
+| f:\VSCodeWorkspace\dms\src\x-views\xTable.vue                                                                               | Vue.js     |         47 |          5 |          3 |         55 |
+| Total                                                                                                                       |            |      5,344 |        140 |        209 |      5,693 |
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

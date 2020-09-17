@@ -15,6 +15,8 @@ import './css/badge.css'
 import './css/table.css'
 import './css/animation.css'
 import './css/bg-color.css'
+import './css/text.css'
+// import './css/form.css'
 
 import 'font-awesome/css/font-awesome.css'
 
