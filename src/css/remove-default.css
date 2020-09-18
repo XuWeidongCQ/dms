@@ -16,26 +16,3 @@ li {
     text-decoration: none;
     list-style: none;
 }
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-input[type="number"]{
-    -moz-appearance: textfield;
-}
-
-input:focus,
-button:focus,
-select:focus {
-    outline: 0;
-}
-
-
-button {
-    border: 0;
-}
-
-button,select {
-    cursor: pointer;
-}

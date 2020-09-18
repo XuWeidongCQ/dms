@@ -7,12 +7,26 @@
     <div><span class="xu-text-title">添加术中标记</span></div>
     <div class="mark-form-wrapper">
       <div class="xu-col-9">
-        <div>
-          <x-select v-model='level1' :options='level1Option' :styleObj="{'width':'100px'}" class="ml"></x-select>
-          <x-select v-model='level2' :options='level2Option' :styleObj="{'width':'150px'}" class="ml" v-if='level2Show'></x-select>
+        <div class="mb15">
+          <x-select v-model='level1' :options='level1Option' :styleObj="{'width':'100px'}" class="mr"></x-select>
+          <x-select v-model='level2' :options='level2Option' :styleObj="{'width':'150px'}" class="mr" v-if='level2Show'></x-select>
           <x-select v-model='level3' :options='level3Option' :styleObj="{'width':'300px'}" v-if='level3Show'></x-select>
         </div>
-        <div></div>
+        <div class="xu-text-std mb15">
+          <span class="mr">不良反应：</span>
+          <label class="mr">
+            <span>无</span>
+            <input type="radio" :value="false" v-model="hasReaction" class="xu-input-radio">
+          </label>
+          <label>
+            <span>有</span>
+            <input type="radio" :value="true" v-model="hasReaction" class="xu-input-radio">
+          </label>
+        </div>
+        <div>
+          <p class="xu-text-second">不良反应描述:</p>
+          <textarea :disabled='!hasReaction' class="xu-input-textarea reaction-desc" v-model='reactionDesc'></textarea>
+        </div>
       </div>
       <div class="xu-col-3">
         <div class="prefix-wrapper" v-show="prefixShow">
@@ -28,17 +42,23 @@
         </div>
       </div>
     </div>
+    <div>
+      <x-button :value="'确认提交'" :type="'success'" @click="submitMark()"></x-button>
+    </div>
   </x-modal>
 </template>
 
 <script>
 import xModal from '@/x-views/xModal'
 import xSelect from '@/x-views/xSelect'
+import xButton from '@/x-views/xButton'
+import showAlert from '@/x-views/xAlert/xAlert'
 import axios from 'axios'
 export default {
   components:{
     xModal,
-    xSelect
+    xSelect,
+    xButton
   },
   data(){
     return {
@@ -52,6 +72,8 @@ export default {
       level4:'',
       level4Option:[],
       level5:'',
+      hasReaction:false,
+      reactionDesc:'',
       level2Show:false,
       level3Show:false,
     }
@@ -85,6 +107,7 @@ export default {
         this.level2Show = false
       }
     },
+    //是否显示第三级选择框
     level2:function(newVal,oldVal){
       const tmp = this.markRecords[this.level1][newVal]
       this.level3 = ''
@@ -98,6 +121,24 @@ export default {
       } else {
         this.level3Show = false
       }
+    },
+    hasReaction:function(newVal,oldVal){
+      if(!newVal){
+        this.reactionDesc = ''
+      }
+    },
+    //初始化选择框中的值
+    level1Option:function(newVal){
+      this.level1 = newVal[0]
+    },
+    level2Option:function(newVal){
+      this.level2 = newVal[0]
+    },
+    level3Option:function(newVal){
+      this.level3 = newVal[0]
+    },
+    level4Option:function(newVal){
+      this.level4 = newVal[0]
     }
   },
   computed:{
@@ -119,16 +160,18 @@ export default {
     getMarkRecords(){
       axios.get('./ope-mark.json')
       .then(res => {
-        // console.log(res)
+        
         this.markRecords = res.data
         this.level1Option = Object.keys(res.data)
       })
       .catch(e => {
         console.log('获取或者解析手术标记信息出错')
       })
+    },
+    //2.提交标记信息
+    submitMark(){
+      showAlert('请填完再进行提交','failure')
     }
-    //2.是否显示prefix框
-  
     
   },
   created(){
@@ -143,11 +186,11 @@ export default {
 }
 .mark-form-wrapper {
   width: 1000px;
-  height: 300px;
+  height: 260px;
   display: flex;
   margin: 0 -15px;
 }
-.ml {
+.mr {
   margin-right: 15px;
 }
 .dose-input {
@@ -158,5 +201,10 @@ export default {
 }
 .dose-input:focus {
   border-bottom: 1px solid #48a8ff
+}
+.reaction-desc {
+  width: 680px;
+  height: 120px;
+  padding: 5px;
 }
 </style>
