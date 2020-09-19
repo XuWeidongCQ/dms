@@ -41,6 +41,7 @@
     <x-add-ope-mark-modal 
      v-if="opeMarkModalShow" 
      @close="opeMarkModalShow = false"
+     :operation="selOpe"
     ></x-add-ope-mark-modal>
   </x-box>
 </template>

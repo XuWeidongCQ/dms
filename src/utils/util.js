@@ -33,6 +33,7 @@ const getFormatterDate = function () {
       MMDDHHMMSS:nowMonth+'-'+nowDay+' '+nowHour+':'+nowMinute+':'+nowSecond,
       MMDDHHMM:nowMonth+'-'+nowDay+' '+nowHour+':'+nowMinute,
       YYYYMMDDHHMM:nowYear+'-'+nowMonth+'-'+nowDay+' '+nowHour+':'+nowMinute,
+      h5datetime:nowYear+'-'+nowMonth+'-'+nowDay+'T'+nowHour+':'+nowMinute+':'+nowSecond,
       timestamp:now.valueOf()
     }
 };

@@ -144,13 +144,13 @@ export default {
           '体   重': operationInfo["patientWeight"] + "kg",
           '年   龄': operationInfo["patientAge"],
           '既往病史': operationInfo["pastMedicalHistory"],
-          '特殊情况': operationInfo["specialCase"]
+          '特殊情况': operationInfo["specialDiseaseCase"]
         };
         this.operation = {
           '手术名称': operationInfo["operationName"],
           '麻醉方式': operationInfo["operationAnesthesiaMode"],
           '是否紧急': operationInfo["operationIsUrgent"]?'是':'否',
-          'ASA等级': operationInfo["operationAsaLevel"]
+          'ASA等级': operationInfo["operationAsaLevel"],
         };
         this.evaluationInfos = evaluationInfo;
         this.markInfos = operationMarks;

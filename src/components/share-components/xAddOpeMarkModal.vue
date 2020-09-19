@@ -1,15 +1,29 @@
 <template>
   <x-modal @close="close">
-    <div><span class="xu-text-title">{}的历史标记记录</span></div>
+    <div><span class="xu-text-title">{{operation.operationName}}的历史标记记录</span></div>
     <div class="his-mark-wrapper xu-add-scrollBar">
-      
+      <ul>
+        <li v-for="item in markInfos" :key="item.id" class="mb15">
+          <x-button :value="'删除'" :type="'danger'" :size="'sm'" @click="delOneMarkInfo(item.id)"></x-button>
+          <x-button :value="'修改'" :type="'warning'" :size="'sm'" @click="showEditOneMarkInfoModal(item)"></x-button>
+          <span class="mr">{{ item.markTime | formatterDate}}</span>
+          <span>
+            {{ item.markMainType }} |
+            {{ item.markSubType }} |
+            {{ item.markEvent }} |
+            {{ item.giveMedicineMethod }} |
+            {{ item.giveMedicineVolume }} |
+            {{ item.sideEffect }}
+          </span>
+        </li>
+      </ul>
     </div>
     <div><span class="xu-text-title">添加术中标记</span></div>
     <div class="mark-form-wrapper">
       <div class="xu-col-9">
         <div class="mb15">
-          <x-select v-model='level1' :options='level1Option' :styleObj="{'width':'100px'}" class="mr"></x-select>
-          <x-select v-model='level2' :options='level2Option' :styleObj="{'width':'150px'}" class="mr" v-if='level2Show'></x-select>
+          <x-select v-model='level1' :options='level1Option' :styleObj="{'width':'100px'}" class="mr" :readonly="true"></x-select>
+          <x-select v-model='level2' :options='level2Option' :styleObj="{'width':'150px'}" class="mr" v-if='level2Show' :readonly="true"></x-select>
           <x-select v-model='level3' :options='level3Option' :styleObj="{'width':'300px'}" v-if='level3Show'></x-select>
         </div>
         <div class="xu-text-std mb15">
@@ -29,22 +43,32 @@
         </div>
       </div>
       <div class="xu-col-3">
+        <div class="xu-text-second">*标记时间：</div>
+        <input type="datetime-local" step=1 class="xu-input xu-input-time" v-model="markTime">
         <div class="prefix-wrapper" v-show="prefixShow">
           <div class="xu-text-second">
-            <span v-if="level1 === '用药'">给药途径：</span>
-            <span v-if="level1 === '补液/输血'">输入途径：</span>
+            <span v-if="level1 === '用药'">*给药途径：</span>
+            <span v-if="level1 === '补液/输血'">*输入途径：</span>
           </div>
           <x-select v-model='level4' :options='level4Option' :styleObj="{'width':'100px'}" class="mb15"></x-select>
           <div class="xu-text-second">
-            <span>剂量：</span>
+            <span>*剂量：</span>
           </div>
-          <input type="number" class="dose-input" v-model="level5">
+          <input type="number" class="dose-input mb15" v-model="level5">
         </div>
       </div>
     </div>
     <div>
       <x-button :value="'确认提交'" :type="'success'" @click="submitMark()"></x-button>
     </div>
+    <!-- 修改标记的时间弹窗 -->
+    <x-modal v-if="editModalShow" @close="editModalShow = false">
+      <div class="xu-text-second">选择一个新的标记时间：</div>
+      <input type="datetime-local" step=1 class="xu-input xu-input-time mb15" v-model="newMarkTime">
+      <div>
+        <x-button :value="'确认修改'" :type="'success'" @click="editOneMarkInfo()"></x-button>
+      </div>
+    </x-modal>
   </x-modal>
 </template>
 
@@ -60,6 +84,7 @@ export default {
     xSelect,
     xButton
   },
+  props:['operation'],
   data(){
     return {
       markRecords:{},
@@ -74,8 +99,13 @@ export default {
       level5:'',
       hasReaction:false,
       reactionDesc:'',
+      markTime:this.$utils.getFormatterDate()['h5datetime'],
       level2Show:false,
       level3Show:false,
+      markInfos:[],//历史标记记录
+      editModalShow:false,//是否显示修改标记时间的弹窗
+      selectedMark:{},
+      newMarkTime:this.$utils.getFormatterDate()['h5datetime']
     }
   },
   watch:{
@@ -160,7 +190,6 @@ export default {
     getMarkRecords(){
       axios.get('./ope-mark.json')
       .then(res => {
-        
         this.markRecords = res.data
         this.level1Option = Object.keys(res.data)
       })
@@ -170,12 +199,71 @@ export default {
     },
     //2.提交标记信息
     submitMark(){
-      showAlert('请填完再进行提交','failure')
+      const data ={
+        'operationNumber':this.operation.operationNumber,
+        'markMainType':this.level1,
+        'markSubType':this.level2 ? this.level2 : '--',
+        'markEvent':this.level3 ? this.level3 : '--',
+        'giveMedicineMethod':this.level4 ? this.level4 : '--',
+        'giveMedicineVolume':this.level5 ? this.level5 : '--',
+        'sideEffect':this.hasReaction ? this.reactionDesc ? this.reactionDesc : '--' : '无',
+        'markTime':this.$utils.getFormatterDate(this.markTime)['timestamp']
+      }
+      this.$http['addOneMarkInfo'](data)
+      .then(res => {
+        const { code } = res;
+        if(code === 200){
+          showAlert('添加成功','success')
+          this.getMarkInfos()
+        }
+      })
+      .catch(e => console.log(e))
+      
+    },
+    //3.获取历史标记记录
+    getMarkInfos(operationNumber=this.operation.operationNumber){
+      this.$http['getAllMarkInfos']({params:{operationNumber:operationNumber}})
+      .then(res => {
+        const {data} = res
+        this.markInfos = data
+      })
+      .catch(e => console.log('获取历史标记信息或者解析出错'))
+    },
+    //4.删除一条标记
+    delOneMarkInfo(markId){
+      this.$http['delOneMarkInfo']({params:{markId:markId}})
+      .then(res => {
+        const { code } = res;
+        if(code === 200){
+          showAlert('删除成功','success')
+          this.getMarkInfos()
+        }
+      })
+    },
+    //5.显示修改标记的时间弹窗
+    showEditOneMarkInfoModal(mark){
+      this.editModalShow = true
+      this.selectedMark = mark
+      this.newMarkTime = this.$utils.getFormatterDate(mark.markTime*1000)['h5datetime']
+    },
+    //6.修改标记时间
+    editOneMarkInfo(){
+      this.selectedMark['markTime'] = this.$utils.getFormatterDate(this.newMarkTime)['timestamp']
+      this.selectedMark['operationNumber'] = this.operation.operationNumber
+      this.$http['editOneMarkInfo'](this.selectedMark)
+      .then(res => {
+        const { code } = res;
+        if(code === 200){
+          showAlert('修改成功','success')
+          this.getMarkInfos()
+          this.editModalShow = false
+        }
+      })
     }
-    
   },
   created(){
     this.getMarkRecords()
+    this.getMarkInfos()
   }
 }
 </script>
@@ -192,6 +280,9 @@ export default {
 }
 .mr {
   margin-right: 15px;
+}
+.prefix-wrapper {
+  margin-top: 40px;
 }
 .dose-input {
   padding: 6px 25px 6px 10px;

@@ -2,9 +2,12 @@ import axios from 'axios'
 import deviceApi from './device-api'
 import operationApi from './operation-api'
 import deviceCardApi from './device-card-api'
+import operationMarkApi from './operation-mark-api'
+import showAlert from '@/x-views/xAlert/xAlert'
 
 const dataPool = axios.create({
-  baseURL:'http://www.dms.yuhualab.com:10086/eval'
+  // baseURL:'http://www.dms.yuhualab.com:10086/eval'
+  baseURL:'http://172.20.29.106:10086/eval'
 })
 
 //请求拦截器
@@ -19,9 +22,10 @@ dataPool.interceptors.response.use(res => {
   const {config:reqConfig,data:resData} = res;
   const {method:reqMethod,data:reqData} = reqConfig;
   const {code} = resData
-  if(code === 200){
+  if(code === 200){ //200才是成功
     return resData
-  }
+  } 
+  return resData
 },error => {
   return Promise.reject(error)
 })
@@ -32,7 +36,8 @@ const api = Object.assign(
   {},
   deviceApi,
   operationApi,
-  deviceCardApi
+  deviceCardApi,
+  operationMarkApi
   )
 
 
@@ -43,7 +48,17 @@ for(let key in api){
       http[key] = function(config={}){
         return dataPool[method](url,config)
       }
-      break;
+    break;
+    case 'post':
+      http[key] = function(data={},config={}){
+        return dataPool[method](url,data,config)
+      }
+    break;
+    case 'delete':
+      http[key] = function(config={}){
+        return dataPool[method](url,config)
+      }
+    break;
     default:
       http[key] = null
   }

@@ -4,8 +4,9 @@
             <input type="text" class="xu-select-value"
                    v-model="selectValue"
                    :style="styleObj"
+                   @input="select(selectValue)"
                    @blur="onblur"
-                   >
+                   :readonly="readonly">
         </label>
         <ul class="xu-select-option-wrapper scrollBar-style slideInDown" v-if="isSpread">
             <!--这里只能使用mousedown事件，使用click事件会导致先执行blur事件而无法选中元素-->
@@ -37,6 +38,10 @@
       //4 整体样式--控制下拉框的宽度
       styleObj:{
         type:Object
+      },
+      //5 是否只读
+      readonly:{
+        type:Boolean
       }
     },
 

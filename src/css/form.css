@@ -69,6 +69,20 @@ button,select {
     cursor: pointer;
 }
 
+.xu-input {
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  font-size: 1em;
+  line-height: 1em;
+}
+.xu-input:focus {
+  border-color:#3a9fd3;
+}
+
+.xu-input-time {
+  padding: 5px 2px;
+}
+
 .xu-input-radio {
   vertical-align: middle;
   height: 1.5em;
