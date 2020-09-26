@@ -124,14 +124,14 @@ ul,li {
 }
 .wrapper {
     font-size: 12px;
-    color: #24c79f;
+    color: #5a5c69;
 }
 .wrapper > ul > li {
     display: inline-block;
     padding: 4px 8px;
 }
 .show-border {
-    border: 1px solid #24c79f;
+    border: 1px solid #cccccc;
     border-radius: 3px;
 }
 .show-border:hover {
@@ -142,10 +142,11 @@ ul,li {
 .active {
      background-color: #24c79f;
      color: #ffffff !important;
+     border-color:  #24c79f;
 }
 li > input {
     width: 35px;
-    border: 1px solid #24c79f;
+    border: 1px solid #cccccc;
     border-radius: 3px;
     padding: 2px 2px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="real-time-panel-wrapper bg-black">
+  <div class="real-time-panel-wrapper">
     <!-- ECG部分 -->
     <div class="xu-row">
       <div class="xu-col-7">

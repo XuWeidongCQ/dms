@@ -7,7 +7,7 @@
             <div class="right">
                 <login-in-form></login-in-form>
             </div>
-        </div>  
+        </div>
     </div>
 </template>
 
@@ -26,18 +26,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image:linear-gradient(to bottom,#4e72de 0%,#2348b8 100%)
+        /* background-image:linear-gradient(to bottom,#4e72de 0%,#2348b8 100%) */
+        background-image:url("../assets/login_bg_04.jpg");
+        background-size:cover;
         
     }
     .content {
-        min-width: 1200px;
+        min-width: 1000px;
         display: flex;
         border-radius: 5px;
         animation: moveIn 1.5s;
+        background-color: rgba(255, 240, 240, 0.5);
     }
     .content > .left {
         flex:1;
-        background-color: #dadbdd;
+        border-right: 1px solid #bfbfbf;
         text-align: center;
     }
     .left > p:first-child{
@@ -45,7 +48,7 @@
     }
     .content > .right {
         flex:1;
-        background-color: #ffffff
+        /* background-color: #ffffff */
     }
     @keyframes moveIn {
         from {

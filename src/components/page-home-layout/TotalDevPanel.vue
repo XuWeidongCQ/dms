@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style scoped>
-.panel-wrapper {
-  color: #35ae47;
-}
 .panel-wrapper > span:last-child {
   position: absolute;
   top:20px;
