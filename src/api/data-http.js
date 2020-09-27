@@ -3,6 +3,8 @@ import deviceApi from './device-api'
 import operationApi from './operation-api'
 import deviceCardApi from './device-card-api'
 import operationMarkApi from './operation-mark-api'
+import opeMidEvaluationApi from './ope-mid-evaluation-api'
+
 import showAlert from '@/x-views/xAlert/xAlert'
 
 const dataPool = axios.create({
@@ -15,8 +17,10 @@ dataPool.interceptors.request.use(config => {
   const {method} = config
   return config
 },error => {
+  showAlert('无法获取数据,请检查网络','failure')
   return Promise.reject(error)
 })
+
 //响应拦截器
 dataPool.interceptors.response.use(res => {
   const {config:reqConfig,data:resData} = res;
@@ -33,11 +37,12 @@ dataPool.interceptors.response.use(res => {
 
 const http = {}
 const api = Object.assign(
-  {},
-  deviceApi,
-  operationApi,
-  deviceCardApi,
-  operationMarkApi
+    {},
+    deviceApi,
+    operationApi,
+    deviceCardApi,
+    operationMarkApi,
+    opeMidEvaluationApi
   )
 
 

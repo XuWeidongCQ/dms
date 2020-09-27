@@ -69,6 +69,13 @@ const routes = [
                     title: '大数据分析平台-无创血压仪器'
                 }
             },
+            {
+                path:'/data-analysis-ope-mid',
+                component:() => import('./views/PageDataAnalysisOpeMid.vue'),
+                meta: { 
+                    title: '术中仪器数据分析'
+                }
+            }
         ]
     }
 ]

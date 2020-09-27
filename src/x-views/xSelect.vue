@@ -88,14 +88,14 @@
         padding: 5px 0 6px 0;
         /*line-height: 1;*/
         font-size: 1em;
-        top: 0;
+        top: 2px;
         right: 8px;
-        bottom: 4px;
         cursor: pointer;
         color: #d4d7de;
         /*border: 1px solid black;*/
         pointer-events: none;/*不让伪元素捕获点击事件，使得事件穿透到下面*/
-        transition: transform .3s;
+        transition: transform .2s;
+        transform-origin: center;
     }
     .xu-select-wrapper .span-spread::before {
         content: '\25BC';
@@ -103,15 +103,15 @@
         padding: 5px 0 6px 0;
         /*line-height: 1;*/
         font-size: 1em;
-        top: 0;
+        top: -1px;
         right: 8px;
-        bottom: 4px;
         cursor: pointer;
         color: #d4d7de;
         pointer-events: none;
         /*border: 1px solid black;*/
         transform: rotate(180deg);
-        transition: transform .3s;
+        transition: transform .2s;
+        transform-origin: center;
     }
     .xu-select-wrapper .xu-select-value {
         display: block;

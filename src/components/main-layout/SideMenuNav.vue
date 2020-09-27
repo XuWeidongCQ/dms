@@ -5,47 +5,50 @@
     </div>
     <ul class="nav-links-wrapper">
       <router-link tag="li" to='/home' active-class="active" exact class="nav-link">
-        <i class="fa fa-home"></i>
-        <span> 首页</span>
+        <i class="fa fa-th-large fa-fw"></i>
+        <span>基本概况</span>
+      </router-link>
+      <router-link tag="li" to='/data-analysis-ope-mid' active-class="active" exact class="nav-link">
+        <i class="fa fa-area-chart fa-fw"></i>
+        <span>术中仪器数据分析</span>
       </router-link>
       <li @click="toggle()" class="nav-link toggle-link">
-        <i class="fa fa-th-large"></i>
-        <span>数据分析</span>
+        <i class="fa fa-desktop fa-fw"></i>
+        <span>仪器详细数据</span>
         <span class="arrow">
           <i class="fa" :class="{'fa-angle-left':!isSpread,'fa-angle-down':isSpread}"></i>
         </span>
       </li>
       <ul :class="{'shrink-links-wrapper':!isSpread,'spread-links-wrapper':isSpread}" class="toggle-links-wrapper">
         <router-link tag="li" to='/dev-anesthesia' active-class="active" exact class="nav-link">
-          <i class="fa fa-desktop"></i>
+          <i class="fa fa-laptop"></i>
           <span>麻醉机</span>
         </router-link>
         <router-link tag="li" to='/dev-depth-of-anesthesia' active-class="active" exact class="nav-link">
-          <i class="fa fa-desktop"></i>
+          <i class="fa fa-laptop"></i>
           <span>麻醉深度监测仪</span>
         </router-link>
         <router-link tag="li" to='/dev-noninvasive-hemoglobin' active-class="active" exact class="nav-link">
-          <i class="fa fa-desktop"></i>
+          <i class="fa fa-laptop"></i>
           <span>无创血红蛋白监测仪</span>
         </router-link>
         <router-link tag="li" to='/dev-noninvasive-brain-oxygen' active-class="active" exact class="nav-link">
-          <i class="fa fa-desktop"></i>
+          <i class="fa fa-laptop"></i>
           <span>无创脑氧饱和度监测仪</span>
         </router-link>
         <router-link tag="li" to='/dev-noninvasive-blood-pressure' active-class="active" exact class="nav-link">
-          <i class="fa fa-desktop"></i>
+          <i class="fa fa-laptop"></i>
           <span>无创血压监测仪</span>
         </router-link>
         <router-link tag="li" to='/dev-monitor' active-class="active" exact class="nav-link">
-          <i class="fa fa-desktop"></i>
+          <i class="fa fa-laptop"></i>
           <span>监护仪</span>
         </router-link>
-      </ul>
-      
-      <router-link tag="li" to='/device' active-class="active" exact class="nav-link">
-        <i class="fa fa-desktop"></i>
-        <span>呼吸机</span>
-      </router-link>  
+        <!-- <router-link tag="li" to='/device' active-class="active" exact class="nav-link">
+          <i class="fa fa-laptop"></i>
+          <span>呼吸机</span>
+        </router-link>  -->
+      </ul> 
     </ul>
   </div>
 </template>
@@ -102,7 +105,7 @@ export default {
   height: 260px; 
 }
 .toggle-links-wrapper {
-  transition: height ease 0.5s;
+  transition: height ease 0.3s;
   overflow: hidden;
 }
 .toggle-links-wrapper > .nav-link {

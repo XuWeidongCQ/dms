@@ -8,7 +8,7 @@
       :size="'sm'"
       :align="'center'"
       :strip="true"
-      :colWidth="['80px','250px','150px','150px']"
+      :colWidth="['80px','250px','150px','150px','300px']"
     >
       <tr v-for="ope in opeInfos" :key="ope.patientId">
         <td>
