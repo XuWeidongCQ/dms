@@ -13,7 +13,8 @@ export default {
     //1.数据项的颜色
     color:{
       type:Array,
-      default:() => ['#4ea397','#22c3aa','#7bd9a5','#f2b3c9','#f58db2','#d0648a','#c12e34'],
+      // default:() => ['#4ea397','#22c3aa','#7bd9a5','#f2b3c9','#f58db2','#d0648a','#c12e34'],
+      default:() => ['#3fb1e3','#6be6c1','#626c91','#a0a7e6','#c4ebad','#96dee8','#c12e34'],
     },
     //2.数据 {itemName:[],itemValue:[]}
     source:{

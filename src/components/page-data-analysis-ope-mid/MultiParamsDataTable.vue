@@ -14,7 +14,7 @@
       <p class="mb15">仪器多指标分析结果</p>
       <div class="table-wrapper xu-add-scrollBar">
         <x-table 
-          :title="['公司','仪器','序列号','采集时长','掉线率','故障率','使用体验(5分)','使用满意度(5分)']"
+          :title="['公司','仪器','序列号','采集场次','掉线率','故障率','使用体验(5分)','使用满意度(5分)']"
           :align="'center'"
           :strip="true"
           :size="'sm'"
@@ -78,7 +78,10 @@ export default {
         this.mySort(data,this.sortedBy)
         this.performanceEvaluationData = data
       })
-      .catch(e => console.log('获取或者解析仪器多指标分析数据出错'))
+      .catch(e => {
+        console.log('获取或者解析仪器多指标分析数据出错')
+        console.log(e)
+      })
     },
     //2.排序函数
     compFn(str){
