@@ -79,6 +79,7 @@ export default {
       selDeviceCode:0,
       currentPanel:'NoRealTimeData',
       opePanelPattern:{},//用来存放所有手术的面板组件
+      timer:null
     }
   },
   methods:{
@@ -152,6 +153,12 @@ export default {
   },
   created(){
     this.getOpeInProcessData()
+    this.timer = setInterval(() => {
+      this.getOpeInProcessData()
+    },3000)
+  },
+  beforeDestroy(){
+    clearInterval(this.timer)
   }
 }
 </script>

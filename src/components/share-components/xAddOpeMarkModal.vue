@@ -99,13 +99,13 @@ export default {
       level5:'',
       hasReaction:false,
       reactionDesc:'',
-      markTime:this.$utils.getFormatterDate()['h5datetime'],
       level2Show:false,
       level3Show:false,
       markInfos:[],//历史标记记录
       editModalShow:false,//是否显示修改标记时间的弹窗
       selectedMark:{},
-      newMarkTime:this.$utils.getFormatterDate()['h5datetime']
+      newMarkTime:this.$utils.getFormatterDate()['h5datetime'],
+      markTime:this.$utils.getFormatterDate()['h5datetime'], 
     }
   },
   watch:{
@@ -244,7 +244,7 @@ export default {
     showEditOneMarkInfoModal(mark){
       this.editModalShow = true
       this.selectedMark = mark
-      this.newMarkTime = this.$utils.getFormatterDate(mark.markTime*1000)['h5datetime']
+      this.newMarkTime = this.$utils.getFormatterDate(mark.markTime)['h5datetime']
     },
     //6.修改标记时间
     editOneMarkInfo(){

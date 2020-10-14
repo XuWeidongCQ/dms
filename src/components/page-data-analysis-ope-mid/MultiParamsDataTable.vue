@@ -24,7 +24,7 @@
             <td>{{ item.companyName }}</td>
             <td>{{ item.deviceName | formatterDevName }}</td>
             <td>{{ item.deviceSerialNumber }}</td>
-            <td>{{ item.totalCollectionOperationTimes + 's' }}</td>
+            <td>{{ item.totalCollectionOperationTimes }}</td>
             <td>{{ item.averageDropRate | numberToPercent }}</td>
             <td>{{ item.errorRate | numberToPercent }}</td>
             <td>{{ item.averageExperienceLevel }}</td>

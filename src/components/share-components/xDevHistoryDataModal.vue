@@ -44,7 +44,7 @@ export default {
           this.source = {}
           for(const key in data){
             if(key === 'time'){
-              this.x = data[key].map(ele => ele.split('T')[1])
+              this.x = data[key].map(ele => this.$utils['getFormatterDate'](ele)['HHMMSS'])
             } else {
               this.paramName.push(key)
               this.params.push(data[key].map(ele => ele===-1000?-5:ele))

@@ -29,7 +29,7 @@ export default {
   data(){
     return {
       historyData:null,
-      days:30
+      days:7
     }
   },
   methods: {

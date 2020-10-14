@@ -5,7 +5,7 @@ import util from '@/utils/util'
 export default {
   //1.标准化时间输出 输入的时间戳单位为秒
   formatterDate(val,format='YYYYMMDDHHMMSS'){
-    return util.getFormatterDate(val*1000)[format]
+    return util.getFormatterDate(val)[format]
   },
   //2.
   formatterSex(val){
