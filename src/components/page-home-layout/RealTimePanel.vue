@@ -2,12 +2,16 @@
   <x-box>
     <div class="xu-row">
       <div class="xu-col-9">
-        <keep-alive>
-          <component :is="currentPanel" 
-          :operationNumber='selOperationNumber'
-          :deviceCode="selDeviceCode"
-          ></component>
-        </keep-alive>
+        <div v-for="ope in opeInProcess" :key="ope.operationNumber">
+          <div v-show="selOperationNumber == ope.operationNumber">
+            <keep-alive>
+              <component :is="currentPanel" 
+              :operationNumber='selOperationNumber'
+              :deviceCode="selDeviceCode"
+              ></component>
+            </keep-alive>
+          </div>
+        </div>
       </div>
       <div class="xu-col-3">
         <div class="real-ope-info">
@@ -83,11 +87,13 @@ export default {
     }
   },
   methods:{
-    //1.获取正在进行的手术
+    //1.获取正在进行的手术 -- 3s定时访问
     getOpeInProcessData(){
       this.$http['getOpeInProcess']()
       .then(res => {
         const { data } = res
+        let opeInProcess = []
+        // console.log(data)
         this.opeInProcess = data.map(ele => {
           return {
             operationNumber:ele.operationNumber,
@@ -95,11 +101,12 @@ export default {
             hospitalOperationNumber:ele.hospitalOperationNumber
           }
         });
+        opeInProcess = this.opeInProcess.map(ele => ele.operationNumber)
         //初始化选中的手术
         if(this.opeInProcess.length > 0){
-          this.selOperationNumber = this.selOperationNumber 
-          ?this.selOperationNumber
-          :this.opeInProcess[0].operationNumber
+          if(!opeInProcess.includes(this.selOperationNumber)){
+            this.selOperationNumber = this.opeInProcess[0].operationNumber
+          }
         } else {
           this.selOperationNumber = 0
         };

@@ -15,7 +15,7 @@ export default {
       devInfos:[
         {
           imgUrl:require('../../assets/dev-image/WATO EX55.jpg') ,
-          deviceCode:'42',
+          deviceCode:'44',
           devName:'增强型麻醉工作站',
           devType:'WATO EX-55',
           devCompany:'深圳迈瑞生物医疗电子股份有限公司'
