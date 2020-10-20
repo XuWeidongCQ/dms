@@ -12,6 +12,12 @@
             </keep-alive>
           </div>
         </div>
+        <div v-show="opeInProcess.length == 0">
+            <component :is="'NoRealTimeData'" 
+            :operationNumber='selOperationNumber'
+            :deviceCode="selDeviceCode"
+            ></component>
+          </div>
       </div>
       <div class="xu-col-3">
         <div class="real-ope-info">
@@ -26,7 +32,7 @@
             </li>
           </ul>
           <span class=" fa fa-desktop"> 使用仪器</span>
-          <ul class="process-ope-wrapper xu-add-scrollBar">
+          <ul class="process-ope-wrapper xu-add-scrollBar" v-show="opeInProcess.length !== 0">
             <li v-for="(dev,index) in opeUseDev" 
             :key="index"
             :class="{'active':selDeviceCode === dev.deviceCode}"
