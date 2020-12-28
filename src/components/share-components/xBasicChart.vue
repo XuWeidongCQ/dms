@@ -78,8 +78,39 @@ export default {
       option.dataset = {}
       option.dataset.source = this.source
       option.color = this.color
-      option.yAxis = {show:this.showYLabel,type:'value',nameLocation:'center',nameGap:25,name:this.yName,max:this.yMax,min:this.yMin}
-      option.xAxis = {show:this.showXLabel,type:'category',nameLocation:'center',nameGap:20,name:this.xName,boundaryGap:this.boundaryGap}
+      option.yAxis = {
+        show:this.showYLabel,
+        type:'value',
+        nameLocation:'center',
+        nameGap:25,
+        name:this.yName,
+        max:this.yMax,
+        min:this.yMin,
+        axisTick:{
+          show:false
+        },
+        axisLine:{
+          lineStyle:{
+            color:'#5a5c69'
+          }
+        }
+      }
+      option.xAxis = {
+        show:this.showXLabel,
+        type:'category',
+        nameLocation:'center',
+        nameGap:20,
+        name:this.xName,
+        boundaryGap:this.boundaryGap,
+        axisTick:{
+          show:false
+        },
+        axisLine:{
+          lineStyle:{
+            color:'#5a5c69'
+          }
+        }
+      }
       option.legend = this.legend
       option.tooltip = {trigger:'item'}
       option.grid = {containLabel: true, left:'25px', right:'5px', top:'15px', bottom:'25px'}

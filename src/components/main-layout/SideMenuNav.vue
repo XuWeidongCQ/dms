@@ -70,7 +70,7 @@ export default {
 
 <style scoped>
 .avatar-wrapper {
-  padding: 40px 52px;
+  padding: 60px 52px 25px 52px;
   border-bottom:1px solid #566579
 }
 .nav-links-wrapper {
@@ -96,7 +96,7 @@ export default {
 }
 .active {
   color: #ffffff;
-  background-color: #24c79f;
+  background-color: #157dba;
 }
 .shrink-links-wrapper {
   height: 0;

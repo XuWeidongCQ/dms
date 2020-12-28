@@ -6,7 +6,7 @@
     font-size: 16px;
 }
 .panel-select-active {
-    background-color: #24c79f !important;
+    background-color: #157dba !important;
     color: #ffffff !important;
 }
 .real-time-panel-wrapper {
@@ -16,14 +16,14 @@
     box-sizing: border-box;
     border-radius: 10px;
     position: relative;
-    height: 698px;
+    height: 780px;
 }
 
 .panel-gray {
     background-color: #cccccc !important;
 }
 .interval {
-    margin: 8px 0;
+    margin: 10px 0;
     height: 0;
 }
 .h100 {
@@ -31,4 +31,7 @@
 }
 .mb15 {
     margin-bottom: 15px;
+}
+.float-right {
+    float: right;
 }

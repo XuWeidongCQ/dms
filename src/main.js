@@ -24,9 +24,12 @@ import 'font-awesome/css/font-awesome.css'
 Vue.config.productionTip = false
 Vue.prototype.$utils = utils
 Vue.prototype.$http = http
+// 注册全局过滤器
 Object.keys(filters).forEach(key => {
   Vue.filter(key,filters[key])
 })
+
+
 new Vue({
   router,
   render: h => h(App),

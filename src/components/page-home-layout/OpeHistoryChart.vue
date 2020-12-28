@@ -55,6 +55,6 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 200px;
+  height: 220px;
 }
 </style>

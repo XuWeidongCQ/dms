@@ -20,11 +20,11 @@ export default {
 <style scoped>
 .wrapper {
     line-height: 42px;
-    background-color: #393d49;
+    background-color: #157dba;
     padding: 0px 15px;
 }
 .wrapper > .name {
-    font-size: 20px;
+    font-size: 18px;
     color: #ececec;
     
 }

@@ -2,24 +2,33 @@
   <x-box>
     <div class="xu-row">
       <div class="xu-col-9">
-        <div v-for="ope in opeInProcess" :key="ope.operationNumber">
-          <div v-show="selOperationNumber == ope.operationNumber">
-            <keep-alive>
-              <component :is="currentPanel" 
-              :operationNumber='selOperationNumber'
-              :deviceCode="selDeviceCode"
-              ></component>
-            </keep-alive>
-          </div>
+        <div v-if="isDemoMode">
+          <component :is="demoPanel"></component>
         </div>
-        <div v-show="opeInProcess.length == 0">
+        <div v-else>
+          <div v-for="ope in opeInProcess" :key="ope.operationNumber">
+            <div v-show="selOperationNumber == ope.operationNumber">
+              <keep-alive>
+                <component :is="currentPanel" 
+                :operationNumber='selOperationNumber'
+                :deviceCode="selDeviceCode"
+                ></component>
+              </keep-alive>
+            </div>
+          </div>
+          <div v-show="opeInProcess.length == 0">
             <component :is="'NoRealTimeData'" 
             :operationNumber='selOperationNumber'
             :deviceCode="selDeviceCode"
             ></component>
           </div>
+        </div>
       </div>
       <div class="xu-col-3">
+        <div class="mb15">
+          <span class="xu-text-main-color">演示模式</span>
+          <x-swi v-model="isDemoMode" class="float-right"></x-swi>
+        </div>
         <div class="real-ope-info">
           <span class="fa fa-bed"> 正在进行的手术</span>
           <ul class="process-ope-wrapper xu-add-scrollBar">
@@ -57,6 +66,8 @@ import BLTA8 from '@/components/dev-dashboard/BLTA8'
 import AiQinEGOS600A from '@/components/dev-dashboard/AiQinEGOS600A'
 import MindaryT8 from '@/components/dev-dashboard/MindaryT8'
 import MindaryWATOEX65 from '@/components/dev-dashboard/MindaryWATOEX65'
+import xSwi from '@/x-views/xSwi'
+import XSwi from '@/x-views/xSwi.vue'
 
 const pattern = {
   0:'NoRealTimeData',
@@ -72,6 +83,7 @@ const pattern = {
 export default {
   components:{
     xBox,
+    xSwi,
     PuKeYy106,
     NoRealTimeData,
     NuoHeNw9002S,
@@ -89,12 +101,15 @@ export default {
       selDeviceCode:0,
       currentPanel:'NoRealTimeData',
       opePanelPattern:{},//用来存放所有手术的面板组件
-      timer:null
+      timer:null,
+      isDemoMode:true,//用来控制是否是演示模式
+      demoPanel:'BLTA8'
     }
   },
   methods:{
     //1.获取正在进行的手术 -- 3s定时访问
     getOpeInProcessData(){
+      console.log('获取正在进行的手术')
       this.$http['getOpeInProcess']()
       .then(res => {
         const { data } = res
@@ -162,13 +177,26 @@ export default {
         this.currentPanel = pattern['0']
       }
       
+    },
+    'isDemoMode':function(newVal,oldVal){
+      //只有不是演示模式才能发起发起请求
+      clearInterval(this.timer)
+      if(!newVal){
+        this.getOpeInProcessData()
+        this.timer = setInterval(() => {
+          this.getOpeInProcessData()
+        },3000)
+      }
     }
   },
   created(){
-    this.getOpeInProcessData()
-    this.timer = setInterval(() => {
+    //如果是不是演示模式才进行数据请求
+    if(!this.isDemoMode){
       this.getOpeInProcessData()
-    },3000)
+      this.timer = setInterval(() => {
+        this.getOpeInProcessData()
+      },3000)
+    }
   },
   beforeDestroy(){
     clearInterval(this.timer)
@@ -178,23 +206,25 @@ export default {
 
 <style scoped>
 .real-ope-info {
-  height: 100%;
+  height: 96%;
   background-color: #f8f8f8;
   box-sizing: border-box;
   /* border: 1px solid #24c79f; */
   border-radius: 5px;
-    color: #111
+  color: #111;
+  /* outline:1px solid black; */
 }
 .real-ope-info > span {
   display: inline-block;
-  font-size: 18px;
+  /* font-size: 18px; */
   padding: 10px 5px;
   width: 100%;
   box-sizing: border-box;
 }
 .process-ope-wrapper{
   margin-bottom: 20px;
-  height: 270px;
+  height: 320px;
+  /* outline: 1px solid red; */
 }
 .process-ope-wrapper > li {
   padding: 8px 5px;

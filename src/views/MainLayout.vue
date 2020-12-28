@@ -49,35 +49,37 @@ export default {
     bottom: 0;
     width: 224px;
     box-sizing: border-box;
-    background-color: #393d49;
+    background-color: #2e3d50;
     color: #939daa
 }
 .banner {
    position: absolute;
    top: 0;
    right: 0;
-   left: 224px;
+   left: 0;
    box-sizing: border-box;
-   background-color: #ffffff;
+   /* background-color: #ffffff; */
 }
 .main-container{
-    margin-top: 45px;
+    margin-top: 60px;
     margin-left: 224px;
-    padding: 15px;
+    padding: 0 15px 15px 15px;
     box-sizing: border-box;
     height: 850px;
+    background-color: #f1f2f6;
 }
 .footer-wrapper {
    position: absolute;
    bottom: 0;
    right: 0;
-   left: 224px;
+   left: 0;
    box-sizing: border-box;
-   background-color: #ffffff;
+   background-color: #157dba;
    text-align: center;
 }
 .copyright {
-    line-height: 42px;
+    line-height: 32px;
     font-size: 12px;
+    color: #f1f1f1;
 }
 </style>

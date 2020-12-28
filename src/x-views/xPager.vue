@@ -136,13 +136,13 @@ ul,li {
 }
 .show-border:hover {
     cursor: pointer;
-    background-color: #24c79f;
-    color: #ffffff;
+    color: #157dba;
+    border-color:  #157dba;
 }
 .active {
-     background-color: #24c79f;
+     background-color: #157dba;
      color: #ffffff !important;
-     border-color:  #24c79f;
+     border-color:  #157dba;
 }
 li > input {
     width: 35px;
@@ -153,12 +153,12 @@ li > input {
 .nav-page-btn {
     height: 25px;
     margin-left: 10px;
-    background-color: #24c79f;
+    background-color:#157dba;
     width: 50px;
     color: #f7f7f7;
     border-radius: 3px;
 }
 .nav-page-btn:hover {
-    background-color: #1ba885;
+    background-color:#1372a8;
 }
 </style>

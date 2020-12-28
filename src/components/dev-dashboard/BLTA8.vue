@@ -208,7 +208,7 @@ export default {
   height: 150px;
 }
 .indicator-wrapper {
-  height: 150px;
+  height: 180px;
   position: relative;
   padding: 0 10px;
   box-sizing: border-box;

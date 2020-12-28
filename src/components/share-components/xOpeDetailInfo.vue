@@ -186,10 +186,10 @@ export default {
   display: inline-block;
   font-size: 20px;
   padding: 0 0 2px 0;
-  border-bottom: 1px solid #24c79f;
+  border-bottom: 1px solid #e9ecf7;
   width: 100%;
   box-sizing: border-box;
-  color: #24c79f
+  color: #252631
 }
 .info-box > ul{
   font-size: 14px;

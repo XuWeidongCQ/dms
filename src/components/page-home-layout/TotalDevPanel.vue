@@ -33,14 +33,15 @@ export default {
 <style scoped>
 .panel-wrapper > span:last-child {
   position: absolute;
-  top:20px;
-  right: 20px;
-  font-size:60px
+  top:30px;
+  right: 30px;
+  font-size:70px
 }
 .panel-wrapper > span:first-child {
-  font-size: 35px;
+  font-size: 55px;
 }
 .panel-wrapper > p {
   font-size: 12px;
+  color:#a6b6c6;
 }
 </style>
