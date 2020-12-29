@@ -70,6 +70,7 @@ export default {
     getData(page = 0, size = 14) {
       this.$http["getOpeInfos"]({ params: { page: page, size: size } }).then(
         res => {
+          // console.log(res)
           const { data } = res;
           // const reg = /(?<=\().+?(?=\))/g
           this.opeInfos = data["content"];

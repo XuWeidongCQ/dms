@@ -149,7 +149,7 @@
     }
     .xu-select-wrapper .xu-select-option:hover {
         cursor: pointer;
-        background-color: #28a745;
+        background-color: #157dba;
         color: #ffffff;
     }
     /*滚动条样式*/

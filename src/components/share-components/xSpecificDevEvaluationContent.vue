@@ -13,35 +13,40 @@
       >
       </x-dev-info-card>
     </div>
-    <x-box class="dev-info-table-wrapper">
-      <div class="xu-box-title">
-        <span>仪器型号:{{ selDeviceType }} 序列号:{{ selDeviceSerialNumber }}</span>
-      </div>
-      <div class="dev-info-table xu-add-scrollBar">
-        <x-table
-        :title="['手术顺序号','医院手术号','手术名称','开始时间','结束时间','使用科室','使用体验','临床可靠性','故障情况','记录人']"
-        :size="'sm'"
-        >
-        <tr v-for="ope in opeInfos" :key="ope.operationNumber">
-          <td>
-            <span>{{ ope.operationNumber }}</span>
-            <x-button :value="'详情'" :size="'sm'" :type="'success'" @click="showModal(ope)"></x-button>
-          </td>
-          <td>{{ ope.hospitalOperationNumber }}</td>
-          <td>{{ ope.operationName }}</td>
-          <td>{{ ope.operationStartTime | formatterDate}}</td>
-          <td>{{ ope.operationEndTime | formatterDate}}</td>
-          <td>{{ ope.deviceDepartment }}</td>
-          <td>{{ ope.experienceLevel }}</td>
-          <td>{{ ope.reliabilityLevel }}</td>
-          <td>{{ ope.knownError +  ope.otherError }}</td>
-          <td>{{ ope.recordName }}</td>
-        </tr>
-        </x-table>
-      </div>
-      <div class="on-ope-hint" v-show="opeInfos.length === 0">请选择查看的仪器</div>
-    </x-box>
-    <!-- 弹窗 -->
+    <!-- 手术表格弹窗 -->
+    <x-modal v-if="opeModalShow" @close="opeModalShow = false">
+      <!-- 表格 -->
+      <x-box class="dev-info-table-wrapper">
+        <div class="xu-box-title">
+          <span>仪器型号：{{ selDeviceType }} 仪器序列号：{{ selDeviceSerialNumber }}</span>
+        </div>
+        <div class="dev-info-table xu-add-scrollBar">
+          <x-table
+          :title="['手术顺序号','医院手术号','手术名称','开始时间','结束时间','使用科室','使用体验','临床可靠性','故障情况','记录人']"
+          :size="'sm'"
+          >
+          <tr v-for="ope in opeInfos" :key="ope.operationNumber">
+            <td>
+              <span>{{ ope.operationNumber }}</span>
+              <x-button :value="'详情'" :size="'sm'" :type="'success'" @click="showModal(ope)"></x-button>
+            </td>
+            <td>{{ ope.hospitalOperationNumber }}</td>
+            <td>{{ ope.operationName }}</td>
+            <td>{{ ope.operationStartTime | formatterDate}}</td>
+            <td>{{ ope.operationEndTime | formatterDate}}</td>
+            <td>{{ ope.deviceDepartment }}</td>
+            <td>{{ ope.experienceLevel }}</td>
+            <td>{{ ope.reliabilityLevel }}</td>
+            <td>{{ ope.knownError +  ope.otherError }}</td>
+            <td>{{ ope.recordName }}</td>
+          </tr>
+          </x-table>
+        </div>
+        <div class="on-ope-hint" v-show="opeInfos.length === 0">请选择查看的仪器</div>
+      </x-box>
+    </x-modal>
+    
+    <!-- 手术详情弹窗 -->
     <x-ope-detail-info 
      v-if="modalShow" 
      @close="modalShow = false"
@@ -57,6 +62,8 @@ import xBox from '@/x-views/xBox'
 import xTable from "@/x-views/xTable"
 import xButton from "@/x-views/xButton"
 import xOpeDetailInfo from "@/components/share-components/xOpeDetailInfo";
+import xModal from '@/x-views/xModal';
+
 export default {
   props:{
     devInfoList:{
@@ -69,7 +76,8 @@ export default {
     xBox,
     xTable,
     xButton,
-    xOpeDetailInfo
+    xOpeDetailInfo,
+    xModal
   },
   data(){
     return {
@@ -78,6 +86,7 @@ export default {
       selDeviceSerialNumber:'',
       selOpe:{},
       modalShow:false,
+      opeModalShow:false,
       isTableFirstRender:true
     }
   },
@@ -97,19 +106,23 @@ export default {
         })
     },
     getOpeInfos(e){
-      if(e.isClick){
-        this.selDeviceType = e.deviceType
-        this.selDeviceSerialNumber = e.serialNumber
-        this.getData(e)
-      } else {  
-        if(this.isTableFirstRender){
-          // console.log(1)
-          this.selDeviceType = e.deviceType
-          this.selDeviceSerialNumber = e.serialNumber
-          this.getData(e)
-          this.isTableFirstRender = false
-        }
-      }
+      this.opeModalShow = true;
+      this.selDeviceType = e.deviceType;
+      this.selDeviceSerialNumber = e.serialNumber
+      this.getData(e)
+      // if(e.isClick){
+      //   this.selDeviceType = e.deviceType
+      //   this.selDeviceSerialNumber = e.serialNumber
+      //   this.getData(e)
+      // } else {  
+      //   if(this.isTableFirstRender){
+      //     // console.log(1)
+      //     this.selDeviceType = e.deviceType
+      //     this.selDeviceSerialNumber = e.serialNumber
+      //     this.getData(e)
+      //     this.isTableFirstRender = false
+      //   }
+      // }
       
     },
     showModal(ope){
@@ -126,10 +139,6 @@ export default {
   flex-wrap: wrap;
   margin: 0 -15px; 
 }
-.dev-info-table {
-  height: 430px;
-  font-size: 14px;
-}
 .on-ope-hint {
   position:absolute;
   top:50%;
@@ -137,5 +146,13 @@ export default {
   transform: translateX(-50%) translateY(-50%);
   font-size: 80px;
   color: #cccccc;
+}
+.dev-info-table-wrapper {
+  width: 1600px;
+}
+.dev-info-table {
+  max-height: 600px;
+  min-height: 400px;
+  font-size: 14px;
 }
 </style>

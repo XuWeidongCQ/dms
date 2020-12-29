@@ -38,6 +38,10 @@ export default {
     isModalChart:{
       type:Boolean,
       default:false
+    },
+    //10.标题距离底部的距离
+    bottom:{
+      type:Number,
     }
   },
   methods:{
@@ -49,6 +53,7 @@ export default {
       option.title = {
         text:this.titleText,
         x:'center',
+        bottom:this.bottom,
         textStyle:{
           color:'#111',
           fontSize:14,

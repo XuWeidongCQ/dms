@@ -14,7 +14,7 @@
         <real-time-panel></real-time-panel>
       </div>
     </div>
-    <!-- <div class="xu-row">
+    <div class="xu-row">
       <div class="xu-col-4">
         <dev-history-turn-on-num-chart></dev-history-turn-on-num-chart>
         <div class="interval"></div>
@@ -23,7 +23,7 @@
       <div class="xu-col-8">
         <ope-table></ope-table>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
