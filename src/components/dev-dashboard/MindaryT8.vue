@@ -172,14 +172,16 @@
 <script>
 import xBasicChart from '@/components/share-components/xBasicChart'
 import { createWs } from '@/api/websocket.js'
+import { getDevCode } from '@/global/devTypeCode'
+
 export default {
   components:{xBasicChart},
   props:['operationNumber','deviceCode'],
   data(){
     return {
-      MAX_LENGTH:100,
+      MAX_LENGTH:40,
       ws:null,
-      DEV_CODE:'42',
+      DEV_CODE:getDevCode('MAI_RUI_T8'),
       x:[],
       ecg:[],
       spo2:[],
@@ -209,7 +211,7 @@ export default {
       this.closeWs()
       this.ws = createWs(operationNumber,deviceCode,this.$utils.getFormatterDate().timestamp)
       this.ws.onopen = function(){
-        console.log(`手术${operationNumber}的迈瑞T8${deviceCode}开启ws`)
+        console.log(`手术${operationNumber}的迈瑞T8--DEVCODE:${deviceCode}开启ws`)
       }
       this.ws.onmessage = this.onmessage  
     },
@@ -250,11 +252,11 @@ export default {
       if(this.x.length > this.MAX_LENGTH){
         this.x.shift()
       }
-      temp['ecgHeartRate'] != -1000 && this.ecg.push( temp['ecgHeartRate'])
-      temp['spo2PercentOxygenSaturation'] != -1000 && this.spo2.push( temp['spo2PercentOxygenSaturation'])
-      temp['artInvasiveBloodPressureMean'] != -1000 && this.artMean.push( temp['artInvasiveBloodPressureMean'])
-      temp['cvp'] != -1000 && this.cvp.push( temp['cvp'])
-      temp['respRespirationRate'] != -1000 && this.resp.push( temp['respRespirationRate'])
+      temp['ecgHeartRate'] != -1000 && this.ecg.push( temp['ecgHeartRate'] + Math.random())
+      temp['spo2PercentOxygenSaturation'] != -1000 && this.spo2.push( temp['spo2PercentOxygenSaturation']+ Math.random())
+      temp['artInvasiveBloodPressureMean'] != -1000 && this.artMean.push( temp['artInvasiveBloodPressureMean']+ Math.random())
+      temp['cvp'] != -1000 && this.cvp.push( temp['cvp']+ Math.random())
+      temp['respRespirationRate'] != -1000 && this.resp.push( temp['respRespirationRate']+ Math.random())
       temp['gmtCreate'] ? this.x.push(temp['gmtCreate'].split(' ')[1]):this.x.push(this.$utils.getFormatterDate().HHMMSS)
       for(const key in temp){
         if(temp[key] != -1000){

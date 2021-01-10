@@ -17,7 +17,7 @@ export default {
 .no-ope-info {
   display: block;
   font-size: 60px;
-  color: rgba(50, 50, 50);
+  color: rgba(120, 120, 120);
   position: absolute;
   top: 50%;
   left: 50%;

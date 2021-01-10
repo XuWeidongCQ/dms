@@ -81,7 +81,7 @@
         <p>已使用：{{ statisticInfo.deviceServiceLife }}年</p>
         <p>总采集时长：{{ statisticInfo.operationDurationTimeAll }}秒</p>
         <x-button
-        :disable="statisticInfo.dataNumber === 0" 
+        :disable="opeNum === 0" 
         :value="'已完成' + opeNum + '场手术'"
         :type="'success'"
         @click="emitSelSerialNumber()"
@@ -187,7 +187,7 @@ export default {
     return {
       serialNumberList:[],
       statisticInfo:{},
-      selSerialNumber:'0',
+      selSerialNumber:'',
       devEvaluationInfo:null,
       specDevEvaluationInfo:null
     }
@@ -197,7 +197,7 @@ export default {
       if(this.statisticInfo.totalFinishOperationNumber){
         return this.statisticInfo.totalFinishOperationNumber
       } else {
-        return '--'
+        return 0
       }
     }
   },
@@ -234,7 +234,7 @@ export default {
         params:{deviceCode:deviceCode,deviceSerialNumber:deviceSerialNumber}
       }).then(res => {
         const {data} = res
-        // console.log(data)
+        console.log(data)
         this.statisticInfo = data
         // this.emitSelSerialNumber(false)
       })

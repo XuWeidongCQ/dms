@@ -66,10 +66,15 @@ export default {
       type:Boolean,
       default:false
     },
-    //是否填充颜色
+    //是否填充颜色,默认为填充，如果不要输入null,需要填充就输入{color:'rgba(41, 37, 37, 0.1)'}
     areaStyle:{
       type:Object,
       default:() => {return {}}
+    },
+    //控制数据点的样式，默认为空心小圆圈
+    symbol:{
+      type:String,
+      default:'emptyCircle'
     }
   },
   methods: {
@@ -82,7 +87,7 @@ export default {
         show:this.showYLabel,
         type:'value',
         nameLocation:'center',
-        nameGap:25,
+        nameGap:35,
         name:this.yName,
         max:this.yMax,
         min:this.yMin,
@@ -113,7 +118,7 @@ export default {
       }
       option.legend = this.legend
       option.tooltip = {trigger:'item'}
-      option.grid = {containLabel: true, left:'25px', right:'5px', top:'15px', bottom:'25px'}
+      option.grid = {containLabel: false, left:'55px', right:'35px', top:'15px', bottom:'35px'}
       option.series = []
       for(let key in this.source){
         if(key !== 'x'){
@@ -121,6 +126,7 @@ export default {
             type:this.type,
             areaStyle:this.areaStyle,
             smooth:this.smooth,
+            symbol:this.symbol,
             encode:{x:'x',y:key,seriesName:key}
           })
         }

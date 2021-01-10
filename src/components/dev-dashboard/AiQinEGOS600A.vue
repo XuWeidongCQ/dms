@@ -194,6 +194,8 @@
 <script>
 import xBasicChart from '@/components/share-components/xBasicChart'
 import { createWs } from '@/api/websocket.js'
+import { getDevCode } from '@/global/devTypeCode'
+
 export default {
   components:{xBasicChart},
   props:['operationNumber','deviceCode'],
@@ -201,7 +203,7 @@ export default {
     return {
       MAX_LENGTH:5,
       ws:null,
-      DEV_CODE:'50',
+      DEV_CODE:getDevCode('AI_QIN_EGOS600A'),
       x:[],
       toi1:[],
       toi2:[],

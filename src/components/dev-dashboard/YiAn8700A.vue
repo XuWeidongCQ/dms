@@ -122,11 +122,13 @@
 
 <script>
 import { createWs } from '@/api/websocket.js'
+import { getDevCode } from '@/global/devTypeCode'
+
 export default {
   props:['operationNumber','deviceCode'],
   data(){
     return {
-      DEV_CODE:'33',
+      DEV_CODE:getDevCode('YI_AN_8700A'),
       ws:null,
       params:{
         peak:'--',

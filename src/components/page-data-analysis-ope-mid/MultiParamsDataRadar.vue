@@ -2,7 +2,7 @@
   <x-box>
     <div class="chart-wrapper">
       <div class="choose-wrapper">
-        <x-select v-model="selectDevType" :options="Object.keys(devTypeCode)" :styleObj="{'width':'100px'}"></x-select>
+        <x-select v-model="selectDevType" :options="Object.keys(devTypeCode)"></x-select>
       </div>
       <x-radar-chart :option="option"></x-radar-chart>
     </div>
@@ -13,6 +13,8 @@
 import xBox from '@/x-views/xBox'
 import xSelect from '@/x-views/xSelect'
 import xRadarChart from '@/components/share-components/xRadarChart'
+import {getTypeCodes} from '@/global/devTypeCode'
+
 export default {
   components:{
     xBox,
@@ -21,16 +23,8 @@ export default {
   },
   data(){
     return {
-      selectDevType:'麻醉深度',
-      devTypeCode:{
-        '麻醉深度':1,
-        '麻醉机':2,
-        '无创脑氧':3,
-        '无创血红蛋白':4,
-        '普通监护仪':5,
-        '呼吸机':6,
-        '无创血压':7
-      },
+      selectDevType:Object.keys(getTypeCodes())[0],
+      devTypeCode:getTypeCodes(),
       option:{}
     }
   },
@@ -110,7 +104,7 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 700px;
+  height: 500px;
   position: relative;
 }
 .choose-wrapper {

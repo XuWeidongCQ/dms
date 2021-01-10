@@ -40,6 +40,8 @@
 import xBox from '@/x-views/xBox'
 import xTable from '@/x-views/xTable'
 import xSelect from '@/x-views/xSelect'
+import {getTypeCodes} from '@/global/devTypeCode'
+
 export default {
   components:{
     xBox,
@@ -49,7 +51,7 @@ export default {
   data(){
     return {
       sortedBy:'使用满意度',
-      selectDevType:'麻醉深度',
+      selectDevType:Object.keys(getTypeCodes())[0],
       sortedCode:{
         '采集时长':'totalCollectionOperationTimes',
         '掉线率':'averageDropRate',
@@ -57,15 +59,7 @@ export default {
         '使用体验':'averageExperienceLevel',
         '使用满意度':'averageReliabilityLevel'
       },
-      devTypeCode:{
-        '麻醉深度':1,
-        '麻醉机':2,
-        '无创脑氧':3,
-        '无创血红蛋白':4,
-        '普通监护仪':5,
-        '呼吸机':6,
-        '无创血压':7
-      },
+      devTypeCode:getTypeCodes(),
       performanceEvaluationData:[]
     }
   },
@@ -74,6 +68,7 @@ export default {
       const type = this.devTypeCode[devType]
       this.$http['getDevPerformanceEvaluationTable']({params:{deviceType:type}})
       .then(res => {
+        // console.log(res)
         const {data} = res
         this.mySort(data,this.sortedBy)
         this.performanceEvaluationData = data
@@ -116,7 +111,7 @@ export default {
   font-size: 18px;
 }
 .table-wrapper {
-  height: 400px;
+  height: 500px;
   font-size: 14px;
 }
 </style>

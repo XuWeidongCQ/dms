@@ -8,7 +8,7 @@
       v-if="devNum"
       :showPercent="false"
       :center="['30%','50%']"
-      :radius="['0%','80%']"
+      :radius="['0%','70%']"
       :legend="initLegend()" 
       :source="{'itemName':Object.keys(devNum),'itemValue':Object.values(devNum)}">
       </x-pie-chart>
@@ -32,8 +32,8 @@ export default {
       return {
         show:true,
         orient:'vertical',
-        right:'10',
-        top:'20',
+        right:'0',
+        top:'25',
         itemHeight:12,
         textStyle:{
           fontSize:12

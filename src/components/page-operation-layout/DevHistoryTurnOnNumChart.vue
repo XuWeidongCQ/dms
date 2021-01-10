@@ -12,7 +12,9 @@
       <x-basic-chart
       :color="['#5a5c69']" 
       :source="historyData"
-      :type="'bar'"
+      :type="'line'"
+      :smooth="true"
+      :boundaryGap="false"
       :yName="'数量/台'"
       :xName="'时间'">
       </x-basic-chart>
@@ -55,6 +57,6 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 260px;
+  height: 255px;
 }
 </style>

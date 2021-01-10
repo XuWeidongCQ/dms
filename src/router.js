@@ -35,10 +35,10 @@ const routes = [
                 }
             },
             {
-                path:'/dev-monitor',
-                component:() => import('./views/PageDevMonitorLayout.vue'),
+                path:'/dev-respirator',
+                component:() => import('./views/PageDevRespiratorLayout.vue'),
                 meta: {
-                    title: '大数据分析平台-麻醉深度仪器'
+                    title: '大数据分析平台-呼吸机'
                 }
             },
             {
@@ -74,6 +74,13 @@ const routes = [
                 component:() => import('./views/PageDataAnalysisOpeMid.vue'),
                 meta: { 
                     title: '术中仪器数据分析'
+                }
+            },
+            {
+                path:'/operation-info',
+                component:() => import('./views/PageOperationInfoLayout.vue'),
+                meta: {
+                    title:'手术信息'
                 }
             }
         ]

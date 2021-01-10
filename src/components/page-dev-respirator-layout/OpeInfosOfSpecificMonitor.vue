@@ -7,13 +7,14 @@
 <script>
 import xSpecificDevEvaluationContent from '@/components/share-components/xSpecificDevEvaluationContent'
 import { getDevInfos } from '@/global/devTypeCode'
+
 export default {
   components:{
     xSpecificDevEvaluationContent
   },
   data(){
     return {
-      devInfos:getDevInfos('无创血压监测仪(监护仪)')
+      devInfos:getDevInfos('呼吸机')
     }
   }
 }

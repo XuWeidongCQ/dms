@@ -7,8 +7,12 @@ import opeMidEvaluationApi from './ope-mid-evaluation-api'
 
 import showAlert from '@/x-views/xAlert/xAlert'
 
+
+const developmentMode = true
+
+
 const dataPool = axios.create({
-  baseURL:'http://www.dms.yuhualab.com:10086/eval'
+  baseURL:developmentMode ? 'http://172.20.29.106:10086/eval':'http://www.dms.yuhualab.com:10086/eval'
   // baseURL:'http://172.20.29.106:10086/eval'
 })
 

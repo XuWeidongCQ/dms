@@ -11,12 +11,12 @@
 }
 .real-time-panel-wrapper {
     padding: 15px;
-    background-color: rgba(130,130,130);
-    height: 100%;
+    background-color: rgba(22,42,49);
+    /* height: 100%; */
     box-sizing: border-box;
-    border-radius: 10px;
     position: relative;
-    height: 780px;
+    height: 720px;
+    border: 2px solid black
 }
 
 .panel-gray {

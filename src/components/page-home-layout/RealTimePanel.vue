@@ -2,12 +2,13 @@
   <x-box>
     <div class="xu-row">
       <div class="xu-col-9">
-        <div v-if="isDemoMode">
+        <div v-if="isDemoMode" class="dashboard-wrapper">
           <component :is="demoPanel"></component>
         </div>
-        <div v-else>
+        <div v-else class="dashboard-wrapper">
           <div v-for="ope in opeInProcess" :key="ope.operationNumber">
-            <div v-show="selOperationNumber == ope.operationNumber">
+            <!-- 缓存不同手术之间的显示数据，如果使用v-if就不会缓存 -->
+            <div v-if="selOperationNumber == ope.operationNumber">
               <keep-alive>
                 <component :is="currentPanel" 
                 :operationNumber='selOperationNumber'
@@ -41,7 +42,7 @@
             </li>
           </ul>
           <span class=" fa fa-desktop"> 使用仪器</span>
-          <ul class="process-ope-wrapper xu-add-scrollBar" v-show="opeInProcess.length !== 0">
+          <ul class="process-ope-wrapper xu-add-scrollBar">
             <li v-for="(dev,index) in opeUseDev" 
             :key="index"
             :class="{'active':selDeviceCode === dev.deviceCode}"
@@ -67,17 +68,18 @@ import AiQinEGOS600A from '@/components/dev-dashboard/AiQinEGOS600A'
 import MindaryT8 from '@/components/dev-dashboard/MindaryT8'
 import MindaryWATOEX65 from '@/components/dev-dashboard/MindaryWATOEX65'
 import xSwi from '@/x-views/xSwi'
-import XSwi from '@/x-views/xSwi.vue'
+import Demo from '@/components/dev-dashboard/Demo'
+import { getDevCode } from '@/global/devTypeCode'
 
 const pattern = {
   0:'NoRealTimeData',
-  30:'NuoHeNw9002S',
-  31:'PuKeYy106', 
-  32:'BLTA8',
-  33:'YiAn8700A',
-  42:'MindaryT8',
-  43:'MindaryWATOEX65',
-  50:'AiQinEGOS600A'
+  [getDevCode('NUO_HE_NW9002S')]:'NuoHeNw9002S',
+  [getDevCode('PU_KE_YY106')]:'PuKeYy106', 
+  [getDevCode('BAO_LAI_TE_A8')]:'BLTA8',
+  [getDevCode('YI_AN_8700A')]:'YiAn8700A',
+  [getDevCode('MAI_RUI_T8')]:'MindaryT8',
+  [getDevCode('MAI_RUI_WATOEX65')]:'MindaryWATOEX65',
+  [getDevCode('AI_QIN_EGOS600A')]:'AiQinEGOS600A'
 }
 
 export default {
@@ -91,7 +93,8 @@ export default {
     BLTA8,
     AiQinEGOS600A,
     MindaryT8,
-    MindaryWATOEX65
+    MindaryWATOEX65,
+    Demo
   },
   data(){
     return {
@@ -102,8 +105,8 @@ export default {
       currentPanel:'NoRealTimeData',
       opePanelPattern:{},//用来存放所有手术的面板组件
       timer:null,
-      isDemoMode:true,//用来控制是否是演示模式
-      demoPanel:'BLTA8'
+      isDemoMode:false,//用来控制是否是演示模式
+      demoPanel:'Demo'
     }
   },
   methods:{
@@ -223,7 +226,7 @@ export default {
 }
 .process-ope-wrapper{
   margin-bottom: 20px;
-  height: 320px;
+  height: 315px;
   /* outline: 1px solid red; */
 }
 .process-ope-wrapper > li {
@@ -236,8 +239,17 @@ export default {
   overflow: hidden;
 }
 .active {
-  background-color: #24c79f !important;
+  background-color: #157dba !important;
   color: #ffffff !important;
   transition: background-color 0.3s;
+}
+.dashboard-wrapper {
+  margin-top: 10px;
+  border-right: 35px solid #363636;
+  border-left: 35px solid #363636;
+  border-top: 25px solid  #363636;
+  border-bottom: 25px solid  #363636;
+  box-sizing: border-box;
+  border-radius: 15px;
 }
 </style>

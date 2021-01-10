@@ -6,65 +6,62 @@
     <ul class="nav-links-wrapper">
       <router-link tag="li" to='/home' active-class="active" exact class="nav-link">
         <i class="fa fa-th-large fa-fw"></i>
-        <span>基本概况</span>
+        <span>实时监测</span>
+      </router-link>
+      <router-link tag="li" to='/operation-info' active-class="active" exact class="nav-link">
+        <i class="fa fa-bars fa-fw"></i>
+        <span>手术数据</span>
       </router-link>
       <router-link tag="li" to='/data-analysis-ope-mid' active-class="active" exact class="nav-link">
-        <i class="fa fa-area-chart fa-fw"></i>
-        <span>术中仪器数据分析</span>
+        <i class="fa fa-bars fa-fw"></i>
+        <span>仪器数据</span>
       </router-link>
       <li @click="toggle()" class="nav-link toggle-link">
-        <i class="fa fa-desktop fa-fw"></i>
+        <i class="fa fa-bars fa-fw"></i>
         <span>仪器详细数据</span>
         <span class="arrow">
           <i class="fa" :class="{'fa-angle-left':!isSpread,'fa-angle-down':isSpread}"></i>
         </span>
       </li>
       <ul :class="{'shrink-links-wrapper':!isSpread,'spread-links-wrapper':isSpread}" class="toggle-links-wrapper">
-        <router-link tag="li" to='/dev-anesthesia' active-class="active" exact class="nav-link">
+        <router-link 
+        v-for='(item,index) in urls' 
+        :key='index' tag="li" 
+        :to="item['url']"
+        active-class="active" 
+        exact 
+        class="nav-link"
+        >
           <i class="fa fa-laptop"></i>
-          <span>麻醉机</span>
+          <span>{{ item['name'] }}</span>
         </router-link>
-        <router-link tag="li" to='/dev-depth-of-anesthesia' active-class="active" exact class="nav-link">
-          <i class="fa fa-laptop"></i>
-          <span>麻醉深度监测仪</span>
-        </router-link>
-        <router-link tag="li" to='/dev-noninvasive-hemoglobin' active-class="active" exact class="nav-link">
-          <i class="fa fa-laptop"></i>
-          <span>无创血红蛋白监测仪</span>
-        </router-link>
-        <router-link tag="li" to='/dev-noninvasive-brain-oxygen' active-class="active" exact class="nav-link">
-          <i class="fa fa-laptop"></i>
-          <span>无创脑氧饱和度监测仪</span>
-        </router-link>
-        <router-link tag="li" to='/dev-noninvasive-blood-pressure' active-class="active" exact class="nav-link">
-          <i class="fa fa-laptop"></i>
-          <span>无创血压监测仪</span>
-        </router-link>
-        <router-link tag="li" to='/dev-monitor' active-class="active" exact class="nav-link">
-          <i class="fa fa-laptop"></i>
-          <span>监护仪</span>
-        </router-link>
-        <!-- <router-link tag="li" to='/device' active-class="active" exact class="nav-link">
-          <i class="fa fa-laptop"></i>
-          <span>呼吸机</span>
-        </router-link>  -->
       </ul> 
     </ul>
   </div>
 </template>
 
 <script>
+import { typeInfo } from '@/global/devTypeCode'
+
 export default {
   data(){
     return {
-      isSpread:false
+      isSpread:false,
+      urls:this.getUrls()
     }
   },
   methods:{
     toggle(){
       this.isSpread = !this.isSpread
+    },
+    getUrls(){
+      const ans = []
+      for(const key in typeInfo){
+        ans.push({'name':key,'url':typeInfo[key]['url']})
+      }
+      return ans
     }
-  }
+  },
 }
 </script>
 
@@ -109,6 +106,6 @@ export default {
   overflow: hidden;
 }
 .toggle-links-wrapper > .nav-link {
-  padding-left: 30px;
+  padding-left: 20px;
 }
 </style>

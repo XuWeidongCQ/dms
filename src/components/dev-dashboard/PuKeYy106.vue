@@ -30,6 +30,8 @@
 <script>
 import xBasicChart from '@/components/share-components/xBasicChart'
 import { createWs } from '@/api/websocket.js'
+import { getDevCode } from '@/global/devTypeCode'
+
 export default {
   components:{xBasicChart},
   props:['operationNumber','deviceCode'],
@@ -42,7 +44,7 @@ export default {
       BSR:'--',
       SQI:'--',
       ws:null,
-      DEV_CODE:'31'
+      DEV_CODE:getDevCode('PU_KE_YY106')
     }
   },
   methods:{

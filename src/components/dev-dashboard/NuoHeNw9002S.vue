@@ -13,15 +13,15 @@
     </div>
     <div class="indicator-wrapper">
       <div>
-        <span class="indicator-label">CSI,麻醉深度指数</span>
+        <span class="indicator-label">CSI</span>
         <span class="indicator-num">{{ CSI }}</span>
       </div>
       <div>
-        <span class="indicator-label">BS,爆发抑制比</span>
+        <span class="indicator-label">BS</span>
         <span class="indicator-num">{{ BS }}</span>
       </div>
       <div>
-        <span class="indicator-label">SQI,信号质量指数</span>
+        <span class="indicator-label">SQI</span>
         <span class="indicator-num">{{ SQI }}</span>
       </div>
     </div>
@@ -31,6 +31,8 @@
 <script>
 import { createWs } from '@/api/websocket.js'
 import xBasicChart from '@/components/share-components/xBasicChart'
+import { getDevCode } from '@/global/devTypeCode'
+
 export default {
   //deviceCodeList表示该手术场次中所有使用的仪器列表，用来确定该仪器面板是否显示
   props:['operationNumber','deviceCode'],
@@ -46,7 +48,7 @@ export default {
       BS:'--',
       SQI:'--',
       ws:null,
-      DEV_CODE:'30'
+      DEV_CODE:getDevCode('NUO_HE_NW9002S')
     }
   },
   methods:{

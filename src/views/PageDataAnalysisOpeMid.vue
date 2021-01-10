@@ -1,13 +1,13 @@
 <template>
   <div class="page-wrapper">
     <div class="xu-row mb15">
-      <div class="xu-col-8">
-        <multi-params-data-radar></multi-params-data-radar>
+      <div class="xu-col-12">
+        <multi-params-data-table></multi-params-data-table>
       </div>
     </div>
     <div class="xu-row">
-      <div class="xu-col-12">
-        <multi-params-data-table></multi-params-data-table>
+      <div class="xu-col-6">
+        <multi-params-data-radar></multi-params-data-radar>
       </div>
     </div>
   </div>

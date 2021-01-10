@@ -1,5 +1,5 @@
 <template>
-  <div class="real-time-panel-wrapper bg-black">
+  <div class="real-time-panel-wrapper">
     <!-- Ppeak Pmean peep -->
     <div class="xu-row">
       <div class="xu-col-3">
@@ -108,6 +108,8 @@
 <script>
 import xBasicChart from '@/components/share-components/xBasicChart'
 import { createWs } from '@/api/websocket.js'
+import { getDevCode } from '@/global/devTypeCode'
+
 export default {
   components:{xBasicChart},
   props:['operationNumber','deviceCode'],
@@ -115,7 +117,7 @@ export default {
     return {
       MAX_LENGTH:5,
       ws:null,
-      DEV_CODE:'43',
+      DEV_CODE:getDevCode('MAI_RUI_WATOEX65'),
       x:[],
       pMean:[],
       mv:[],
@@ -196,7 +198,7 @@ export default {
 
 <style scoped>
 .half-height {
-  height: 330px;
+  height: 340px;
 }
 .indicator-value-pos {
   position: absolute;

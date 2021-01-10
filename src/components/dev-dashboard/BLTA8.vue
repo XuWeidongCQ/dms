@@ -107,6 +107,8 @@
 <script>
 import xBasicChart from '@/components/share-components/xBasicChart'
 import { createWs } from '@/api/websocket.js'
+import { getDevCode } from '@/global/devTypeCode'
+
 export default {
   components:{xBasicChart},
   props:['operationNumber','deviceCode'],
@@ -114,7 +116,7 @@ export default {
     return {
       MAX_LENGTH:100,
       ws:null,
-      DEV_CODE:'32',
+      DEV_CODE:getDevCode('BAO_LAI_TE_A8'),
       x:[],
       hr:[],
       spo2:[],
@@ -205,10 +207,10 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 150px;
+  height: 140px;
 }
 .indicator-wrapper {
-  height: 180px;
+  height: 160px;
   position: relative;
   padding: 0 10px;
   box-sizing: border-box;

@@ -6,21 +6,15 @@
 
 <script>
 import xSpecificDevEvaluationContent from '@/components/share-components/xSpecificDevEvaluationContent'
+import { getDevInfos } from '@/global/devTypeCode'
+
 export default {
   components:{
     xSpecificDevEvaluationContent
   },
   data(){
     return {
-      devInfos:[
-        {
-          imgUrl:require('../../assets/dev-image/EGOS600A.jpg') ,
-          deviceCode:'50',
-          devName:'NIRS局部组织氧饱和度仪',
-          devType:'EGOS-600',
-          devCompany:'苏州爱琴生物医疗电子有限公司'
-        },
-      ],
+      devInfos:getDevInfos('无创脑氧饱和度监测仪')
     }
   }
 }

@@ -6,21 +6,15 @@
 
 <script>
 import xSpecificDevEvaluationContent from '@/components/share-components/xSpecificDevEvaluationContent'
+import { getDevInfos } from '@/global/devTypeCode'
+
 export default {
   components:{
     xSpecificDevEvaluationContent
   },
   data(){
     return {
-      devInfos:[
-        {
-          imgUrl:require('../../assets/dev-image/BLTA8.jpg') ,
-          deviceCode:'32',
-          devName:'重症信息化插件式监护仪',
-          devType:'A8',
-          devCompany:'广东宝莱特医用科技股份有限公司'
-        },
-      ],
+      devInfos:getDevInfos('无创血红蛋白监测仪')
     }
   }
 }

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import OpeInfosOfSpecificMonitor from '@/components/page-dev-monitor-layout/OpeInfosOfSpecificMonitor'
+import OpeInfosOfSpecificMonitor from '@/components/page-dev-respirator-layout/OpeInfosOfSpecificMonitor'
 export default {
  components:{
    OpeInfosOfSpecificMonitor

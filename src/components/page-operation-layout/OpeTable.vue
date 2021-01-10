@@ -4,16 +4,20 @@
       <span>已完成手术概况</span>
     </div>
     <x-table
-      :title="['手术顺序号','手术名称','开始时间','结束时间','设备','操作']"
+      :title="['手术顺序号','患者入院ID','麻醉方式','既往病史','特殊情况','手术名称','开始时间','结束时间','设备','操作']"
       :size="'sm'"
       :align="'center'"
       :strip="true"
-      :colWidth="['80px','250px','150px','150px','300px']"
     >
+    <!-- colWidth="['80px','250px','150px','300px']" -->
       <tr v-for="ope in opeInfos" :key="ope.patientId">
         <td>
           <span>{{ ope.operationNumber }}</span>
         </td>
+        <td>{{ ope.admissionId }}</td>
+        <td>{{ ope.operationAnesthesiaMode }}</td>
+        <td>{{ ope.pastMedicalHistory }}</td>
+        <td>{{ ope.specialDiseaseCase }}</td>
         <td>{{ ope.operationName }}</td>
         <td>{{ ope.operationStartTime | formatterDate }}</td>
         <td>{{ ope.operationEndTime | formatterDate }}</td>
@@ -106,7 +110,7 @@ export default {
   bottom: 5px;
 }
 .table-wrapper {
-  height: 610px;
+  height: 450px;
   font-size: 14px;
 }
 .total-badge {
