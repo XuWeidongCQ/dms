@@ -24,8 +24,7 @@
           :source="{x:x,Pmean:pMean}"
           :showXLabel="false"
           :boundaryGap="false"
-          :yMax="30"
-          :yMin="-6"
+          :areaStyle="{color:'rgba(83, 208, 192, 0.4)'}"
           >
           </x-basic-chart>
         </div>
@@ -34,7 +33,7 @@
         <div class="peep-wrapper">
           <span class="indicator-name">PEEP</span>
           <span class="indicator-units">cmH2O</span>
-          <span class="indicator-value indicator-value-pos">{{ params.pEEP}}</span>
+          <span class="indicator-value indicator-value-pos">{{ params.peep}}</span>
         </div>
       </div>
     </div>
@@ -45,7 +44,7 @@
           <div class="mv-wrapper">
             <div class="indicator-name">MV</div>
             <div class="indicator-units">L/min</div>
-            <div class="indicator-value indicator-value-pos">{{ params.mV }}</div>
+            <div class="indicator-value indicator-value-pos">{{ params.mv }}</div>
             <div class="indicator-value-range">
               <p class="value-range">10.0</p>
               <p class="value-range">2.0</p>
@@ -54,7 +53,7 @@
           <div class="tve-wrapper">
             <div class="indicator-name">TVe</div>
             <div class="indicator-units">mL</div>
-            <div class="indicator-value indicator-value-pos">{{ params.tVe }}</div>
+            <div class="indicator-value indicator-value-pos">{{ params.tve }}</div>
             <div class="indicator-value-range">
               <p class="value-range">1000</p>
               <p class="value-range">5</p>
@@ -70,7 +69,7 @@
             </div>
           </div>
           <div class="fio2-wrapper">
-            <div class="indicator-name">FiO2</div>
+            <div class="indicator-name">fiO2</div>
             <div class="indicator-units">%</div>
             <div class="indicator-value indicator-value-pos">{{ params.fiO2 }}</div>
             <div class="indicator-value-range">
@@ -89,8 +88,7 @@
           :source="{x:x,MV:mv}"
           :showXLabel="false"
           :boundaryGap="false"
-          :yMax="10"
-          :yMin="0"
+          :areaStyle="{color:'rgba(129, 189, 93, 0.4)'}"
           >
           </x-basic-chart>
         </div>
@@ -98,7 +96,7 @@
       <div class="xu-col-3">
         <div class="ie-wrapper">
           <span class="indicator-name">I:E</span>
-          <span class="indicator-value indicator-value-pos">{{ params.iE }}</span>
+          <span class="indicator-value indicator-value-pos">{{ params.ie }}</span>
         </div>
       </div>
     </div>
@@ -123,13 +121,13 @@ export default {
       mv:[],
       params:{
         fiO2:'--',
-        iE:'--',
-        mV:'--',
-        pEEP:'--',
+        ie:'--',
+        mv:'--',
+        peep:'--',
         pMean:'--',
         pPeak:'--',
         rate:'--',
-        tVe:'--'
+        tve:'--'
       }
     }
   },
@@ -160,9 +158,10 @@ export default {
     },
     parseData(data){
       const temp = JSON.parse(data)
-      this.pushLimit(this.mv,this.MAX_LENGTH,temp['mV'])
+      // console.log(temp)
+      this.pushLimit(this.mv,this.MAX_LENGTH,temp['mv'])
       this.pushLimit(this.pMean,this.MAX_LENGTH,temp['pMean'])
-      this.pushLimit(this.x,this.MAX_LENGTH,temp['gmtCreate'].split(' ')[1])
+      this.pushLimit(this.x,this.MAX_LENGTH,temp['gmtCreate'].split('T')[1])
       for(const key in temp){
         if(temp[key] != -1000){
           this.params[key] = temp[key]

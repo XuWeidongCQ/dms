@@ -24,64 +24,40 @@ const routes = [
                 path: '',
                 component: () => import('./views/PageHomeLayout.vue'),
                 meta: {
-                    title: '大数据分析平台-首页'
+                    title: '实时采集'
                 }
             },
             {
-                path:'/dev-depth-of-anesthesia',
-                component:() => import('./views/PageDevDepthOfAnesthesiaLayout.vue'),
+                path:'/dev-category-analysis',
+                component: () => import('./views/PageDevCategoryAnalysis.vue'),
+                meta:{
+                    title:'仪器分类评价'
+                }
+            },   
+            {
+                path:'/col-info',
+                component:() => import('./views/PageColInfoLayout.vue'),
                 meta: {
-                    title: '大数据分析平台-麻醉深度仪器'
+                    title:'采集记录'
                 }
             },
             {
-                path:'/dev-respirator',
-                component:() => import('./views/PageDevRespiratorLayout.vue'),
-                meta: {
-                    title: '大数据分析平台-呼吸机'
+                path:'/follow-up',
+                component:() => import('./views/PageDevFollowUpEval.vue'),
+                meta:{
+                    title:'追踪评价结果'
                 }
             },
             {
-                path:'/dev-anesthesia',
-                component:() => import('./views/PageDevAnesthesiaLayout.vue'),
-                meta: {
-                    title: '大数据分析平台-麻醉机'
+                path:'/maintenance',
+                component:() => import('./views/PageDevMaintenanceEval.vue'),
+                meta:{
+                    title:'维保售后评价'
                 }
             },
             {
-                path:'/dev-noninvasive-hemoglobin',
-                component:() => import('./views/PageDevNoninvasiveHemoglobinLayout.vue'),
-                meta: {
-                    title: '大数据分析平台-无创血红蛋白仪器'
-                }
-            },
-            {
-                path:'/dev-noninvasive-brain-oxygen',
-                component:() => import('./views/PageDevNoninvasiveBrainOxygenLayout.vue'),
-                meta: {
-                    title: '大数据分析平台-无创脑氧仪器'
-                }
-            },
-            {
-                path:'/dev-noninvasive-blood-pressure',
-                component:() => import('./views/PageDevNibpLayout.vue'),
-                meta: {
-                    title: '大数据分析平台-无创血压仪器'
-                }
-            },
-            {
-                path:'/data-analysis-ope-mid',
-                component:() => import('./views/PageDataAnalysisOpeMid.vue'),
-                meta: { 
-                    title: '术中仪器数据分析'
-                }
-            },
-            {
-                path:'/operation-info',
-                component:() => import('./views/PageOperationInfoLayout.vue'),
-                meta: {
-                    title:'手术信息'
-                }
+                path:'/economic',
+                component:() => import('./views/PageDevEconomicEval.vue')
             }
         ]
     }

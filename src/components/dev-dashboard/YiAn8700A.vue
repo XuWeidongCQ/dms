@@ -201,11 +201,11 @@ export default {
 
 <style scoped>
 .left {
-  width: 400px;
+  width: 390px;
   float: left;
 }
 .right {
-  width: 400px;
+  width: 390px;
   float: right;
 }
 .pressure-box-wrapper {

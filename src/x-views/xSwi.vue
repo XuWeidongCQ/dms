@@ -39,7 +39,7 @@ export default {
   text-align: start;
 }
 .on {
-  background-color: #157dba;
+  background-color: #5473e8;;
 }
 .on > .toggle-circle {
   transform: translateX(1px);
@@ -52,8 +52,11 @@ export default {
 }
 .toggle-circle {
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top:2px;
+  left: 2px;
   border-radius: 50%;
   background-color: #f1f1f1;
   transition: transform 200ms ease-in 0s;

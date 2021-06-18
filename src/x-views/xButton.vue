@@ -2,7 +2,7 @@
   <button 
   :class="[`xu-btn-${this.size}`,`xu-btn-${this.type}`,{'xu-btn-invalid':disable}]"  
   @click="emitClick">
-  {{ value }}
+  <span :class="markerObj"> {{ value }}</span>
   </button>
 </template>
 
@@ -27,6 +27,11 @@ export default {
     disable:{
       type:Boolean,
       default:false
+    },
+    //可以传入fontawesome的class名
+    markerObj:{
+      type:Array,
+      default: () => []
     }
   },
   methods:{

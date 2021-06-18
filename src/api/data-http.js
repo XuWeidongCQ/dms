@@ -1,18 +1,22 @@
 import axios from 'axios'
-import deviceApi from './device-api'
-import operationApi from './operation-api'
-import deviceCardApi from './device-card-api'
-import operationMarkApi from './operation-mark-api'
-import opeMidEvaluationApi from './ope-mid-evaluation-api'
+import API from './api'
 
 import showAlert from '@/x-views/xAlert/xAlert'
 
 
-const developmentMode = true
+let developmentMode = undefined
+if(process.env.NODE_ENV === 'development'){
+  developmentMode = false
+}
+if(process.env.NODE_ENV === 'production'){
+  developmentMode = false
+}
+
+
 
 
 const dataPool = axios.create({
-  baseURL:developmentMode ? 'http://172.20.29.106:10086/eval':'http://www.dms.yuhualab.com:10086/eval'
+  baseURL:developmentMode ? 'http://172.20.29.106:10086/devicemanage':'http://www.dms.yuhualab.com:10086/devicemanage'
   // baseURL:'http://172.20.29.106:10086/eval'
 })
 
@@ -30,9 +34,13 @@ dataPool.interceptors.response.use(res => {
   const {config:reqConfig,data:resData} = res;
   const {method:reqMethod,data:reqData} = reqConfig;
   const {code} = resData
+  // console.log(resData)
   if(code === 200){ //200才是成功
     return resData
-  } 
+  } else {
+    // console.log('出错')
+    console.log(resData)
+  }
   return resData
 },error => {
   return Promise.reject(error)
@@ -42,11 +50,7 @@ dataPool.interceptors.response.use(res => {
 const http = {}
 const api = Object.assign(
     {},
-    deviceApi,
-    operationApi,
-    deviceCardApi,
-    operationMarkApi,
-    opeMidEvaluationApi
+    API
   )
 
 

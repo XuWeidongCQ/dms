@@ -1,16 +1,17 @@
 
 .xu-box {
     background-color: #ffffff;
-    border-radius: 5px;
-    padding: 20px;
+    /* border-radius: 5px; */
+    padding: 20px 15px;
     position: relative;
     /* box-shadow: 0 0 10px 5px rgba(44, 41, 41, 0.1); */
 }
 .xu-box-title {
-    font-size: 18px;
+    font-size: 16px;
     color: #5a5c69;
     padding-bottom: 5px;
     margin-top: -5px;
+    font-weight: bold;
     /* border-bottom: 1px solid #303030; */
 }
 .xu-box-content {

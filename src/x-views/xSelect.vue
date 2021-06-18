@@ -114,17 +114,18 @@
         transform-origin: center;
     }
     .xu-select-wrapper .xu-select-value {
-        display: block;
+        /* display: block; */
         padding: 6px 25px 6px 10px;
         border: 1px solid #dcdfe6;
         border-radius: 4px;
         font-size: 1em;
         line-height: 1em;
         cursor: pointer;
+        vertical-align: middle;
     }
     .xu-select-wrapper .xu-select-value:focus {
         outline: none;
-        border: 1px solid #48a8ff !important;
+        border: 1px solid #1890ff !important;
         border-radius: 4px;
     }
     .xu-select-wrapper .xu-select-option-wrapper {
@@ -149,7 +150,7 @@
     }
     .xu-select-wrapper .xu-select-option:hover {
         cursor: pointer;
-        background-color: #157dba;
+        background-color: #1890ff;
         color: #ffffff;
     }
     /*滚动条样式*/
@@ -160,7 +161,7 @@
     }
     /*webkit样式*/
     .scrollBar-style::-webkit-scrollbar {/*滚动槽部分的样式*/
-        width: 5px;
+        width: 2px;
         border-radius: 2px;
         background-color: #e6e6e6;
     }

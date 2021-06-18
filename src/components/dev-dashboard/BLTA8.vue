@@ -54,7 +54,7 @@
           :color="['#ff3a28']" 
           :yName="'IBP'"
           :type="'line'"
-          :source="{x:x,IBP:ibpMap}"
+          :source="{x:x,IBP:ibpMap1}"
           :showXLabel="false"
           :areaStyle="null"
           >
@@ -66,9 +66,9 @@
           <span class="indicator-name">IBP</span>
           <span class="indicator-units">mmHg</span>
           <span class="indicator-value text-small">
-            {{ params.ibpSys + '/'}}
-            {{ ' ' + params.ibpDia }}
-            {{ params.ibpMap }}
+            {{ params.ibpSys1 + '/'}}
+            {{ ' ' + params.ibpDia1 }}
+            {{ params.ibpMap1 }}
           </span>
         </div>
       </div>
@@ -77,9 +77,9 @@
     <div class="xu-row">
       <div class="xu-col-4">
         <div class="indicator-wrapper temperature-wrapper">
-          <span class="indicator-name">T</span>
+          <span class="indicator-name">T1</span>
           <span class="indicator-units">℃</span>
-          <span class="indicator-value">{{ params.temperature }}</span>
+          <span class="indicator-value">{{ params.temperature1 }}</span>
         </div>
       </div>
       <div class="xu-col-4">
@@ -114,24 +114,24 @@ export default {
   props:['operationNumber','deviceCode'],
   data(){
     return {
-      MAX_LENGTH:100,
+      MAX_LENGTH:10,
       ws:null,
       DEV_CODE:getDevCode('BAO_LAI_TE_A8'),
       x:[],
       hr:[],
       spo2:[],
-      ibpMap:[],
+      ibpMap1:[],
       params:{
         hr:'--',
-        ibpDia:'--',
-        ibpMap:'--',
-        ibpSys:'--',
+        ibpDia1:'--',
+        ibpMap1:'--',
+        ibpSys1:'--',
         nibpDia:'--',
         nibpMap:'--',
         nibpSys:'--',
         pr:'--',
         spo2:'--',
-        temperature:'--'
+        temperature1:'--'
       }
     }
   },
@@ -159,27 +159,29 @@ export default {
     },
     parseData(data){
       const temp = JSON.parse(data)
+      // console.log(temp)
       if(this.hr.length > this.MAX_LENGTH){
         this.hr.shift()
       }
       if(this.spo2.length > this.MAX_LENGTH){
         this.spo2.shift()
       }
-      if(this.ibpMap.length > this.MAX_LENGTH){
-        this.ibpMap.shift()
+      if(this.ibpMap1.length > this.MAX_LENGTH){
+        this.ibpMap1.shift()
       }
       if(this.x.length > this.MAX_LENGTH){
         this.x.shift()
       }
       temp['hr'] != -1000 && this.hr.push(temp['hr'])
       temp['spo2'] != -1000 && this.spo2.push(temp['spo2'])
-      temp['ibpMap'] != -1000 && this.ibpMap.push(temp['ibpMap'])
+      temp['ibpMap1'] != -1000 && this.ibpMap1.push(temp['ibpMap1'])
       this.x.push(temp['gmtCreate'])
       for(const key in temp){
         if(temp[key] != -1000){
           this.params[key] = temp[key]
         }
       }
+      // console.log(temp['hr'])
     },
     onmessage(e){
       console.log(`手术${this.operationNumber}的宝莱特收到一条数据`)
@@ -238,7 +240,7 @@ export default {
   top:50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  font-size: 100px;
+  font-size: 80px;
   font-weight: bold;
   font-stretch: ultra-condensed;
 }
@@ -252,7 +254,7 @@ export default {
   left: 20px;
 }
 .text-small {
-  font-size: 60px !important;
+  font-size: 50px !important;
   white-space: nowrap;
 }
 </style>

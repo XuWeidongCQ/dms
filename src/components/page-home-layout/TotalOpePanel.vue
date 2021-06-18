@@ -1,7 +1,7 @@
 <template>
   <x-box class="panel-wrapper">
     <span>{{ total }}</span>
-    <p>平台已接入的手术总场次</p>
+    <p>已完成的采集总场次</p>
     <span class="fa fa-bed"></span>
   </x-box>
 </template>
@@ -17,7 +17,7 @@ export default {
   },
   methods:{
     getData(){
-      this.$http['getTotalOpe']()
+      this.$http['getTotalCol']()
       .then(res => {
         const { data } = res
         this.total = data
@@ -35,10 +35,11 @@ export default {
   position: absolute;
   top:30px;
   right: 30px;
-  font-size:70px
+  font-size:70px;
+  color: #778ca2;
 }
 .panel-wrapper > span:first-child {
-  font-size: 55px;
+  font-size: 50px;
 }
 .panel-wrapper > p {
   font-size: 12px;

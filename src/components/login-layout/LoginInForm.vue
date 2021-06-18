@@ -9,7 +9,6 @@
         </div>
         <div class="login-btn-wrapper">
             <button @click="login">登录</button>
-            <a>忘记密码?</a>
         </div>
         <div class="footer">
             <p>Copyright©2020 重庆大学微系统研究中心余华课题组 版权所有</p>
@@ -31,6 +30,8 @@ export default {
     },
     methods:{
         login:function(){
+            this.$router.push('/home')
+            return
             if(this.username === 'admin' && this.password === 'admin'){
                 this.$router.push('/home')
             } else {
@@ -43,7 +44,7 @@ export default {
 
 <style scoped>
 .form-wrapper {
-    padding: 50px 50px;
+    padding: 50px 40px;
     color: #3a3b45;
     text-align: center;
 }
@@ -87,6 +88,6 @@ export default {
 }
 .footer {
     margin-top: 15px;
-    font-size: 11px;
+    font-size: 12px;
 }
 </style>

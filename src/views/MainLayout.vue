@@ -49,14 +49,14 @@ export default {
     bottom: 0;
     width: 224px;
     box-sizing: border-box;
-    background-color: #2e3d50;
+    background-color: #393e4b;
     color: #939daa
 }
 .banner {
    position: absolute;
    top: 0;
    right: 0;
-   left: 0;
+   left: 224px;
    box-sizing: border-box;
    /* background-color: #ffffff; */
 }
@@ -65,20 +65,22 @@ export default {
     margin-left: 224px;
     padding: 0 15px 15px 15px;
     box-sizing: border-box;
-    height: 850px;
-    background-color: #f1f2f6;
+    /* height: 850px; */
+    height: 88vh;
+    background-color: #edf0fa;
 }
 .footer-wrapper {
    position: absolute;
    bottom: 0;
    right: 0;
-   left: 0;
+   left: 224px;
    box-sizing: border-box;
-   background-color: #157dba;
+   background-color: #5473e8;
    text-align: center;
+   /* height: 5vh; */
 }
 .copyright {
-    line-height: 32px;
+    line-height: 42px;
     font-size: 12px;
     color: #f1f1f1;
 }

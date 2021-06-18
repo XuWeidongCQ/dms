@@ -5,37 +5,29 @@
     </div>
     <ul class="nav-links-wrapper">
       <router-link tag="li" to='/home' active-class="active" exact class="nav-link">
-        <i class="fa fa-th-large fa-fw"></i>
+        <i class="fa fa-line-chart fa-fw"></i>
         <span>实时监测</span>
       </router-link>
-      <router-link tag="li" to='/operation-info' active-class="active" exact class="nav-link">
-        <i class="fa fa-bars fa-fw"></i>
-        <span>手术数据</span>
+      <router-link tag="li" to='/col-info' active-class="active" exact class="nav-link">
+        <i class="fa fa-server fa-fw"></i>
+        <span>采集记录</span>
       </router-link>
-      <router-link tag="li" to='/data-analysis-ope-mid' active-class="active" exact class="nav-link">
-        <i class="fa fa-bars fa-fw"></i>
-        <span>仪器数据</span>
+      <router-link tag="li" to='/follow-up' active-class="active" exact class="nav-link">
+        <i class="fa fa-calendar-o fa-fw"></i>
+        <span>追踪评价</span>
       </router-link>
-      <li @click="toggle()" class="nav-link toggle-link">
-        <i class="fa fa-bars fa-fw"></i>
-        <span>仪器详细数据</span>
-        <span class="arrow">
-          <i class="fa" :class="{'fa-angle-left':!isSpread,'fa-angle-down':isSpread}"></i>
-        </span>
-      </li>
-      <ul :class="{'shrink-links-wrapper':!isSpread,'spread-links-wrapper':isSpread}" class="toggle-links-wrapper">
-        <router-link 
-        v-for='(item,index) in urls' 
-        :key='index' tag="li" 
-        :to="item['url']"
-        active-class="active" 
-        exact 
-        class="nav-link"
-        >
-          <i class="fa fa-laptop"></i>
-          <span>{{ item['name'] }}</span>
-        </router-link>
-      </ul> 
+      <router-link tag="li" to='/maintenance' active-class="active" exact class="nav-link">
+        <i class="fa fa-cogs fa-fw"></i>
+        <span>维保售后评价</span>
+      </router-link>
+      <router-link tag="li" to='/economic' active-class="active" exact class="nav-link">
+        <i class="fa fa-rmb fa-fw"></i>
+        <span>经济评价</span>
+      </router-link>
+      <router-link tag="li" to='/dev-category-analysis' active-class="active" exact class="nav-link">
+        <i class="fa fa-list fa-fw"></i>
+        <span>仪器分类评价</span>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -67,15 +59,15 @@ export default {
 
 <style scoped>
 .avatar-wrapper {
-  padding: 60px 52px 25px 52px;
-  border-bottom:1px solid #566579
+  padding: 25px 52px 25px 52px;
+  /* border-bottom:1px solid #566579 */
 }
 .nav-links-wrapper {
-  font-size: 16px;
+  font-size: 14px;
 }
 .nav-link {
   padding: 10px 0 10px 15px;
-  border-bottom:1px solid #566579
+  /* border-bottom:1px solid #566579 */
 }
 .nav-link:hover {
   color: #ffffff;
@@ -83,17 +75,21 @@ export default {
 }
 .nav-link > i {
   margin-right: 10px;
-  font-size: 16px;
+  /* font-size: 16px; */
+  color: #1890ff;
 }
 .arrow {
   float: right;
   font-size: 14px;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-top: 3px;
 }
 .active {
   color: #ffffff;
-  background-color: #157dba;
+  background-color: #5473e8;
+}
+.active > i {
+  color: #fff;
 }
 .shrink-links-wrapper {
   height: 0;

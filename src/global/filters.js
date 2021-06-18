@@ -1,9 +1,10 @@
 
 import util from '@/utils/util'
+import { getDevNameByCode } from '@/global/devTypeCode'
 
 
 export default {
-  //1.标准化时间输出 输入的时间戳单位为秒
+  //1.标准化时间输出 输入的时间戳单位为毫秒
   formatterDate(val,format='YYYYMMDDHHMMSS'){
     return util.getFormatterDate(val)[format]
   },
@@ -27,5 +28,9 @@ export default {
       return (val*100).toFixed(2) + '%'
     }
     return val
+  },
+  //通过设备号获取设备名称
+  deviceCodeToName(val){
+    return getDevNameByCode(val)
   }
 }

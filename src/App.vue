@@ -12,6 +12,6 @@ export default {
 
 <style>
 #root {
-  font-family: Arial, sans-serif;
+  font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Microsoft YaHei',Arial, sans-serif;
 }
 </style>

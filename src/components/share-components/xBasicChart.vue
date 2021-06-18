@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import echarts from 'echarts/lib/echarts'
+import * as echarts from 'echarts';
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/bar'
 import 'echarts/lib/component/tooltip'
@@ -98,7 +98,8 @@ export default {
           lineStyle:{
             color:'#5a5c69'
           }
-        }
+        },
+        splitNumber:3
       }
       option.xAxis = {
         show:this.showXLabel,
@@ -118,7 +119,7 @@ export default {
       }
       option.legend = this.legend
       option.tooltip = {trigger:'item'}
-      option.grid = {containLabel: false, left:'55px', right:'35px', top:'15px', bottom:'35px'}
+      option.grid = {containLabel: false, left:'55px', right:'15px', top:'15px', bottom:'15px'}
       option.series = []
       for(let key in this.source){
         if(key !== 'x'){
@@ -135,8 +136,17 @@ export default {
     },
     draw(){
       const option = this.initOption()
+      const h = this.$refs['chart'].clientHeight
+      const w = this.$refs['chart'].clientWidth
+      // console.log(`宽${w},高${h}`)
+      let chartInst = null
       if(this.$refs['chart']){
-        echarts.init(this.$refs['chart']).setOption(option)
+        chartInst = echarts.init(this.$refs['chart'])
+        chartInst.setOption(option)
+        chartInst.resize({ //使用v-show必须要调用resize()函数
+          'width':w,
+          'heigt':h
+        })       
       }
     }
   },
@@ -147,6 +157,7 @@ export default {
       deep:true,
       handler(newVal,oldVal){ 
         //如果不用nextTick，那么在这个组件初始化的时候由于不能操作DOM而报错
+        // this.draw()
         this.$nextTick(() => {
           this.draw()
         })

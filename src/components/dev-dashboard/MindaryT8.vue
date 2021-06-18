@@ -10,7 +10,7 @@
           :type="'line'"
           :source="{x:x,ECG:ecg}"
           :showXLabel="false"
-          :showYLabel="false"
+          :showYLabel="true"
           :areaStyle="null"
           :boundaryGap="false"
           >
@@ -34,7 +34,6 @@
           :type="'line'"
           :source="{x:x,SpO2:spo2}"
           :showXLabel="false"
-          :showYLabel="false"
           :areaStyle="null"
           :boundaryGap="false"
           >
@@ -63,7 +62,6 @@
           :type="'line'"
           :source="{x:x,Art:artMean}"
           :showXLabel="false"
-          :showYLabel="false"
           :areaStyle="null"
           :boundaryGap="false"
           >
@@ -75,7 +73,7 @@
           <span class="indicator-name">Art</span>
           <span class="indicator-units">mmHg</span>
           <span class="indicator-value center-box text-small">
-            {{ params.artInvasiveBloodPressureSystolic + '/' + params.artInvasiveBloodPressureMean + ' ' + params.artInvasiveBloodPressureDiastolic }}
+            {{ params.artIbpSystolic + '/' + params.artIbpMean + ' ' + params.artIbpDiastolic }}
           </span>
         </div>
       </div>
@@ -90,7 +88,6 @@
           :type="'line'"
           :source="{x:x,cvp:cvp}"
           :showXLabel="false"
-          :showYLabel="false"
           :areaStyle="null"
           :boundaryGap="false"
           >
@@ -113,9 +110,9 @@
           :color="['#f3cb26']" 
           :yName="'resp'"
           :type="'line'"
+          :yMax="30"
           :source="{x:x,resp:resp}"
           :showXLabel="false"
-          :showYLabel="false"
           :areaStyle="null"
           :boundaryGap="false"
           >
@@ -139,16 +136,16 @@
             <div class="temp-left xu-float-left">
               <p>
                 <span class="temp-units">T1</span>
-                <span class="temp-value">{{ params.tempNonSpecificTemperature1 }}</span>
+                <span class="temp-value">{{ params.tempTemperature1 }}</span>
               </p>
               <p>
                 <span class="temp-units">T2</span>
-                <span class="temp-value">{{ params.tempNonSpecificTemperature2 }}</span>
+                <span class="temp-value">{{ params.tempTemperature2 }}</span>
               </p>
             </div>
             <div class="temp-right xu-float-right">
               <p class="temp-units">TD</p>
-              <p class="temp-value">{{ params.tempNonSpecificTemperatureDifference }}</p>
+              <p class="temp-value">{{ params.tempTemperatureDifference }}</p>
             </div>
           </div>
         </div>
@@ -159,9 +156,9 @@
           <span class="indicator-units">mmHg</span>
           <span class="indicator-value center-box text-small">
             {{ 
-              params.nibpNonInvasiveBloodPressureSystolic + '/' + 
-              params.nibpNonInvasiveBloodPressureDiastolic + ' ' + 
-              params.nibpNonInvasiveBloodPressureMean}}
+              params.nibpSystolic + '/' + 
+              params.nibpDiastolic + ' ' + 
+              params.nibpMean}}
           </span>
         </div>
       </div>
@@ -192,17 +189,17 @@ export default {
         ecgHeartRate:'--',
         spo2PercentOxygenSaturation:'--',
         spo2PulseRate:"--",
-        artInvasiveBloodPressureSystolic:'--',
-        artInvasiveBloodPressureMean:'--',
-        artInvasiveBloodPressureDiastolic:'--',
+        artIbpSystolic:'--',
+        artIbpMean:'--',
+        artIbpDiastolic:'--',
         cvp:'--',
         respRespirationRate:'--',
-        nibpNonInvasiveBloodPressureSystolic:'--',
-        nibpNonInvasiveBloodPressureMean:'--',
-        nibpNonInvasiveBloodPressureDiastolic:'--',
-        tempNonSpecificTemperature1:'--',
-        tempNonSpecificTemperature2:'--',
-        tempNonSpecificTemperatureDifference:'--'
+        nibpSystolic:'--',
+        nibpMean:'--',
+        nibpDiastolic:'--',
+        tempTemperature1:'--',
+        tempTemperature2:'--',
+        tempTemperatureDifference:'--'
       }
     }
   },
@@ -254,10 +251,10 @@ export default {
       }
       temp['ecgHeartRate'] != -1000 && this.ecg.push( temp['ecgHeartRate'] + Math.random())
       temp['spo2PercentOxygenSaturation'] != -1000 && this.spo2.push( temp['spo2PercentOxygenSaturation']+ Math.random())
-      temp['artInvasiveBloodPressureMean'] != -1000 && this.artMean.push( temp['artInvasiveBloodPressureMean']+ Math.random())
+      temp['artIbpMean'] != -1000 && this.artMean.push( temp['artIbpMean']+ Math.random())
       temp['cvp'] != -1000 && this.cvp.push( temp['cvp']+ Math.random())
       temp['respRespirationRate'] != -1000 && this.resp.push( temp['respRespirationRate']+ Math.random())
-      temp['gmtCreate'] ? this.x.push(temp['gmtCreate'].split(' ')[1]):this.x.push(this.$utils.getFormatterDate().HHMMSS)
+      temp['gmtCreate'] ? this.x.push(temp['gmtCreate'].split('T')[1]):this.x.push(this.$utils.getFormatterDate().HHMMSS)
       for(const key in temp){
         if(temp[key] != -1000){
           this.params[key] = temp[key]
@@ -312,7 +309,7 @@ export default {
   font-weight: bold;
 }
 .indicator-value {
-  font-size: 80px;
+  font-size: 60px;
   font-weight: bold;
   font-stretch: ultra-condensed;
 }
@@ -377,7 +374,7 @@ export default {
   vertical-align:middle
 }
 .text-small {
-  font-size: 60px !important;
+  font-size: 50px !important;
   white-space: nowrap;
 }
 </style>

@@ -2,7 +2,8 @@
   <div class="real-time-panel-wrapper">
     <div class="chart-wrapper">
       <x-basic-chart 
-      :xName="'时间'" 
+      :xName="'时间'"
+      :showXLabel="false" 
       :yName="'Ai'"
       :type="'line'"
       :source="{x:x,Ai:Ai}"
@@ -37,7 +38,7 @@ export default {
   props:['operationNumber','deviceCode'],
   data(){
     return {
-      MAX_LENGTH:100,
+      MAX_LENGTH:20,
       x:[], //时间
       EMG:'--',
       Ai:[],
@@ -81,7 +82,7 @@ export default {
       }
       // console.log(this.Ai)
       this.Ai.push(Ai)
-      this.x.push(gmtCreate.split(' ')[1])
+      this.x.push(gmtCreate.split('T')[1])
       this.EMG = EMG
       this.BSR = BSR
       this.SQI = SQI
@@ -117,7 +118,6 @@ export default {
 <style scoped>
 .chart-wrapper {
   height: 400px;
-  background-color: rgba(120,120,120);
   margin-bottom: 10px;
 }
 .indicator-wrapper {

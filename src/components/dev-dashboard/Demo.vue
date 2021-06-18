@@ -5,6 +5,7 @@
       <x-basic-chart 
       :xName="'时间'" 
       :yName="'EMG'"
+      :yMax="150"
       :type="'line'"
       :smooth="true"
       :source="{x:x,EMG:EMG}"

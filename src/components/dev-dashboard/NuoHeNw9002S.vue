@@ -2,7 +2,8 @@
   <div class="real-time-panel-wrapper">
     <div class="chart-wrapper">
       <x-basic-chart 
-      :xName="'时间'" 
+      :xName="'时间'"
+      :showXLabel='false' 
       :yName="'EMG'"
       :type="'line'"
       :color="['#fffd36']"
@@ -41,7 +42,7 @@ export default {
   },
   data(){
     return {
-      MAX_LENGTH:100,
+      MAX_LENGTH:20,
       x:[], //时间
       EMG:[],
       CSI:'--',
@@ -81,21 +82,24 @@ export default {
         this.x.shift()
         this.EMG.shift()
       }
-      this.EMG.push(EMG)
-      this.x.push(gmtCreate.split(' ')[1])
-      this.CSI = CSI
-      this.BS = BS
-      this.SQI = SQI
+      EMG === -1000 ? this.EMG.push(0) : this.EMG.push(EMG)
+      this.x.push(gmtCreate.split('T')[1])
+      this.CSI = CSI === -1000 ? '--' : CSI
+      this.BS = BS === -1000 ? '--' : BS
+      this.SQI = SQI === -1000 ? '--' : SQI
     },
     onmessage(e){
-      console.log(`手术${this.operationNumber}的诺和收到一条数据`)
+      console.log(`采集${this.operationNumber}的诺和收到一条数据`)
       this.parseData(e.data)
     }
   },
   watch:{
     'operationNumber':{
       handler(newVal,oldVal){
-        if(this.deviceCode === this.DEV_CODE){
+        // console.log(1)
+        // console.log(this.deviceCode)
+        if(this.deviceCode == this.DEV_CODE){
+          // console.log(2)
           this.initData()
           this.openWs(newVal,this.deviceCode)
         } else {
@@ -106,7 +110,7 @@ export default {
     }
   },
   created(){
-    // console.log(`手术${this.operationNumber}的诺和开启ws`)
+    // console.log(`手术${this.operationNumber}的诺和开启ws#${this.DEV_CODE}`)
   },
   beforeDestroy(){
     this.closeWs()
@@ -117,7 +121,6 @@ export default {
 <style scoped>
 .chart-wrapper {
   height: 400px;
-  background-color: rgba(120,120,120);
   margin-bottom: 10px;
 }
 .indicator-wrapper {

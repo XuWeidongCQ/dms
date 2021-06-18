@@ -128,7 +128,7 @@ ul,li {
 }
 .wrapper > ul > li {
     display: inline-block;
-    padding: 4px 8px;
+    padding: 4px 10px;
 }
 .show-border {
     border: 1px solid #cccccc;
@@ -140,9 +140,9 @@ ul,li {
     border-color:  #157dba;
 }
 .active {
-     background-color: #157dba;
+     background-color: #5473e8;
      color: #ffffff !important;
-     border-color:  #157dba;
+     border-color:  #5473e8;
 }
 li > input {
     width: 35px;
@@ -153,7 +153,7 @@ li > input {
 .nav-page-btn {
     height: 25px;
     margin-left: 10px;
-    background-color:#157dba;
+    background-color:#5473e8;
     width: 50px;
     color: #f7f7f7;
     border-radius: 3px;

@@ -1,6 +1,6 @@
 <template>
   <div class="modal-backdrop" @click.self="close">
-    <div class="modal-wrapper">
+    <div class="modal-wrapper" :style="{'width':width}">
       <slot>这是插槽的默认内容</slot>
     </div>
   </div>
@@ -8,6 +8,11 @@
 
 <script>
 export default {
+  props:{
+    width:{
+      type:String
+    }
+  },
   methods:{
     close:function(){
       this.$emit('close')
@@ -23,7 +28,7 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +37,7 @@ export default {
 
 .modal-wrapper {
   position: relative;
-  animation: zoomIn 0.2s linear 0s;
+  animation: zoomIn 0.1s linear 0s;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 5px;

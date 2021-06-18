@@ -1,5 +1,5 @@
 <template>
-  <x-box class="panel-wrapper bg-white">
+  <x-box class="panel-wrapper">
     <span>{{ total }}</span>
     <p>平台已接入的医疗设备总数</p>
     <span class="fa fa-desktop"></span>
@@ -35,10 +35,11 @@ export default {
   position: absolute;
   top:30px;
   right: 30px;
-  font-size:70px
+  font-size:70px;
+  color: #778ca2;
 }
 .panel-wrapper > span:first-child {
-  font-size: 55px;
+  font-size: 50px;
 }
 .panel-wrapper > p {
   font-size: 12px;

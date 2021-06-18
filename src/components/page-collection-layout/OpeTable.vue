@@ -1,7 +1,9 @@
+
 <template>
+<!-- 该文件不用 -->
   <x-box class="table-wrapper">
     <div class="xu-box-title">
-      <span>已完成手术概况</span>
+      <span>历史采集记录</span>
     </div>
     <x-table
       :title="['手术顺序号','患者入院ID','麻醉方式','既往病史','特殊情况','手术名称','开始时间','结束时间','设备','操作']"
@@ -98,7 +100,7 @@ export default {
     }
   },
   created() {
-    this.getData();
+    // this.getData();
   }
 };
 </script>

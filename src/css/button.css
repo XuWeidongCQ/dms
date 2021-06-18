@@ -1,10 +1,11 @@
 .xu-btn-default {
     /*调节按钮字体大小为父元素一样大*/
     font-size: 1em;
-    padding: 0.4em 0.75em;
+    padding: 0.4em 0.5em;
     border-radius: 0.2em;
     cursor: pointer;
     margin: 0 5px;
+    vertical-align: middle;
 }
 .xu-btn-lg {
     font-size: 1.2em;
@@ -12,6 +13,7 @@
     border-radius: 0.2em;
     cursor: pointer;
     margin: 0 5px;
+    vertical-align: middle;
 }
 .xu-btn-sm {
     /*调节按钮字体大小*/
@@ -21,6 +23,7 @@
     border-radius: 0.2em;
     cursor: pointer;
     margin: 0 5px;
+    vertical-align: middle;
 }
 
 
@@ -31,6 +34,13 @@
 }
 .xu-btn-primary:hover{
     background-color: #1d84d1;
+}
+.xu-btn-transparent {
+    background-color: transparent;
+    color: #269af1;
+}
+.xu-btn-transparent:hover {
+    color: #1d6fad;
 }
 .xu-btn-success {
     background-color:#157dba;

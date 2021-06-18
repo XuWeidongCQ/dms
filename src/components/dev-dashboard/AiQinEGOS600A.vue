@@ -257,6 +257,7 @@ export default {
     },
     parseData(data){
       const temp = JSON.parse(data)
+      // console.log(temp)
       // console.log(temp['gmtCreate'].split(' ')[1])
       // console.log(this.toi3.length)
       if(this.toi1.length > this.MAX_LENGTH){
@@ -284,7 +285,7 @@ export default {
       temp['toi2'] != -1000 && this.toi2.push(temp['toi2'])
       
       temp['toi4'] != -1000 && this.toi4.push(temp['toi4'])
-      this.x.push(temp['gmtCreate'].split(' ')[1])
+      this.x.push(temp['gmtCreate'].split('T')[1])
       for(const key in temp){
         if(temp[key] != -1000){
           this.params[key] = temp[key]
@@ -330,11 +331,11 @@ export default {
   height: 170px;
 }
 .ch-name {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: bold;
 }
 .large-value {
-  font-size: 60px;
+  font-size: 50px;
   margin: 5px 0;
 }
 .ch-inner-indi-box {

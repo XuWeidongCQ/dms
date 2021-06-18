@@ -1,14 +1,21 @@
 <template>
   <div class="home-page-wrapper">
-    <div class="xu-row mb15">
+    <div class="xu-row">
       <div class="xu-col-3">
-        <total-dev-panel></total-dev-panel>
-        <div class="interval"></div>
-        <dev-category-pie></dev-category-pie>
-        <div class="interval"></div>
-        <total-ope-panel></total-ope-panel>
-        <div class="interval"></div>
-        <ope-history-chart></ope-history-chart>
+        <div class="flex-container">
+          <div class="wrapper">
+            <total-dev-panel></total-dev-panel>
+          </div>
+          <div class="wrapper">
+            <dev-category-pie></dev-category-pie>
+          </div>
+          <div class="wrapper">
+            <total-ope-panel></total-ope-panel>
+          </div>
+          <div class="wrapper">
+            <ope-history-chart></ope-history-chart>
+          </div>
+        </div>
       </div>
       <div class="xu-col-9">
         <real-time-panel></real-time-panel>
@@ -36,5 +43,10 @@ export default {
 </script>
 
 <style scoped>
-
+.flex-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 </style>
