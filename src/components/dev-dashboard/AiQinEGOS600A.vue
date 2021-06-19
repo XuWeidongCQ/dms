@@ -42,6 +42,7 @@
           :type="'line'"
           :source="{x:x,TOI:toi1}"
           :areaStyle="null"
+          :showXLabel="false"
           >
           </x-basic-chart>
         </div>
@@ -89,6 +90,7 @@
           :type="'line'"
           :source="{x:x,TOI:toi2}"
           :areaStyle="null"
+          :showXLabel="false"
           >
           </x-basic-chart>
         </div>
@@ -136,6 +138,7 @@
           :type="'line'"
           :source="{x:x,TOI:toi3}"
           :areaStyle="null"
+          :showXLabel="false"
           >
           </x-basic-chart>
         </div>
@@ -183,6 +186,7 @@
           :type="'line'"
           :source="{x:x,TOI:toi4}"
           :areaStyle="null"
+          :showXLabel="false"
           >
           </x-basic-chart>
         </div>
@@ -201,7 +205,7 @@ export default {
   props:['operationNumber','deviceCode'],
   data(){
     return {
-      MAX_LENGTH:5,
+      MAX_LENGTH:10,
       ws:null,
       DEV_CODE:getDevCode('AI_QIN_EGOS600A'),
       x:[],
@@ -257,35 +261,35 @@ export default {
     },
     parseData(data){
       const temp = JSON.parse(data)
-      // console.log(temp)
+      console.log(temp)
       // console.log(temp['gmtCreate'].split(' ')[1])
       // console.log(this.toi3.length)
       if(this.toi1.length > this.MAX_LENGTH){
         this.toi1.shift()
-        temp['toi1'] != -1000 && this.toi3.push(temp['toi1'])
-      } else {
-        temp['toi1'] != -1000 && this.toi3.push(temp['toi1'])
       }
+
       if(this.toi2.length > this.MAX_LENGTH){
         this.toi2.shift()
       }
+
       if(this.toi3.length > this.MAX_LENGTH){
         this.toi3.shift()
-        temp['toi3'] != -1000 && this.toi3.push(temp['toi3'])
-      } else {
-        temp['toi3'] != -1000 && this.toi3.push(temp['toi3'])
       }
       
       if(this.toi4.length > this.MAX_LENGTH){
         this.toi4.shift()
       }
+
+
       if(this.x.length > this.MAX_LENGTH){
         this.x.shift()
       }
+      temp['toi1'] != -1000 && this.toi1.push(temp['toi1'])
       temp['toi2'] != -1000 && this.toi2.push(temp['toi2'])
-      
+      temp['toi3'] != -1000 && this.toi3.push(temp['toi3'])
       temp['toi4'] != -1000 && this.toi4.push(temp['toi4'])
       this.x.push(temp['gmtCreate'].split('T')[1])
+
       for(const key in temp){
         if(temp[key] != -1000){
           this.params[key] = temp[key]
@@ -328,7 +332,9 @@ export default {
 
 <style scoped>
 .chart-wrapper {
-  height: 170px;
+  height: 145px;
+  margin-bottom: 30px;
+  border: 1px solid #f1f1f1
 }
 .ch-name {
   font-size: 50px;

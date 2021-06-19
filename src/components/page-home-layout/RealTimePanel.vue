@@ -4,7 +4,7 @@
       <div class="xu-col-9">
         <div v-if="isDemoMode" class="dashboard-wrapper">
           <component :is="demoPanel"></component>
-          <!-- <component :is="'EliteV8'"></component> -->
+          <!-- <component :is="'MeiDunLi5100C'"></component> -->
         </div>
         <div v-else class="dashboard-wrapper">
           <div v-for="col in colInProcess" :key="col.collectionNumber">
@@ -79,6 +79,7 @@ import MindaryT8 from "@/components/dev-dashboard/MindaryT8";
 import MindaryWATOEX65 from "@/components/dev-dashboard/MindaryWATOEX65";
 import EegVista from "@/components/dev-dashboard/EegVista";
 import EliteV8 from '@/components/dev-dashboard/EliteV8'
+import MeiDunLi5100C from '@/components/dev-dashboard/MeiDunLi5100C.vue'
 import xSwi from "@/x-views/xSwi";
 import Demo from "@/components/dev-dashboard/Demo";
 import { getDevCode } from "@/global/devTypeCode";
@@ -94,6 +95,7 @@ const pattern = {
   [getDevCode("AI_QIN_EGOS600A")]: "AiQinEGOS600A",
   [getDevCode("MEI_DUN_LI_EEG_VISTA")]: "EegVista",
   [getDevCode("LI_BANG_ELITEV8")]: "EliteV8",
+  [getDevCode("MEI_DUN_LI_5100C")]: "MeiDunLi5100C",
 };
 
 export default {
@@ -110,6 +112,7 @@ export default {
     MindaryWATOEX65,
     EegVista,
     EliteV8,
+    MeiDunLi5100C,
     Demo,
   },
   data() {
@@ -155,12 +158,12 @@ export default {
   methods: {
     //1.获取正在进行的手术 -- 30s定时访问
     getOpeInProcessData() {
-      console.log("获取正在进行的采集");
+      // console.log("获取正在进行的采集");
       this.$http["getColInProcess"]({ params: { size: 1000 } }).then((res) => {
         const {
           data: { content },
         } = res;
-        console.log(`一共有${content.length}场`);
+        console.log(`一共有${content.length}场正在采集`);
         this.colInProcess = content;
 
         const cols = this.colInProcess.map((ele) => ele.collectionNumber);
@@ -211,13 +214,13 @@ export default {
     },
   },
   created() {
-    //如果是不是演示模式才进行数据请求
-    if (!this.isDemoMode) {
-      this.getOpeInProcessData();
-      this.timer = setInterval(() => {
-        this.getOpeInProcessData();
-      }, 30000);
-    }
+    //如果不是演示模式才进行数据请求
+    // if (!this.isDemoMode) {
+    //   this.getOpeInProcessData();
+    //   this.timer = setInterval(() => {
+    //     this.getOpeInProcessData();
+    //   }, 30000);
+    // }
   },
   beforeDestroy() {
     clearInterval(this.timer);

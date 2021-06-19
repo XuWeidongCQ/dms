@@ -87,6 +87,9 @@ export default {
         show:this.showYLabel,
         type:'value',
         nameLocation:'center',
+        nameTextStyle:{
+          fontWeight:'bold'
+        },
         nameGap:35,
         name:this.yName,
         max:this.yMax,

@@ -6,7 +6,7 @@ import showAlert from '@/x-views/xAlert/xAlert'
 
 let developmentMode = undefined
 if(process.env.NODE_ENV === 'development'){
-  developmentMode = false
+  developmentMode = true
 }
 if(process.env.NODE_ENV === 'production'){
   developmentMode = false

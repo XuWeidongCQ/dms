@@ -1,7 +1,17 @@
 <template>
   <div class="real-time-panel-wrapper">
     <div class="row-wrapper">
-      <div class="chart-wrapper"></div>
+      <div class="chart-wrapper">
+        <x-basic-chart 
+        :showXLabel='false' 
+        :yName="'心率'"
+        :type="'line'"
+        :color="['rgb(91,245,8)']"
+        :source="{x:gmtCreates,EMG:hrs}"
+        :areaStyle="null"
+        >
+        </x-basic-chart>
+      </div>
       <div class="indicator-wrapper">
         <span class="indicator-label">
           <span>心率</span>
@@ -31,7 +41,17 @@
       </div>
     </div>
     <div class="row-wrapper">
-      <div class="chart-wrapper"></div>
+      <div class="chart-wrapper">
+        <x-basic-chart 
+        :showXLabel='false' 
+        :yName="'Art'"
+        :type="'line'"
+        :color="['rgb(223, 85, 106)']"
+        :source="{x:gmtCreates,EMG:artMaps}"
+        :areaStyle="null"
+        >
+        </x-basic-chart>
+      </div>
       <div class="indicator-wrapper">
         <span class="indicator-label">
           <span>Art</span>
@@ -44,7 +64,17 @@
       </div>
     </div>
     <div class="row-wrapper">
-      <div class="chart-wrapper"></div>
+      <div class="chart-wrapper">
+        <x-basic-chart 
+        :showXLabel='false' 
+        :yName="'血氧'"
+        :type="'line'"
+        :color="['rgb(103,244,245)']"
+        :source="{x:gmtCreates,EMG:spo2s}"
+        :areaStyle="null"
+        >
+        </x-basic-chart>
+      </div>
       <div class="indicator-wrapper">
         <span class="indicator-label">
           <span>血氧</span>
@@ -63,7 +93,17 @@
       </div>
     </div>
     <div class="row-wrapper">
-      <div class="chart-wrapper"></div>
+      <div class="chart-wrapper">
+        <x-basic-chart 
+        :showXLabel='false' 
+        :yName="'CVP'"
+        :type="'line'"
+        :color="['rgb(223, 85, 106)']"
+        :source="{x:gmtCreates,EMG:cvpMaps}"
+        :areaStyle="null"
+        >
+        </x-basic-chart>
+      </div>
       <div class="indicator-wrapper">
         <span class="indicator-label">
           <span>CVP</span>
@@ -82,7 +122,17 @@
       </div>
     </div>
     <div class="row-wrapper">
-      <div class="chart-wrapper"></div>
+      <div class="chart-wrapper">
+        <x-basic-chart 
+        :showXLabel='false' 
+        :yName="'血压'"
+        :type="'line'"
+        :color="['rgb(255,255,255)']"
+        :source="{x:gmtCreates,EMG:nibpMaps}"
+        :areaStyle="null"
+        >
+        </x-basic-chart>
+      </div>
       <div class="indicator-wrapper">
         <span class="indicator-label">
           <span>血压</span>
@@ -113,10 +163,10 @@
          </span>
           <span class="indicator-num-t">
           <span class="indicator-num-sub">
-            <span class="label-small">T1</span><span class="number-small">{{temp1.toFixed(1)}}</span>
+            <span class="label-small">T1</span><span class="number-small">{{temp1}}</span>
           </span>
           <span class="indicator-num-sub">
-            <span class="label-small">T2</span><span class="number-small">{{temp2.toFixed(1)}}</span>
+            <span class="label-small">T2</span><span class="number-small">{{temp2}}</span>
           </span>
           <span class="indicator-num-sub">
             <span class="label-small">TD</span><span class="number-small">{{this.tempD.toFixed(1)}}</span>
@@ -140,36 +190,96 @@
 </template>
 
 <script>
-  export default {
-    name: "EliteV8",
-    data(){
-      return{
-        hr:60,
-        pvcs:0,
-        artSys:120,
-        artDia:80,
-        artMap:93,
-        spo2:99,
-        pr:60,
-        cvpMap:7,
-        rr:14,
-        nibpSys:'--',
-        nibpDia:'--',
-        nibpMap:'--',
-        p2Sys:120,
-        p2Dia:80,
-        p2Map:93,
-        lapMap:'10',
-        temp1:36,
-        temp2:37
+import { createWs } from '@/api/websocket.js'
+import xBasicChart from '@/components/share-components/xBasicChart'
+import { getDevCode } from '@/global/devTypeCode'
+export default {
+  name: "EliteV8",
+  components:{xBasicChart},
+  props:['operationNumber','deviceCode'],
+  data(){
+    return{
+      gmtCreates:[],
+      hrs:[],
+      artMaps:[],
+      spo2s:[],
+      cvpMaps:[],
+      nibpMaps:[],
+      MAX_LENGTH:20,
+      hr:'--',
+      pvcs:'--',
+      artSys:'--',
+      artDia:'--',
+      artMap:'--',
+      spo2:'--',
+      pr:'--',
+      cvpMap:'--',
+      rr:'--',
+      nibpSys:'--',
+      nibpDia:'--',
+      nibpMap:'--',
+      p2Sys:'--',
+      p2Dia:'--',
+      p2Map:'--',
+      lapMap:'--',
+      temp1:0,
+      temp2:0,
+      DEV_CODE:getDevCode('LI_BANG_ELITEV8')
+    }
+  },
+  computed:{
+    tempD(){
+      // if(this.temp1 === '--' || this.temp2 === '--'){
+      //   return '--'
+      // }
+      return Math.abs(this.temp1 - this.temp2)
+    }
+  },
+  methods:{
+    openWs(operationNumber,deviceCode){
+      this.closeWs()
+      this.ws = createWs(operationNumber,deviceCode,this.$utils.getFormatterDate().timestamp)
+      this.ws.onopen = function(){
+        console.log(`采集-${operationNumber}的理邦V8${deviceCode}开启ws`)
+      }
+      this.ws.onmessage = this.onmessage
+    },
+    closeWs(){
+      if(this.ws){
+        console.log(`理邦V8关闭之前的ws`)
+        this.ws.close()
       }
     },
-    computed:{
-      tempD(){
-        return Math.abs(this.temp1 - this.temp2)
+    onmessage(e){
+      console.log(`采集${this.operationNumber}的理邦V8收到一条数据`)
+      // console.log(JSON.parse(e.data))
+      const parsedData = JSON.parse(e.data)
+      for(const key in parsedData){
+        if(this[key] !== undefined && parsedData[key] != -1000){
+          this[key] = parsedData[key]
+        }
+      }
+      const lines = ['hrs','artMaps','spo2s','cvpMaps','nibpMaps','gmtCreates']
+      const targets = ['hr','artMap','spo2','cvpMap','nibpMap','gmtCreate']
+      for(const elm of lines){
+        if(this[elm].length > this.MAX_LENGTH){
+          this[elm].shift()
+        }
+      }
+      for(const target of targets){
+        if(parsedData[target] != -1000){
+          this[target + 's'].push(parsedData[target])
+        }
       }
     }
+  },
+  created(){
+    this.openWs(this.operationNumber,this.deviceCode)
+  },
+  beforeDestroy(){
+    this.closeWs()
   }
+}
 </script>
 
 <style scoped>
@@ -183,6 +293,7 @@
     box-sizing: border-box;
     flex: 0 0 550px;
     border-radius: 5px;
+    margin-right: 2px;
   }
 
   .row-wrapper:not(:last-child) >.chart-wrapper{
