@@ -100,10 +100,10 @@ export default {
   data(){
     //一定要保留整数，不然页面会出现错位
     return {
-      oxygenSaturationL:'0',
-      oxygenSaturationR:'78',
-      oxygenSaturationS1:'78',
-      oxygenSaturationS2:'78',
+      oxygenSaturationL:'--',
+      oxygenSaturationR:'--',
+      oxygenSaturationS1:'--',
+      oxygenSaturationS2:'--',
       lalLs:[],
       lalRs:[],
       lalS1s:[],

@@ -21,7 +21,7 @@ export default {
   components:{DevAnalysisCards},
   data(){
     return {
-      deviceCategorys:['麻醉深度监测仪','无创血红蛋白监测仪','无创脑氧饱和度监测仪','无创血压监测仪(监护仪)','呼吸机','麻醉机'],
+      deviceCategorys:['麻醉深度监测仪','无创血压监测仪(监护仪)','麻醉机','无创血红蛋白监测仪','无创脑氧饱和度监测仪','呼吸机'],
       selectDeviceCategory:'麻醉深度监测仪',
       refresh:true
     }
