@@ -29,8 +29,16 @@ export default {
     }
     return val
   },
-  //通过设备号获取设备名称
+  //5.通过设备号获取设备名称
   deviceCodeToName(val){
     return getDevNameByCode(val)
+  },
+  //6.保留整数
+  toInteger(val){
+    if(typeof val === 'number'){
+      return Math.floor(val)
+    } else {
+      return val
+    }
   }
 }

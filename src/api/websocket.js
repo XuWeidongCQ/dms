@@ -2,7 +2,7 @@
 
 let developMode = undefined
 if(process.env.NODE_ENV === 'development'){
-  developMode = true
+  developMode = false
 }
 if(process.env.NODE_ENV === 'production'){
   developMode = false

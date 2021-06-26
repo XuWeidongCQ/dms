@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="xu-row">
-      <div class="xu-col-5">
+      <div class="xu-col-4">
         <div class="eval-wrapper">
           <span class="eval-name">维修服务满意度分析</span>
           <div class="bar-wrapper">
@@ -45,21 +45,33 @@
           </div>
         </div>
       </div>
-      <div class="xu-col-4">
+      <div class="xu-col-5">
         <div class="eval-wrapper">
           <span class="eval-name"> 经效比分析 </span>
           <div class="">
             <div class="economic-item">
-              <p class="economic-name">历史配件费用总和</p>
-              <p class="economic-val">{{ devEvalInfo.historyCostAccessoryNum }}<span class="economic-unit">元</span></p>
+              <span class="economic-name">购买价格</span>
+              <span class="economic-val">{{ devEvalInfo.devicePurchasePrice | toInteger}}<span class="economic-unit">元</span></span>
             </div>
             <div class="economic-item">
-              <p class="economic-name">历史维修费用总和</p>
-              <p class="economic-val">{{ devEvalInfo.historyCostRepairNum }}<span class="economic-unit">元</span></p> 
+              <span class="economic-name">技师总工资</span>
+              <span class="economic-val">{{ devEvalInfo.totalTechnicianMonthlySalary | toInteger }}<span class="economic-unit">元</span></span> 
             </div>
             <div class="economic-item">
-              <p class="economic-name">历史其他费用总和</p>
-              <p class="economic-val">{{ devEvalInfo.historyCostOtherNum }}<span class="economic-unit">元</span></p> 
+              <span class="economic-name">手术耗材</span>
+              <span class="economic-val">{{ devEvalInfo.totalConsumableCostMoney | toInteger }}<span class="economic-unit">元</span></span> 
+            </div>
+            <div class="economic-item">
+              <span class="economic-name">固定维护维修</span>
+              <span class="economic-val">{{ devEvalInfo.totalFixRepairCostMoney | toInteger}}<span class="economic-unit">元</span></span> 
+            </div>
+            <div class="economic-item">
+              <span class="economic-name">总维修保养费</span>
+              <span class="economic-val">{{ devEvalInfo.historyMaintenanceCostSum | toInteger }}<span class="economic-unit">元</span></span> 
+            </div>
+            <div class="economic-item">
+              <span class="economic-name">总收益</span>
+              <span class="economic-val">{{ devEvalInfo.totalProfitMoney | toInteger }}<span class="economic-unit">元</span></span> 
             </div>
           </div>
         </div>
@@ -268,25 +280,37 @@ export default {
   font-weight: bold;
 }
 .economic-item {
-  height: 85px;
-  margin-top: 15px;
+  /* height: 85px; */
+  margin-top: 20px;
   position: relative;
+  text-align: start;
+  /* margin-left: 20px; */
 }
 .economic-name {
   color: #bbb;
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 5px;
+  display: inline-block;
+  width: 100px;
+  /* vertical-align: center; */
 }
 .economic-val {
-  font-size: 35px;
+  font-size: 25px;
+  display: inline-block;
+  width: 151px;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  text-align: end;
+  font-weight: bold;
 }
 .economic-unit {
   font-size: 14px;
   color: #bbb;
-  position: absolute;
+  /* position: absolute;
   right: 20px;
-  bottom: 22px
+  bottom: 22px */
 }
 .eval-wrapper {
   position: relative;

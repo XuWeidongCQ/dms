@@ -34,9 +34,19 @@
       </div>
       <div class="history-cost-wrapper">
         <div>经效比评价结果</div>
-        <p><span class="item-name">配件费用：</span>{{ selectDevice.historyCostAccessoryNum }}元</p>
-        <p><span class="item-name">维修费用：</span>{{ selectDevice.historyCostRepairNum }}元</p>
-        <p><span class="item-name">其他费用：</span>{{ selectDevice.historyCostOtherNum }}元</p>
+        <p><span class="item-name">购买价格：</span>{{ selectDevice.devicePurchasePrice | toInteger }}元</p>
+        <p><span class="item-name">技师工资：</span>{{ selectDevice.technicianMonthlySalary | toInteger }}元/月</p>
+        <p><span class="item-name">手术耗材费用：</span>{{ selectDevice.consumableCostMoney | toInteger }}元/年</p>
+        <p><span class="item-name">固定维护维修费用：</span>{{ selectDevice.fixRepairCostMoney | toInteger }}元/年</p>
+        <p><span class="item-name">每小时收益：</span>{{ selectDevice.profitMoney | toInteger }}元/小时</p>
+        <p><span class="item-name">技师总工资：</span>{{ selectDevice.totalTechnicianMonthlySalary | toInteger }}元</p>
+        <p><span class="item-name">手术总耗材费用：</span>{{ selectDevice.totalConsumableCostMoney | toInteger }}元</p>
+        <p><span class="item-name">固定维护维修总费用：</span>{{ selectDevice.totalFixRepairCostMoney | toInteger }}元</p>
+        <p><span class="item-name">配件费用：</span>{{ selectDevice.historyCostAccessoryNum | toInteger }}元</p>
+        <p><span class="item-name">维修费用：</span>{{ selectDevice.historyCostRepairNum | toInteger }}元</p>
+        <p><span class="item-name">其他费用：</span>{{ selectDevice.historyCostOtherNum | toInteger }}元</p>
+        <p><span class="item-name">历史维保费用总和：</span>{{ selectDevice.historyMaintenanceCostSum | toInteger }}元</p>
+        <p><span class="item-name">总收益：</span>{{ selectDevice.totalProfitMoney | toInteger }}元</p>  
       </div>
       <div class="maintence-wrapper">
         <div>维修服务评价结果</div>
@@ -89,6 +99,7 @@ export default {
         if(code === 200){
           this.devSpecInfos.push(data)
         }
+        // console.log(this.devSpecInfos)
       })
     },
     showDetail(device){

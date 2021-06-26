@@ -10,7 +10,7 @@
       </x-select>
       <span class="field-item ml15">排序字段：</span>
       <x-select 
-      :options="['生产日期','使用年限','历史维保费用总和','历史配件费用总和','历史维修费用总和','历史其他费用总和']"
+      :options="['生产日期','使用年限','历史维保费用总和','技师总工资','手术耗材总费用','固定维护维修费用','总收益']"
       :styleObj="{'border-radius':0,'width':'150px'}"
       v-model="sortedField"
       >
@@ -28,7 +28,7 @@
     <!--  -->
     <div class="table-wrapper xu-add-scrollBar">
       <x-table 
-      :title="['#','设备名称','生产厂商','序列号','生产日期','使用年限','历史维保费用总和','历史配件费用总和','历史维修费用总和','历史其他费用总和']"
+      :title="['#','设备名称','生产厂商','序列号','生产日期','使用年限','历史维保费用总和','技师总工资','手术耗材总费用','固定维护维修费用','总收益']"
       :size="'sm'"
       :align="'center'"
       :strip="false"
@@ -41,10 +41,11 @@
           <td>{{ evalInfo.serialNumber }}</td>
           <td>{{ evalInfo.produceDate | formatterDate('YYYYMMDD') }}</td>
           <td>{{ evalInfo.serviceLife  }}年</td>
-          <td>{{ evalInfo.historyMaintenanceCostSum  }}元</td>
-          <td>{{ evalInfo.historyCostAccessoryNum  }}元</td>
-          <td>{{ evalInfo.historyCostRepairNum  }}元</td>
-          <td>{{ evalInfo.historyCostOtherNum  }}元</td>  
+          <td>{{ evalInfo.historyMaintenanceCostSum.toFixed(0)  }}元</td>
+          <td>{{ evalInfo.totalTechnicianMonthlySalary.toFixed(0)  }}元</td>
+          <td>{{ evalInfo.totalConsumableCostMoney.toFixed(0)  }}元</td>
+          <td>{{ evalInfo.totalFixRepairCostMoney.toFixed(0)  }}元</td>  
+          <td>{{ evalInfo.totalProfitMoney.toFixed(0)  }}元</td>  
         </tr>
       </x-table>
     </div>
@@ -68,9 +69,13 @@ const charToName = {
   '生产日期':'produceDate',
   '使用年限':'serviceLife',
   '历史维保费用总和':'historyMaintenanceCostSum',
-  '历史配件费用总和':'historyCostAccessoryNum',
-  '历史维修费用总和':'historyCostRepairNum',
-  '历史其他费用总和':'historyCostOtherNum',
+  // '历史配件费用总和':'historyCostAccessoryNum',
+  // '历史维修费用总和':'historyCostRepairNum',
+  // '历史其他费用总和':'historyCostOtherNum',
+  '技师总工资':'totalTechnicianMonthlySalary',
+  '手术耗材总费用':'totalConsumableCostMoney',
+  '固定维护维修费用':'totalFixRepairCostMoney',
+  '总收益':'totalProfitMoney'
 }
 
 export default {
@@ -93,7 +98,7 @@ export default {
         if(code === 200){
           this.handEconomicEvalInfos = [...data]
           this.economicEvalInfos = data
-          // console.log(this.evalHandInfos)
+          // console.log(this.economicEvalInfos)
         }
       })
     },

@@ -291,8 +291,10 @@ export default {
       this.x.push(temp['gmtCreate'].split('T')[1])
 
       for(const key in temp){
-        if(temp[key] != -1000){
-          this.params[key] = temp[key]
+        if(key.includes('thi') && temp[key] != -1000){
+          this.params[key] = parseFloat(temp[key]).toFixed(3)
+        } else if(temp[key] != -1000 && this.params[key] !== undefined){
+          this.params[key] = parseFloat(temp[key]).toFixed(1)
         }
       }
     },
@@ -349,7 +351,11 @@ export default {
 }
 .params-name {
   display: inline-block;
-  width: 45px;
+  width: 47px;
+}
+.params-value {
+  display: inline-block;
+  width: 32px;
 }
 .ch-inner-panel {
   background-color: #000000;
