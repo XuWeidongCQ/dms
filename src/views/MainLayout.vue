@@ -66,7 +66,7 @@ export default {
     padding: 0 15px 15px 15px;
     box-sizing: border-box;
     /* height: 850px; */
-    height: 88vh;
+    height: 90vh;
     background-color: #edf0fa;
 }
 .footer-wrapper {

@@ -5,6 +5,10 @@
     </div>
     <ul class="nav-links-wrapper">
       <router-link tag="li" to='/home' active-class="active" exact class="nav-link">
+        <i class="fa fa-table fa-fw"></i>
+        <span>综合分析</span>
+      </router-link>
+      <router-link tag="li" to='/realtime' active-class="active" exact class="nav-link">
         <i class="fa fa-line-chart fa-fw"></i>
         <span>实时监测</span>
       </router-link>

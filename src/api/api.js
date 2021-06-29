@@ -1,6 +1,12 @@
 
 const API = {
   /*实时监测页面的接口*/
+  getRadarData:{
+    method:'get',
+    url:'/radar-map-evaluation/get-device-radar-evaluation-map-by-device-type'
+  },
+
+  /*实时监测页面的接口*/
   //1.获取采集总场次
   getTotalCol:{
     method: 'get',

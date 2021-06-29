@@ -9,7 +9,7 @@ export default {
     //绘图的配置项
     option:{
       type:Object,
-      default:{}
+      default:() => {}
     },
     //图容器的高度
     height:{

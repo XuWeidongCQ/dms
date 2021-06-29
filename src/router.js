@@ -22,6 +22,13 @@ const routes = [
         children: [
             {
                 path: '',
+                component: () => import('./views/PageDevComprehensiveAnalysis.vue'),
+                meta: {
+                    title: '综合分析'
+                }
+            },
+            {
+                path: '/realtime',
                 component: () => import('./views/PageHomeLayout.vue'),
                 meta: {
                     title: '实时采集'

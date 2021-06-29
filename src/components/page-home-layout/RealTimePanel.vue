@@ -30,7 +30,7 @@
       </div>
       <div class="xu-col-3">
         <div class="mb15 demo-btn-wrapper">
-          <span style="font-weight: bold; margin-left: 5px">演示模式</span>
+          <span style="font-weight: bold; margin-left: 15px">演示模式</span>
           <x-swi v-model="isDemoMode" class="float-right"></x-swi>
         </div>
         <div class="real-ope-info">
@@ -143,6 +143,19 @@ export default {
           collectorUniqueId: "70:3A:51:2D:2D:20",
           collectionStartTime: 1622535979000,
         },
+        {
+          collectionNumber: 5,
+          deviceCode: "xx",
+          collectorUniqueId: "70:3A:51:2D:2D:20",
+          collectionStartTime: 1622535979000,
+        },
+        {
+          collectionNumber: 4,
+          deviceCode: "xx",
+          collectorUniqueId: "70:3A:51:2D:2D:20",
+          collectionStartTime: 1622535979000,
+        },
+        
       ],
       deviceToPanel: pattern,
       selCollectionNumber: 0,
@@ -241,7 +254,7 @@ export default {
 .real-ope-info > span {
   display: inline-block;
   /* font-size: 18px; */
-  padding: 10px 5px;
+  padding: 10px 15px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -249,7 +262,7 @@ export default {
   /* margin-bottom: 20px; */
   height: 692px;
   /* outline: 1px solid red; */
-  padding: 0 5px;
+  padding: 0 15px;
 }
 .process-ope-wrapper > li {
   padding: 8px 10px;

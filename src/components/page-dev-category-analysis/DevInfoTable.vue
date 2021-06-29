@@ -3,7 +3,7 @@
     <div class="table-title">{{ devInfo.devName }}</div>
     <div class="table-wrapper xu-add-scrollBar">
       <x-table 
-      :title="['序列号','生产日期','使用年限','采集场次','采集时长','维修次数','操作']"
+      :title="['序列号','生产日期','使用年限','采集场次','维修次数','总收益','操作']"
       :size="'sm'"
       :align="'center'"
       :strip="false"
@@ -14,10 +14,9 @@
           <td>{{ dev.produceDate | formatterDate('YYYYMMDD')}}</td>
           <td>{{ dev.serviceLife }}年</td>
           <td>{{ dev.totalCollectionCounter }}</td>
-          <td>{{ dev.totalCollectionTime }}秒</td>
           <td>{{ dev.maintenanceRecordCounter }}</td>
-          <!-- <td>{{ dev.historyCostAccessoryNum }}元</td>
-          <td>{{ dev.historyCostRepairNum }}元</td>
+          <td>{{ dev.totalProfitMoney | toInteger }}元</td>
+          <!-- <td>{{ dev.historyCostRepairNum }}元</td>
           <td>{{ dev.historyCostOtherNum }}元</td> -->
           <td>
             <x-button :value="'详情'" :size="'sm'" :type="'transparent'" @click="showDetail(dev)"></x-button>
@@ -120,7 +119,7 @@ export default {
   margin-bottom: 10px;
 }
 .table-wrapper {
-  height: 415px;
+  height: 416px;
   font-size: 14px;
 }
 .modal-title {

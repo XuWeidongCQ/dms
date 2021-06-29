@@ -267,6 +267,17 @@ export const getTypeCodes = function(){
   return ans
 }
 
+//获取所有代号的类型
+//返回 {'1':''麻醉机'...}
+export const getCodeTypes = function(){
+  const ans = {}
+  for(const key in typeInfo){
+    ans[getTypeInfo(key,'devTypeCode')] = key
+  }
+  return ans
+}
+
+
 export const getDevCodeToDevName = function(){
   const ans = {}
   const typeCodes = getTypeCodes()
